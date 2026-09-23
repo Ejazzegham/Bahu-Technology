@@ -12,7 +12,7 @@ export default function AboutHero() {
       <div className="absolute inset-0 -z-10">
         <Image
           src="/about/hero-glow.png"
-          alt="Glowing digital globe over a city skyline with People, Mission, Vision, Values, and Trust icons, representing the FAAH Technology team and values"
+          alt="Glowing digital globe over a city skyline with People, Mission, Vision, Values, and Trust icons, representing the Bahu Technology team and values"
           fill
           className="object-cover object-[75%_center] lg:object-[65%_center]"
           sizes="100vw"

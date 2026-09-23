@@ -239,14 +239,14 @@ export default function Navbar({ active = "Home" }: { active?: string }) {
         <Link href="/" className="flex items-center gap-2">
           <Image
             src={settings.appearance.logoUrl}
-            alt="FAAH Technology"
+            alt="Bahu Technology"
             width={40}
             height={40}
             className="h-10 w-10 object-contain"
             priority
           />
           <span className="font-display text-sm font-semibold leading-tight tracking-wide text-ink">
-            FAAH
+            BAHU
             <span className="block text-[10px] font-medium tracking-[0.3em] text-muted">
               TECHNOLOGY
             </span>
@@ -327,13 +327,13 @@ export default function Navbar({ active = "Home" }: { active?: string }) {
               <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
                 <Image
                   src={settings.appearance.logoUrl}
-                  alt="FAAH Technology"
+                  alt="Bahu Technology"
                   width={32}
                   height={32}
                   className="h-8 w-8 object-contain"
                 />
                 <span className="font-display text-sm font-semibold text-ink">
-                  FAAH
+                  BAHU
                   <span className="block text-[9px] font-medium tracking-[0.3em] text-muted">
                     TECHNOLOGY
                   </span>

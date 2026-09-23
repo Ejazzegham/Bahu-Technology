@@ -12,7 +12,7 @@ export default function ContactHero() {
       <div className="absolute inset-0 -z-10">
         <Image
           src="/contact/hero-glow.png"
-          alt="Phone displaying a contact form beside a glowing digital globe, envelope, and location pin, representing FAAH Technology's global reach"
+          alt="Phone displaying a contact form beside a glowing digital globe, envelope, and location pin, representing Bahu Technology's global reach"
           fill
           className="object-cover object-[75%_center] lg:object-[65%_center]"
           sizes="100vw"

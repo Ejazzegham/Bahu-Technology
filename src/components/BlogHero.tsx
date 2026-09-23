@@ -12,7 +12,7 @@ export default function BlogHero() {
       <div className="absolute inset-0 -z-10">
         <Image
           src="/blog/hero-glow.png"
-          alt="Laptop displaying the FAAH Technology blog with trending posts on technology, design, and digital marketing"
+          alt="Laptop displaying the Bahu Technology blog with trending posts on technology, design, and digital marketing"
           fill
           className="object-cover object-[75%_center] lg:object-[65%_center]"
           sizes="100vw"

@@ -95,7 +95,7 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={project.images[0]}
-                      alt={`${project.title} — ${CATEGORY_LABELS[project.category]} project by FAAH Technology`}
+                      alt={`${project.title} — ${CATEGORY_LABELS[project.category]} project by Bahu Technology`}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       quality={70}

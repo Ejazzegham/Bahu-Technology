@@ -42,7 +42,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   contactEmail: "hztechnology999@gmail.com",
   contactPhone: "+92 345 5163 857",
   whatsappNumber: "923455163857",
-  whatsappMessage: "Hi FAAH Technology! I'd like to talk about a project.",
+  whatsappMessage: "Hi Bahu Technology! I'd like to talk about a project.",
   address: "Shahkot, Punjab, Pakistan",
   workingHours: "Mon - Fri : 9:00 AM - 6:00 PM\nSaturday : 10:00 AM - 2:00 PM\nSunday : Closed",
   social: {
@@ -56,15 +56,15 @@ export const DEFAULT_SETTINGS: SiteSettings = {
     youtube: "",
   },
   seo: {
-    title: "FAAH Technology — Creative Design. Clean Code. Real Results.",
+    title: "Bahu Technology — Creative Design. Clean Code. Real Results.",
     description:
-      "FAAH Technology helps businesses and brands grow with high-quality graphic design, web, mobile, and custom software solutions.",
+      "Bahu Technology helps businesses and brands grow with high-quality graphic design, web, mobile, and custom software solutions.",
     keywords: "web design, web development, mobile app development, graphic design, desktop software, Pakistan",
-    ogImage: "/logo/faah_logo_1024x1024.png",
+    ogImage: "/logo/bahu_logo_1024x1024.png",
   },
   appearance: {
     accentColor: "#1477f5",
-    logoUrl: "/logo/faah_logo_512x512.png",
+    logoUrl: "/logo/bahu_logo_512x512.png",
     tagline: "Designing beautiful experiences. Building powerful solutions.",
   },
 };

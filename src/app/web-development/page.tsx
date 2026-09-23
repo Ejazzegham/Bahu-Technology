@@ -9,9 +9,9 @@ import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Web Design & Development Services — FAAH Technology",
+  title: "Web Design & Development Services — Bahu Technology",
   description:
-    "Explore FAAH Technology's full web design & development service menu — business websites, eCommerce, custom web applications, landing pages, and more — plus answers to common questions.",
+    "Explore Bahu Technology's full web design & development service menu — business websites, eCommerce, custom web applications, landing pages, and more — plus answers to common questions.",
   alternates: { canonical: "/web-development" },
 };
 

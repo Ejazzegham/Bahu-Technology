@@ -18,7 +18,7 @@ export default function PricingHero() {
       <div className="absolute inset-0 -z-10">
         <Image
           src="/pricing/hero-glow.png"
-          alt="Three FAAH Technology pricing plan cards — Basic, Standard, and Premium — glowing in blue and purple neon on a dark futuristic stage"
+          alt="Three Bahu Technology pricing plan cards — Basic, Standard, and Premium — glowing in blue and purple neon on a dark futuristic stage"
           fill
           className="object-cover object-[75%_center] lg:object-[65%_center]"
           sizes="100vw"

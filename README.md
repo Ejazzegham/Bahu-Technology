@@ -1,6 +1,6 @@
-# FAAH Technology — Website
+# Bahu Technology — Website
 
-Next.js 14 (App Router) + TypeScript + Tailwind CSS site for FAAH Technology,
+Next.js 14 (App Router) + TypeScript + Tailwind CSS site for Bahu Technology,
 with a fully functional Firebase-backed admin dashboard.
 
 ## Pages
@@ -259,4 +259,4 @@ A full pass before launch found and fixed the following:
 
 `npx tsc --noEmit` and `next lint` both pass clean, and a full production
 build (`next build`) completes successfully with all 42 routes.
-"# faah-technology" 
+"# bahu-technology" 

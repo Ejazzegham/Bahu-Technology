@@ -12,9 +12,9 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   const post = await getPublishedPostBySlug(params.slug);
-  if (!post) return { title: "Post Not Found — FAAH Technology" };
+  if (!post) return { title: "Post Not Found — Bahu Technology" };
   return {
-    title: `${post.title} — FAAH Technology Blog`,
+    title: `${post.title} — Bahu Technology Blog`,
     description: post.excerpt || post.content.slice(0, 160),
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
@@ -39,8 +39,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     image: post.coverImageUrl || undefined,
     datePublished: new Date(post.createdAt).toISOString(),
     dateModified: new Date(post.updatedAt).toISOString(),
-    author: { "@type": "Organization", name: "FAAH Technology" },
-    publisher: { "@type": "Organization", name: "FAAH Technology" },
+    author: { "@type": "Organization", name: "Bahu Technology" },
+    publisher: { "@type": "Organization", name: "Bahu Technology" },
   };
 
   return (

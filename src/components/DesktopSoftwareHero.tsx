@@ -15,7 +15,7 @@ export default function DesktopSoftwareHero() {
       <div className="absolute inset-0 -z-10">
         <Image
           src="/desktop-software/hero-glow.png"
-          alt="Glowing digital globe surrounded by icons for code, mobile, cloud, security, analytics, and support, representing FAAH Technology's custom software development services"
+          alt="Glowing digital globe surrounded by icons for code, mobile, cloud, security, analytics, and support, representing Bahu Technology's custom software development services"
           fill
           className="object-cover object-[75%_center] lg:object-[65%_center]"
           sizes="100vw"

@@ -18,7 +18,7 @@ export default function Hero() {
       <div className="absolute inset-0 -z-10">
         <Image
           src="/home/hero-glow.png"
-          alt="FAAH Technology emblem glowing in blue, set on a dark futuristic stage, representing innovation and technology-driven growth"
+          alt="Bahu Technology emblem glowing in blue, set on a dark futuristic stage, representing innovation and technology-driven growth"
           fill
           className="object-cover object-[78%_center] lg:object-[70%_center]"
           sizes="100vw"
@@ -41,7 +41,7 @@ export default function Hero() {
           <h1 className="mx-auto mt-4 max-w-xl font-display text-3xl font-semibold leading-[1.15] sm:text-4xl lg:mx-0 lg:text-5xl">
             <span className="text-white">Welcome to</span>
             <br />
-            <span className="text-gold tracking-tight">FAAH Technology</span>
+            <span className="text-gold tracking-tight">Bahu Technology</span>
           </h1>
 
           <p className="mx-auto mt-5 max-w-xl text-sm font-semibold tracking-wide text-white/80 sm:text-base lg:mx-0">

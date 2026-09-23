@@ -15,7 +15,7 @@ export default function MobileAppHero() {
       <div className="absolute inset-0 -z-10">
         <Image
           src="/mobile-app/hero-glow.png"
-          alt="Glowing digital globe surrounded by icons for code, mobile, cloud, security, analytics, and support, representing FAAH Technology's mobile app development services"
+          alt="Glowing digital globe surrounded by icons for code, mobile, cloud, security, analytics, and support, representing Bahu Technology's mobile app development services"
           fill
           className="object-cover object-[75%_center] lg:object-[65%_center]"
           sizes="100vw"

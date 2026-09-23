@@ -12,7 +12,7 @@ export default function PortfolioHero() {
       <div className="absolute inset-0 -z-10">
         <Image
           src="/portfolio/hero-glow.png"
-          alt="Laptop, tablet, and phone displaying the FAAH Technology portfolio of web, mobile, and branding projects"
+          alt="Laptop, tablet, and phone displaying the Bahu Technology portfolio of web, mobile, and branding projects"
           fill
           className="object-cover object-[75%_center] lg:object-[65%_center]"
           sizes="100vw"

@@ -163,8 +163,8 @@ export default function AdminSidebar({
     <>
       <div className="flex items-center gap-2 border-b border-line px-6 py-5">
         <Image
-          src="/logo/faah_logo_512x512.png"
-          alt="FAAH Technology"
+          src="/logo/bahu_logo_512x512.png"
+          alt="Bahu Technology"
           width={36}
           height={36}
           className="h-9 w-9 object-contain"
