@@ -10,7 +10,7 @@ import {
 } from "firebase/auth";
 
 const inputClass =
-  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none";
+  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none";
 
 export default function AdminAccountCard({ user }: { user: User | null }) {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -52,7 +52,7 @@ export default function AdminAccountCard({ user }: { user: User | null }) {
 
   return (
     <div className="card !p-6 sm:!p-8" id="manage-account">
-      <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
+      <h2 className="text-center font-display text-xl font-semibold text-ink sm:text-2xl">
         Account <span className="text-gold">& Access</span>
       </h2>
       <p className="mt-1 text-center text-xs text-muted">
@@ -62,7 +62,7 @@ export default function AdminAccountCard({ user }: { user: User | null }) {
 
       <div className="mx-auto mt-6 max-w-2xl space-y-8">
         <div className="rounded-lg border border-line p-4">
-          <p className="text-sm font-semibold text-white">Signed in as</p>
+          <p className="text-sm font-semibold text-ink">Signed in as</p>
           <p className="mt-1 text-sm text-gold">{user?.email ?? "—"}</p>
           {user?.metadata?.creationTime && (
             <p className="mt-1 text-[11px] text-muted">
@@ -72,7 +72,7 @@ export default function AdminAccountCard({ user }: { user: User | null }) {
         </div>
 
         <div>
-          <p className="mb-3 text-sm font-semibold text-white">Change Email</p>
+          <p className="mb-3 text-sm font-semibold text-ink">Change Email</p>
           <form
             onSubmit={(e) => handleReauthAndUpdate(e, () => updateEmail(user!, newEmail.trim()))}
             className="space-y-3"
@@ -98,7 +98,7 @@ export default function AdminAccountCard({ user }: { user: User | null }) {
         </div>
 
         <div>
-          <p className="mb-3 text-sm font-semibold text-white">Change Password</p>
+          <p className="mb-3 text-sm font-semibold text-ink">Change Password</p>
           <form
             onSubmit={(e) =>
               handleReauthAndUpdate(e, () => updatePassword(user!, newPassword))

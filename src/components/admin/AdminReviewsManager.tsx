@@ -69,7 +69,7 @@ export default function AdminReviewsManager({
     <div className="card !p-6 sm:!p-8">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="font-display text-lg font-semibold text-white">
+          <h3 className="font-display text-lg font-semibold text-ink">
             {name.trim() ? `${name.trim()}'s Review` : "Reviews & Testimonials"}
           </h3>
           <p className="mt-1 text-xs text-muted">
@@ -93,14 +93,14 @@ export default function AdminReviewsManager({
             placeholder="Client name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full rounded-md border border-line bg-bg px-3 py-2 text-xs text-white placeholder:text-muted focus:border-gold focus:outline-none"
+            className="w-full rounded-md border border-line bg-bg px-3 py-2 text-xs text-ink placeholder:text-muted focus:border-gold focus:outline-none"
           />
           <div className="flex items-center gap-2">
             <label className="text-xs text-muted">Rating</label>
             <select
               value={rating}
               onChange={(e) => setRating(Number(e.target.value))}
-              className="rounded-md border border-line bg-bg px-2 py-1 text-xs text-white focus:border-gold focus:outline-none"
+              className="rounded-md border border-line bg-bg px-2 py-1 text-xs text-ink focus:border-gold focus:outline-none"
             >
               {[5, 4, 3, 2, 1].map((n) => (
                 <option key={n} value={n}>
@@ -115,7 +115,7 @@ export default function AdminReviewsManager({
             placeholder="Review text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="w-full rounded-md border border-line bg-bg px-3 py-2 text-xs text-white placeholder:text-muted focus:border-gold focus:outline-none"
+            className="w-full rounded-md border border-line bg-bg px-3 py-2 text-xs text-ink placeholder:text-muted focus:border-gold focus:outline-none"
           />
           <button type="submit" disabled={saving} className="btn-primary w-full justify-center !py-2 !text-xs disabled:opacity-60">
             {saving ? "Saving…" : "Save Review"}
@@ -134,7 +134,7 @@ export default function AdminReviewsManager({
               </span>
               <div className="min-w-0 flex-1">
                 <div className="flex items-start justify-between gap-2">
-                  <p className="truncate text-sm font-semibold text-white">{r.name}</p>
+                  <p className="truncate text-sm font-semibold text-ink">{r.name}</p>
                   <span className="shrink-0 text-[10px] text-muted">{timeAgo(r.createdAt)}</span>
                 </div>
                 <Stars count={r.rating} />

@@ -26,7 +26,7 @@ export default function AdminLatestMessages({
   return (
     <div className="card !p-6" id="manage-messages">
       <div className="flex items-center justify-between">
-        <h3 className="font-display text-base font-semibold text-white">Latest Messages</h3>
+        <h3 className="font-display text-base font-semibold text-ink">Latest Messages</h3>
         <div className="flex items-center gap-3">
           <span className="text-xs text-muted">
             {messages.filter((m) => !m.read).length} unread
@@ -51,7 +51,7 @@ export default function AdminLatestMessages({
               }`}
             >
               <div className="flex items-center justify-between gap-2">
-                <p className="text-sm font-semibold text-white">{m.name}</p>
+                <p className="text-sm font-semibold text-ink">{m.name}</p>
                 <span className="text-[10px] text-muted">{timeAgo(m.createdAt)}</span>
               </div>
               <p className="mt-0.5 text-xs font-medium text-gold">{m.subject || "(no subject)"}</p>

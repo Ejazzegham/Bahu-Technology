@@ -38,7 +38,7 @@ export default function AdminStatsRow({ stats }: { stats: Stat[] }) {
           <div className="flex items-start justify-between">
             <div>
               <p className="text-xs text-muted">{stat.label}</p>
-              <p className="mt-2 font-display text-2xl font-bold text-white">{stat.value}</p>
+              <p className="mt-2 font-display text-2xl font-bold text-ink">{stat.value}</p>
             </div>
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-gold/40 text-gold">
               <svg

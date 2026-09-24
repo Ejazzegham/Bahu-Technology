@@ -40,7 +40,7 @@ function StepIndicator({ step }: { step: number }) {
                   n
                 )}
               </span>
-              <span className={`whitespace-nowrap text-xs font-medium ${state === "todo" ? "text-muted" : "text-white"}`}>
+              <span className={`whitespace-nowrap text-xs font-medium ${state === "todo" ? "text-muted" : "text-ink"}`}>
                 {label}
               </span>
             </div>
@@ -85,7 +85,7 @@ function TechChipPicker({
             className={`rounded-full border px-2.5 py-1 text-[11px] transition-colors ${
               isOn
                 ? "border-gold bg-gold/15 text-gold"
-                : "border-line text-muted hover:border-gold/60 hover:text-white"
+                : "border-line text-muted hover:border-gold/60 hover:text-ink"
             }`}
           >
             {tag.name}
@@ -106,7 +106,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 }
 
 const inputClass =
-  "w-full rounded-md border border-line bg-bg px-4 py-2.5 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none";
+  "w-full rounded-md border border-line bg-bg px-4 py-2.5 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none";
 
 type FormState = {
   title: string;
@@ -319,7 +319,7 @@ function AddPortfolioWizard({
           <path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3" strokeLinecap="round" />
         </svg>
       </span>
-      <p className="text-sm font-medium text-white">Drag &amp; drop images here</p>
+      <p className="text-sm font-medium text-ink">Drag &amp; drop images here</p>
       <p className="text-xs text-muted">or</p>
       <button type="button" onClick={() => fileInputRef.current?.click()} className="btn-outline !px-4 !py-2 text-xs">
         Browse Files
@@ -539,7 +539,7 @@ function AddPortfolioWizard({
 
         {step === 4 && (
           <div className="rounded-xl border border-line p-6">
-            <p className="font-display text-base font-semibold text-white">
+            <p className="font-display text-base font-semibold text-ink">
               {form.title || "Untitled project"}
             </p>
             <p className="mt-1 text-xs text-gold">{CATEGORY_LABELS[form.category]}</p>
@@ -646,7 +646,7 @@ function AllPortfolioTab({
           {projects.map((p, i) => (
             <tr key={p.id} className="border-b border-line/60 last:border-0">
               <td className="py-3 pr-3 text-muted">{i + 1}</td>
-              <td className="py-3 pr-3 font-medium text-white">{p.title}</td>
+              <td className="py-3 pr-3 font-medium text-ink">{p.title}</td>
               <td className="py-3 pr-3 text-muted">{CATEGORY_LABELS[p.category]}</td>
               <td className="py-3 pr-3 text-muted">{p.client || "—"}</td>
               <td className="py-3 pr-3">
@@ -744,7 +744,7 @@ function TagManagerTab() {
         {tags.map((tag) => (
           <li
             key={tag.id}
-            className="flex items-center justify-between rounded-lg border border-line px-4 py-3 text-sm text-white"
+            className="flex items-center justify-between rounded-lg border border-line px-4 py-3 text-sm text-ink"
           >
             {tag.name}
             <button aria-label="Delete" onClick={() => handleDelete(tag.id)} className="text-muted hover:text-rose-400">
@@ -778,7 +778,7 @@ export default function AdminManagePortfolio({
 }) {
   return (
     <div className="card !p-6 sm:!p-8">
-      <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
+      <h2 className="text-center font-display text-xl font-semibold text-ink sm:text-2xl">
         Manage <span className="text-gold">Portfolio</span>
       </h2>
 
@@ -788,7 +788,7 @@ export default function AdminManagePortfolio({
             key={t}
             onClick={() => onTabChange(t)}
             className={`rounded-md px-4 py-2 text-xs font-semibold transition-colors ${
-              activeTab === t ? "bg-gold-gradient text-bg" : "border border-line text-muted hover:text-white"
+              activeTab === t ? "bg-gold-gradient text-bg" : "border border-line text-muted hover:text-ink"
             }`}
           >
             {t}

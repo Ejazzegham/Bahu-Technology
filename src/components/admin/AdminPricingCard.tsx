@@ -11,7 +11,7 @@ import {
 } from "@/lib/firestore/pricing";
 
 const inputClass =
-  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none";
+  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none";
 
 // Real groups + subcategories, straight from the actual /pricing page catalog
 // (src/lib/pricing.ts) — so whatever you manage here is guaranteed to be the
@@ -129,7 +129,7 @@ export default function AdminPricingCard() {
 
   return (
     <div className="card !p-6 sm:!p-8" id="manage-pricing">
-      <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
+      <h2 className="text-center font-display text-xl font-semibold text-ink sm:text-2xl">
         Manage <span className="text-gold">Pricing Packages</span>
       </h2>
       <p className="mt-1 text-center text-xs text-muted">
@@ -182,7 +182,7 @@ export default function AdminPricingCard() {
       {selected && (
         <div className="mt-6">
           <div className="flex items-center justify-between">
-            <p className="text-sm font-semibold text-white">
+            <p className="text-sm font-semibold text-ink">
               Tiers for <span className="text-gold">{selectedLabel}</span>
             </p>
             <button
@@ -232,10 +232,10 @@ export default function AdminPricingCard() {
               <div key={t.id} className="rounded-lg border border-line p-4">
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <p className="text-sm font-semibold text-white">
+                    <p className="text-sm font-semibold text-ink">
                       {t.name}
                       {t.isDefault && (
-                        <span className="ml-1.5 rounded-full bg-white/10 px-1.5 py-0.5 text-[9px] font-normal text-muted">
+                        <span className="ml-1.5 rounded-full bg-ink/5 px-1.5 py-0.5 text-[9px] font-normal text-muted">
                           default
                         </span>
                       )}

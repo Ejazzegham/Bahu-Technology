@@ -30,7 +30,7 @@ export default function AdminMessagesManager({
     <div className="card !p-6 sm:!p-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h3 className="font-display text-lg font-semibold text-white">Messages</h3>
+          <h3 className="font-display text-lg font-semibold text-ink">Messages</h3>
           <p className="mt-1 text-xs text-muted">
             {messages.length} total · {messages.filter((m) => !m.read).length} unread
           </p>
@@ -41,7 +41,7 @@ export default function AdminMessagesManager({
               key={f}
               onClick={() => setFilter(f)}
               className={`rounded-full px-3 py-1 text-xs font-semibold capitalize transition-colors ${
-                filter === f ? "bg-gold-gradient text-bg" : "text-muted hover:text-white"
+                filter === f ? "bg-gold-gradient text-bg" : "text-muted hover:text-ink"
               }`}
             >
               {f}
@@ -64,7 +64,7 @@ export default function AdminMessagesManager({
               }`}
             >
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="text-sm font-semibold text-white">{m.name}</p>
+                <p className="text-sm font-semibold text-ink">{m.name}</p>
                 <span className="text-[10px] text-muted">{timeAgo(m.createdAt)}</span>
               </div>
               <p className="text-xs text-muted">{m.email}</p>

@@ -43,7 +43,7 @@ export default function AdminOrdersCard() {
 
   return (
     <div className="card !p-6 sm:!p-8" id="manage-orders">
-      <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
+      <h2 className="text-center font-display text-xl font-semibold text-ink sm:text-2xl">
         Customer <span className="text-gold">Orders</span>
       </h2>
       <p className="mt-1 text-center text-xs text-muted">
@@ -58,7 +58,7 @@ export default function AdminOrdersCard() {
             <li key={o.id} className="rounded-lg border border-line p-4">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <p className="text-sm font-semibold text-white">
+                  <p className="text-sm font-semibold text-ink">
                     {o.tierName} <span className="font-normal text-muted">· {o.categoryLabel}</span>
                   </p>
                   <p className="mt-0.5 text-xs text-gold">{o.price}</p>
@@ -83,7 +83,7 @@ export default function AdminOrdersCard() {
                     className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold ${statusColor(o.status)}`}
                   >
                     {STATUSES.map((s) => (
-                      <option key={s} value={s} className="bg-bg text-white">
+                      <option key={s} value={s} className="bg-bg text-ink">
                         {s}
                       </option>
                     ))}

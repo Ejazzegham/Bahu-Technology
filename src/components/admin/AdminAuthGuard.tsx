@@ -34,7 +34,7 @@ export default function AdminAuthGuard({ children }: { children: React.ReactNode
     return (
       <div className="flex min-h-screen items-center justify-center bg-bg px-6 text-center">
         <div className="max-w-sm">
-          <p className="text-sm font-semibold text-white">Firebase isn&apos;t configured</p>
+          <p className="text-sm font-semibold text-ink">Firebase isn&apos;t configured</p>
           <p className="mt-2 text-xs text-muted">
             Copy <code className="text-gold">.env.local.example</code> to{" "}
             <code className="text-gold">.env.local</code> and add your Firebase project keys to
@@ -57,7 +57,7 @@ export default function AdminAuthGuard({ children }: { children: React.ReactNode
     return (
       <div className="flex min-h-screen items-center justify-center bg-bg px-6 text-center">
         <div className="max-w-sm">
-          <p className="text-sm font-semibold text-white">This account doesn&apos;t have admin access</p>
+          <p className="text-sm font-semibold text-ink">This account doesn&apos;t have admin access</p>
           <p className="mt-2 text-xs text-muted">
             {user.email} is signed in, but isn&apos;t on the admin list for this site.
           </p>

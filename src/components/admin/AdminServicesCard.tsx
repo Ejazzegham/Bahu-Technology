@@ -38,7 +38,7 @@ export default function AdminServicesCard() {
 
   return (
     <div className="card !p-6 sm:!p-8" id="manage-services">
-      <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
+      <h2 className="text-center font-display text-xl font-semibold text-ink sm:text-2xl">
         Manage <span className="text-gold">Services</span>
       </h2>
       <p className="mt-1 text-center text-xs text-muted">
@@ -52,12 +52,12 @@ export default function AdminServicesCard() {
           placeholder="Service title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none"
+          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none"
         />
         <select
           value={icon}
           onChange={(e) => setIcon(e.target.value)}
-          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-white focus:border-gold focus:outline-none"
+          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink focus:border-gold focus:outline-none"
         >
           {SERVICE_ICON_OPTIONS.map((opt) => (
             <option key={opt} value={opt}>
@@ -71,7 +71,7 @@ export default function AdminServicesCard() {
           placeholder="Short description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none sm:col-span-2"
+          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none sm:col-span-2"
         />
         <button
           type="submit"

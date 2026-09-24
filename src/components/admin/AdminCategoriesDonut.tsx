@@ -7,7 +7,7 @@ export type CategorySlice = { label: string; value: number; pct: string; color: 
 export default function AdminCategoriesDonut({ slices, total }: { slices: CategorySlice[]; total: number }) {
   return (
     <div className="card !p-6">
-      <h3 className="font-display text-base font-semibold text-white">Project Categories</h3>
+      <h3 className="font-display text-base font-semibold text-ink">Project Categories</h3>
 
       {total === 0 ? (
         <p className="mt-8 text-center text-xs text-muted">No projects yet.</p>
@@ -32,7 +32,7 @@ export default function AdminCategoriesDonut({ slices, total }: { slices: Catego
             </PieChart>
           </ResponsiveContainer>
           <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
-            <p className="font-display text-2xl font-bold text-white">{total}</p>
+            <p className="font-display text-2xl font-bold text-ink">{total}</p>
             <p className="text-[11px] text-muted">Total</p>
           </div>
         </div>
@@ -47,7 +47,7 @@ export default function AdminCategoriesDonut({ slices, total }: { slices: Catego
                 />
                 <span className="truncate">{c.label}</span>
               </span>
-              <span className="shrink-0 whitespace-nowrap font-medium text-white">
+              <span className="shrink-0 whitespace-nowrap font-medium text-ink">
                 {c.value} <span className="text-muted">({c.pct})</span>
               </span>
             </li>

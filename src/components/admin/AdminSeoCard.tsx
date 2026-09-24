@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { DEFAULT_SETTINGS, subscribeSettings, updateSettings } from "@/lib/firestore/settings";
 
 const inputClass =
-  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none";
+  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none";
 
 export default function AdminSeoCard() {
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
@@ -33,7 +33,7 @@ export default function AdminSeoCard() {
 
   return (
     <div className="card !p-6 sm:!p-8" id="manage-seo">
-      <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
+      <h2 className="text-center font-display text-xl font-semibold text-ink sm:text-2xl">
         SEO <span className="text-gold">Settings</span>
       </h2>
       <p className="mt-1 text-center text-xs text-muted">

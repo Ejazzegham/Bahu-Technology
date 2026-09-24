@@ -24,7 +24,7 @@ export default function AdminClientsCard({ clients }: { clients: Client[] }) {
   return (
     <div className="card !p-6" id="manage-clients">
       <div className="flex items-center justify-between">
-        <h3 className="font-display text-base font-semibold text-white">Clients</h3>
+        <h3 className="font-display text-base font-semibold text-ink">Clients</h3>
         <span className="text-xs text-muted">{clients.length} total</span>
       </div>
 
@@ -34,7 +34,7 @@ export default function AdminClientsCard({ clients }: { clients: Client[] }) {
           placeholder="Add a client name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-xs text-white placeholder:text-muted focus:border-gold focus:outline-none"
+          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-xs text-ink placeholder:text-muted focus:border-gold focus:outline-none"
         />
         <button type="submit" disabled={saving} className="btn-primary shrink-0 !px-4 !py-2 !text-xs disabled:opacity-60">
           Add
@@ -48,7 +48,7 @@ export default function AdminClientsCard({ clients }: { clients: Client[] }) {
           {clients.map((c) => (
             <li
               key={c.id}
-              className="flex items-center justify-between rounded-md border border-line px-3 py-2 text-xs text-white"
+              className="flex items-center justify-between rounded-md border border-line px-3 py-2 text-xs text-ink"
             >
               {c.name}
               <button aria-label="Delete" onClick={() => deleteClient(c.id)} className="text-muted hover:text-rose-400">

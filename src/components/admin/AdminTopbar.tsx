@@ -31,7 +31,7 @@ export default function AdminTopbar({
           </svg>
         </button>
         <div>
-          <h1 className="font-display text-lg font-semibold text-white">{title}</h1>
+          <h1 className="font-display text-lg font-semibold text-ink">{title}</h1>
           <p className="text-[11px] text-muted">
             Home <span className="mx-1">›</span> {title}
           </p>
@@ -61,7 +61,7 @@ export default function AdminTopbar({
               {(email ?? "A").charAt(0).toUpperCase()}
             </span>
             <div className="hidden text-left sm:block">
-              <p className="max-w-[160px] truncate text-xs font-semibold text-white">{email ?? "Admin"}</p>
+              <p className="max-w-[160px] truncate text-xs font-semibold text-ink">{email ?? "Admin"}</p>
               <p className="text-[10px] text-muted">Administrator</p>
             </div>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-muted">
@@ -72,7 +72,7 @@ export default function AdminTopbar({
             <div className="absolute right-0 top-full z-10 mt-2 w-40 rounded-md border border-line bg-bg-card py-1 shadow-lg">
               <button
                 onClick={() => signOut(getFirebaseAuth())}
-                className="block w-full px-4 py-2 text-left text-xs text-muted hover:bg-white/5 hover:text-white"
+                className="block w-full px-4 py-2 text-left text-xs text-muted hover:bg-ink/5 hover:text-ink"
               >
                 Sign out
               </button>

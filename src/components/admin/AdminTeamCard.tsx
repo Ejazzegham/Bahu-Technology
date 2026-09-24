@@ -31,21 +31,21 @@ function EditForm({
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Full name"
-        className="w-full rounded-md border border-line bg-bg px-2 py-1.5 text-xs text-white placeholder:text-muted focus:border-gold focus:outline-none"
+        className="w-full rounded-md border border-line bg-bg px-2 py-1.5 text-xs text-ink placeholder:text-muted focus:border-gold focus:outline-none"
       />
       <input
         type="text"
         value={role}
         onChange={(e) => setRole(e.target.value)}
         placeholder="Role"
-        className="w-full rounded-md border border-line bg-bg px-2 py-1.5 text-xs text-white placeholder:text-muted focus:border-gold focus:outline-none"
+        className="w-full rounded-md border border-line bg-bg px-2 py-1.5 text-xs text-ink placeholder:text-muted focus:border-gold focus:outline-none"
       />
       <input
         type="text"
         value={imageUrl}
         onChange={(e) => setImageUrl(e.target.value)}
         placeholder="Image URL (optional)"
-        className="w-full rounded-md border border-line bg-bg px-2 py-1.5 text-xs text-white placeholder:text-muted focus:border-gold focus:outline-none"
+        className="w-full rounded-md border border-line bg-bg px-2 py-1.5 text-xs text-ink placeholder:text-muted focus:border-gold focus:outline-none"
       />
       <div className="flex justify-center gap-2 pt-1">
         <button
@@ -59,7 +59,7 @@ function EditForm({
         <button
           type="button"
           onClick={onCancel}
-          className="rounded-md border border-line px-3 py-1.5 text-[11px] text-muted hover:text-white"
+          className="rounded-md border border-line px-3 py-1.5 text-[11px] text-muted hover:text-ink"
         >
           Cancel
         </button>
@@ -113,7 +113,7 @@ export default function AdminTeamCard() {
 
   return (
     <div className="card !p-6 sm:!p-8" id="manage-team">
-      <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
+      <h2 className="text-center font-display text-xl font-semibold text-ink sm:text-2xl">
         Manage <span className="text-gold">Team Members</span>
       </h2>
       <p className="mt-1 text-center text-xs text-muted">
@@ -128,7 +128,7 @@ export default function AdminTeamCard() {
           placeholder="Full name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none sm:flex-1"
+          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none sm:flex-1"
         />
         <input
           type="text"
@@ -136,14 +136,14 @@ export default function AdminTeamCard() {
           placeholder="Role (e.g. Lead Developer)"
           value={role}
           onChange={(e) => setRole(e.target.value)}
-          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none sm:flex-1"
+          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none sm:flex-1"
         />
         <input
           type="text"
           placeholder="Image URL (optional)"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
-          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none sm:flex-1"
+          className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none sm:flex-1"
         />
         <button type="submit" disabled={saving} className="btn-primary shrink-0 justify-center disabled:opacity-60">
           {saving ? "Saving…" : "Add"}

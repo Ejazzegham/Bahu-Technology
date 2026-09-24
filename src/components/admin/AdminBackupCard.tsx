@@ -96,7 +96,7 @@ export default function AdminBackupCard() {
 
   return (
     <div className="card !p-6 sm:!p-8" id="manage-backup">
-      <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
+      <h2 className="text-center font-display text-xl font-semibold text-ink sm:text-2xl">
         Backup <span className="text-gold">& Restore</span>
       </h2>
       <p className="mt-1 text-center text-xs text-muted">

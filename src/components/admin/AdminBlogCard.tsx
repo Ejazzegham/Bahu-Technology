@@ -20,7 +20,7 @@ const TABS = ["All Posts", "Add Post", "Comments"] as const;
 export type BlogTab = (typeof TABS)[number];
 
 const inputClass =
-  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none";
+  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none";
 
 function AllPostsTab({
   posts,
@@ -46,7 +46,7 @@ function AllPostsTab({
           className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-line px-4 py-3"
         >
           <div>
-            <p className="text-sm font-semibold text-white">{p.title}</p>
+            <p className="text-sm font-semibold text-ink">{p.title}</p>
             <p className="text-xs text-muted">
               /blog/{p.slug} ·{" "}
               <span className={p.published ? "text-emerald-400" : "text-amber-400"}>
@@ -213,7 +213,7 @@ function AddPostForm({ editingPost, onDone }: { editingPost: BlogPost | null; on
                     )
                   }
                   className={`rounded-full border px-2.5 py-1 text-[11px] transition-colors ${
-                    isOn ? "border-gold bg-gold/15 text-gold" : "border-line text-muted hover:text-white"
+                    isOn ? "border-gold bg-gold/15 text-gold" : "border-line text-muted hover:text-ink"
                   }`}
                 >
                   {tag.name}
@@ -278,7 +278,7 @@ function CommentsTab({ posts }: { posts: BlogPost[] }) {
           <li key={c.id} className="rounded-lg border border-line p-4">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <p className="text-sm font-semibold text-white">
+                <p className="text-sm font-semibold text-ink">
                   {c.name} <span className="font-normal text-muted">on {post?.title ?? "a post"}</span>
                 </p>
                 <p className="mt-1 text-xs text-muted">{c.comment}</p>
@@ -361,7 +361,7 @@ export default function AdminBlogCard({
 
   return (
     <div className="card !p-6 sm:!p-8" id="manage-blog">
-      <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
+      <h2 className="text-center font-display text-xl font-semibold text-ink sm:text-2xl">
         Manage <span className="text-gold">Blog</span>
       </h2>
       <p className="mt-1 text-center text-xs text-muted">Published at /blog.</p>
@@ -375,7 +375,7 @@ export default function AdminBlogCard({
               if (t !== "Add Post") setEditingPost(null);
             }}
             className={`rounded-md px-4 py-2 text-xs font-semibold transition-colors ${
-              activeTab === t ? "bg-gold-gradient text-bg" : "border border-line text-muted hover:text-white"
+              activeTab === t ? "bg-gold-gradient text-bg" : "border border-line text-muted hover:text-ink"
             }`}
           >
             {t}

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { DEFAULT_SETTINGS, subscribeSettings, updateSettings, type SiteSettings } from "@/lib/firestore/settings";
 
 const inputClass =
-  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none";
+  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none";
 
 const SOCIAL_FIELDS: { key: keyof SiteSettings["social"]; label: string; placeholder: string }[] = [
   { key: "linkedin", label: "LinkedIn", placeholder: "https://linkedin.com/company/…" },
@@ -52,7 +52,7 @@ export default function AdminSettingsCard() {
 
   return (
     <div className="card !p-6 sm:!p-8" id="manage-settings">
-      <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
+      <h2 className="text-center font-display text-xl font-semibold text-ink sm:text-2xl">
         General <span className="text-gold">Settings</span>
       </h2>
       <p className="mt-1 text-center text-xs text-muted">

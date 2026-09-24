@@ -21,7 +21,7 @@ export default function AdminRecentProjects({
   return (
     <div className="card !p-6">
       <div className="flex items-center justify-between">
-        <h3 className="font-display text-base font-semibold text-white">Recent Projects</h3>
+        <h3 className="font-display text-base font-semibold text-ink">Recent Projects</h3>
         <span className="text-xs text-muted">{projects.length} total</span>
       </div>
 
@@ -36,7 +36,7 @@ export default function AdminRecentProjects({
               <div className="flex items-start justify-between gap-2">
                 <div className="flex min-w-0 items-center gap-2">
                   <span className="shrink-0 text-muted">{i + 1}.</span>
-                  <p className="truncate font-medium text-white">{p.title}</p>
+                  <p className="truncate font-medium text-ink">{p.title}</p>
                 </div>
                 <span
                   className={`shrink-0 rounded px-2 py-1 text-[10px] font-semibold ${

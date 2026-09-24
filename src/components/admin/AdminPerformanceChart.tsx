@@ -8,7 +8,7 @@ export default function AdminPerformanceChart({ data }: { data: TrendPoint[] }) 
   return (
     <div className="card !p-6">
       <div className="flex items-center justify-between">
-        <h3 className="font-display text-base font-semibold text-white">Projects Added</h3>
+        <h3 className="font-display text-base font-semibold text-ink">Projects Added</h3>
         <span className="text-xs text-muted">Last 30 days</span>
       </div>
 

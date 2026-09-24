@@ -6,7 +6,7 @@ import { uploadFile } from "@/lib/storage";
 import { DEFAULT_SETTINGS, subscribeSettings, updateSettings } from "@/lib/firestore/settings";
 
 const inputClass =
-  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none";
+  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none";
 
 export default function AdminAppearanceCard() {
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
@@ -44,7 +44,7 @@ export default function AdminAppearanceCard() {
 
   return (
     <div className="card !p-6 sm:!p-8" id="manage-appearance">
-      <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
+      <h2 className="text-center font-display text-xl font-semibold text-ink sm:text-2xl">
         <span className="text-gold">Appearance</span>
       </h2>
       <p className="mt-1 text-center text-xs text-muted">
@@ -85,7 +85,7 @@ export default function AdminAppearanceCard() {
             <img
               src={logoFile ? URL.createObjectURL(logoFile) : settings.appearance.logoUrl}
               alt="Current logo"
-              className="h-14 w-14 rounded-md border border-line object-contain bg-white/5 p-1"
+              className="h-14 w-14 rounded-md border border-line object-contain bg-bg-soft p-1"
             />
             <input
               type="file"

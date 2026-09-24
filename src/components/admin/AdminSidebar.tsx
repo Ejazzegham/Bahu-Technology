@@ -170,7 +170,7 @@ export default function AdminSidebar({
           className="h-9 w-9 object-contain"
         />
         <div>
-          <p className="font-display text-sm font-semibold leading-tight text-white">
+          <p className="font-display text-sm font-semibold leading-tight text-ink">
             TECHNOLOGY
           </p>
           <p className="text-[10px] tracking-[0.2em] text-muted">ADMIN PANEL</p>
@@ -178,7 +178,7 @@ export default function AdminSidebar({
         <button
           onClick={onCloseMobile}
           aria-label="Close menu"
-          className="ml-auto rounded-md p-1.5 text-muted hover:bg-white/5 hover:text-white lg:hidden"
+          className="ml-auto rounded-md p-1.5 text-muted hover:bg-ink/5 hover:text-ink lg:hidden"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
             <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
@@ -206,7 +206,7 @@ export default function AdminSidebar({
                 className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
                   isTopActive
                     ? "bg-gold-gradient font-semibold text-bg"
-                    : "text-muted hover:bg-white/5 hover:text-white"
+                    : "text-muted hover:bg-ink/5 hover:text-ink"
                 }`}
               >
                 <NavIcon>{item.icon}</NavIcon>
@@ -227,7 +227,7 @@ export default function AdminSidebar({
                 className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
                   isTopActive && !isOpen
                     ? "bg-gold-gradient font-semibold text-bg"
-                    : "text-muted hover:bg-white/5 hover:text-white"
+                    : "text-muted hover:bg-ink/5 hover:text-ink"
                 }`}
               >
                 <NavIcon>{item.icon}</NavIcon>
@@ -256,7 +256,7 @@ export default function AdminSidebar({
                         href={sub.href}
                         onClick={onCloseMobile}
                         className={`block w-full rounded-md px-3 py-1.5 text-left text-xs ${
-                          subActive ? "text-gold" : "text-muted hover:text-white"
+                          subActive ? "text-gold" : "text-muted hover:text-ink"
                         }`}
                       >
                         {sub.label}

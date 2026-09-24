@@ -69,7 +69,7 @@ export default function AdminRecentReviews({
   return (
     <div className="card !p-6" id="manage-reviews">
       <div className="flex items-center justify-between">
-        <h3 className="font-display text-base font-semibold text-white">Recent Reviews</h3>
+        <h3 className="font-display text-base font-semibold text-ink">Recent Reviews</h3>
         <div className="flex items-center gap-4">
           <Link href="/admin/reviews" className="text-xs font-semibold text-muted hover:text-gold hover:underline">
             View all
@@ -88,14 +88,14 @@ export default function AdminRecentReviews({
             placeholder="Client name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full rounded-md border border-line bg-bg px-3 py-2 text-xs text-white placeholder:text-muted focus:border-gold focus:outline-none"
+            className="w-full rounded-md border border-line bg-bg px-3 py-2 text-xs text-ink placeholder:text-muted focus:border-gold focus:outline-none"
           />
           <div className="flex items-center gap-2">
             <label className="text-xs text-muted">Rating</label>
             <select
               value={rating}
               onChange={(e) => setRating(Number(e.target.value))}
-              className="rounded-md border border-line bg-bg px-2 py-1 text-xs text-white focus:border-gold focus:outline-none"
+              className="rounded-md border border-line bg-bg px-2 py-1 text-xs text-ink focus:border-gold focus:outline-none"
             >
               {[5, 4, 3, 2, 1].map((n) => (
                 <option key={n} value={n}>
@@ -110,7 +110,7 @@ export default function AdminRecentReviews({
             placeholder="Review text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="w-full rounded-md border border-line bg-bg px-3 py-2 text-xs text-white placeholder:text-muted focus:border-gold focus:outline-none"
+            className="w-full rounded-md border border-line bg-bg px-3 py-2 text-xs text-ink placeholder:text-muted focus:border-gold focus:outline-none"
           />
           <button type="submit" disabled={saving} className="btn-primary w-full justify-center !py-2 !text-xs disabled:opacity-60">
             {saving ? "Saving…" : "Save Review"}
@@ -129,7 +129,7 @@ export default function AdminRecentReviews({
               </span>
               <div className="flex-1">
                 <div className="flex items-center justify-between gap-2">
-                  <p className="text-sm font-semibold text-white">{r.name}</p>
+                  <p className="text-sm font-semibold text-ink">{r.name}</p>
                   <span className="text-[10px] text-muted">{timeAgo(r.createdAt)}</span>
                 </div>
                 <Stars count={r.rating} />

@@ -18,7 +18,7 @@ export default function AdminSubscribersList({ subscribers }: { subscribers: Sub
 
   return (
     <div className="card !p-6 sm:!p-8">
-      <h3 className="font-display text-lg font-semibold text-white">All Subscribers</h3>
+      <h3 className="font-display text-lg font-semibold text-ink">All Subscribers</h3>
       <p className="mt-1 text-xs text-muted">{subscribers.length} total</p>
 
       {subscribers.length === 0 ? (
@@ -28,7 +28,7 @@ export default function AdminSubscribersList({ subscribers }: { subscribers: Sub
           {subscribers.map((s) => (
             <li key={s.id} className="flex items-center justify-between gap-3 py-3">
               <div className="min-w-0">
-                <p className="truncate text-sm text-white">{s.email}</p>
+                <p className="truncate text-sm text-ink">{s.email}</p>
                 <p className="text-[11px] text-muted">Subscribed {formatDate(s.createdAt)}</p>
               </div>
               <button

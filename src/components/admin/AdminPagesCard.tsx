@@ -14,7 +14,7 @@ const TABS = ["All Pages", "Add Page"] as const;
 export type PagesTab = (typeof TABS)[number];
 
 const inputClass =
-  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none";
+  "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none";
 
 function AllPagesTab({
   pages,
@@ -40,7 +40,7 @@ function AllPagesTab({
           className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-line px-4 py-3"
         >
           <div>
-            <p className="text-sm font-semibold text-white">{p.title}</p>
+            <p className="text-sm font-semibold text-ink">{p.title}</p>
             <p className="text-xs text-muted">
               /pages/{p.slug} ·{" "}
               <span className={p.published ? "text-emerald-400" : "text-amber-400"}>
@@ -213,7 +213,7 @@ export default function AdminPagesCard({
 
   return (
     <div className="card !p-6 sm:!p-8" id="manage-pages">
-      <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
+      <h2 className="text-center font-display text-xl font-semibold text-ink sm:text-2xl">
         Manage <span className="text-gold">Pages</span>
       </h2>
       <p className="mt-1 text-center text-xs text-muted">
@@ -229,7 +229,7 @@ export default function AdminPagesCard({
               if (t !== "Add Page") setEditingPage(null);
             }}
             className={`rounded-md px-4 py-2 text-xs font-semibold transition-colors ${
-              activeTab === t ? "bg-gold-gradient text-bg" : "border border-line text-muted hover:text-white"
+              activeTab === t ? "bg-gold-gradient text-bg" : "border border-line text-muted hover:text-ink"
             }`}
           >
             {t}
