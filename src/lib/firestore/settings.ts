@@ -39,7 +39,7 @@ export type SiteSettings = {
 };
 
 export const DEFAULT_SETTINGS: SiteSettings = {
-  contactEmail: "hztechnology999@gmail.com",
+  contactEmail: "bahutechnology@gmail.com",
   contactPhone: "+92 345 5163 857",
   whatsappNumber: "923455163857",
   whatsappMessage: "Hi Bahu Technology! I'd like to talk about a project.",

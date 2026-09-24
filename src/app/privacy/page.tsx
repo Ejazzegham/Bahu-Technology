@@ -184,7 +184,7 @@ const SECTIONS: LegalSection[] = [
         type: "ul",
         items: [
           "Bahu Technology",
-          "Email: hztechnology999@gmail.com",
+          "Email: bahutechnology@gmail.com",
           "Phone / WhatsApp: +92 345 5163 857",
           <>
             Website:{" "}

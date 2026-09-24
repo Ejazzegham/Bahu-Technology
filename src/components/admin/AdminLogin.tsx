@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { Eye, EyeOff } from "lucide-react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { getFirebaseAuth, isFirebaseConfigured } from "@/lib/firebase";
 
@@ -13,6 +14,7 @@ import { getFirebaseAuth, isFirebaseConfigured } from "@/lib/firebase";
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -49,43 +51,81 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-bg px-6">
-      <div className="w-full max-w-sm rounded-xl border border-line bg-bg-card p-8">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-white to-bg-soft px-6">
+      {/* Soft brand glow behind the card — subtle, keeps the page light */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/10 blur-3xl"
+      />
+
+      <div className="relative w-full max-w-sm rounded-2xl border border-line bg-white p-8 shadow-[0_8px_40px_-12px_rgba(13,13,16,0.15)] sm:p-10">
         <div className="flex flex-col items-center text-center">
           <Image
-            src="/logo/bahu_logo_512x512.png"
+            src="/logo/bahu_logo_1024x1024.png"
             alt="Bahu Technology"
-            width={48}
-            height={48}
-            className="h-12 w-12 object-contain"
+            width={112}
+            height={112}
+            priority
+            className="h-24 w-24 object-contain sm:h-28 sm:w-28"
           />
-          <h1 className="mt-4 font-display text-lg font-semibold text-white">Admin Sign In</h1>
+          <h1 className="mt-5 font-display text-xl font-bold text-ink">Admin Sign In</h1>
           <p className="mt-1 text-xs text-muted">Sign in to manage your website.</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-          <input
-            type="email"
-            required
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-md border border-line bg-bg px-4 py-2.5 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none"
-          />
-          <input
-            type="password"
-            required
-            minLength={6}
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-md border border-line bg-bg px-4 py-2.5 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none"
-          />
+        <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+          <div>
+            <label htmlFor="admin-email" className="mb-1.5 block text-xs font-semibold text-ink">
+              Email address
+            </label>
+            <input
+              id="admin-email"
+              type="email"
+              required
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-muted/60 focus:border-ink focus:outline-none focus:ring-4 focus:ring-ink/5"
+            />
+          </div>
 
-          {error && <p className="text-xs text-rose-400">{error}</p>}
+          <div>
+            <label htmlFor="admin-password" className="mb-1.5 block text-xs font-semibold text-ink">
+              Password
+            </label>
+            <div className="relative">
+              <input
+                id="admin-password"
+                type={showPassword ? "text" : "password"}
+                required
+                minLength={6}
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full rounded-lg border border-line bg-white px-4 py-2.5 pr-11 text-sm text-ink placeholder:text-muted/60 focus:border-ink focus:outline-none focus:ring-4 focus:ring-ink/5"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((v) => !v)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-ink/60 transition hover:text-ink"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
+          </div>
 
-          <button type="submit" disabled={loading} className="btn-primary w-full justify-center disabled:opacity-60">
-            {loading ? "Please wait…" : "SIGN IN"}
+          {error && (
+            <p className="rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-xs font-medium text-rose-600">
+              {error}
+            </p>
+          )}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full rounded-lg border-2 border-ink bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:bg-ink hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {loading ? "Please wait…" : "Sign In"}
           </button>
         </form>
       </div>

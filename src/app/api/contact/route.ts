@@ -16,7 +16,7 @@ import nodemailer from "nodemailer";
 
 export const runtime = "nodejs";
 
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "hztechnology999@gmail.com";
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "bahutechnology@gmail.com";
 
 export async function POST(req: NextRequest) {
   try {
