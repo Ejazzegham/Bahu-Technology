@@ -1,0 +1,475 @@
+warning: in the working copy of '.eslintrc.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'firebase.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'firestore.indexes.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'firestore.rules', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'next.config.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package-lock.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'postcss.config.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'scripts/migrate-firestore-urls.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/about/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/account/layout.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/account/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/appearance/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/backup/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/blog/add/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/blog/comments/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/blog/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/clients/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/layout.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/messages/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/orders/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/pages/add/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/pages/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/portfolio/add/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/portfolio/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/portfolio/technologies/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/pricing/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/reviews/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/roles/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/seo/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/services/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/settings/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/subscribers/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/team/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/testimonials/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/admin/users/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/api/contact/route.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/api/reactions/route.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/api/uploads/delete/route.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/api/uploads/presign/route.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/blog/[slug]/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/blog/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/contact/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/desktop-software/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/globals.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/graphic-design/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/layout.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/login/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/mobile-app-development/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/pages/[slug]/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/portfolio/[id]/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/portfolio/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/pricing/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/privacy/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/robots.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/sitemap.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/terms/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/web-development/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/About.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/AboutHero.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/AboutServices.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/AboutStory.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/AboutTeam.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/AboutWhyJourney.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/AnimatedTitle.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/BlogAbout.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/BlogComments.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/BlogDiscover.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/BlogHero.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/Categories.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/ContactHero.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/ContactHeroForm.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/ContactIntro.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/ContactMap.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/ContactWhyReach.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/CtaBanner.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/DesktopSoftwareFaq.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/DesktopSoftwareHero.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/DesktopSoftwareServices.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/DesktopSoftwareTrustBar.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/Footer.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/GraphicDesignFaq.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/GraphicDesignHero.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/GraphicDesignServices.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/GraphicDesignTrustBar.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/Hero.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/HowWeWork.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/LegalContent.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/LetsTalkButton.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/Lightfall.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/MobileAppFaq.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/MobileAppHero.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/MobileAppServices.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/MobileAppTrustBar.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/Navbar.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/OrderModal.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/PortfolioGrid.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/PortfolioHero.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/PortfolioStatsCta.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/PricingExplorer.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/PricingFAQ.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/PricingHero.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/PricingTrustBar.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/ProjectGallery.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/ProjectReactions.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/Projects.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/ServiceCategoryMenu.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/ServiceCategoryMenuInline.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/Testimonials.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/WebDesignFaq.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/WebDesignHero.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/WebDesignServices.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/WebDesignTrustBar.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/WhatsAppButton.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/WhatsAppFloatingButton.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminAccountCard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminAppearanceCard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminAuthGuard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminBackupCard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminBlogCard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminCategoriesDonut.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminClientsCard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminFooter.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminLatestMessages.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminLogin.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminManagePortfolio.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminMessagesManager.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminOrdersCard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminPagesCard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminPerformanceChart.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminPricingCard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminRecentProjects.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminRecentReviews.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminReviewsManager.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminSeoCard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminServicesCard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminSettingsCard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminShell.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminSidebar.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminStatsRow.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminSubscribersChart.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminSubscribersList.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminTeamCard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminTopPages.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/admin/AdminTopbar.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/auth/AuthScreen.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/admin-data.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/admin-emails.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/admin-verify.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/admin/AdminDataContext.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/admin/hooks.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/admin/stats.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firebase-admin.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firebase.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/admin-lock.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/blog.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/clients.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/customers.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/messages.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/orders.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/pages.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/pricing.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/reactions.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/reviews.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/services.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/settings.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/subscribers.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/taxonomy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/firestore/team.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/pricing.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/projects.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/r2.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/storage.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/use-customer-auth.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lib/use-popover-position.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'storage.rules', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tailwind.config.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tsconfig.json', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/firestore.rules b/firestore.rules[m
+[1mindex de40e57..e4c67bc 100644[m
+[1m--- a/firestore.rules[m
+[1m+++ b/firestore.rules[m
+[36m@@ -23,7 +23,7 @@[m [mservice cloud.firestore {[m
+         request.auth.token.email != null &&[m
+         request.auth.token.email.lower() in [[m
+           'ejazzegham@gmail.com',[m
+[31m-          'bahutechnology@gmail.com'[m
+[32m+[m[32m          'hztechnology999@gmail.com'[m
+         ];[m
+     }[m
+ [m
+[1mdiff --git a/public/home/hero-glow.png b/public/home/hero-glow.png[m
+[1mindex 90b65ab..a94ab44 100644[m
+Binary files a/public/home/hero-glow.png and b/public/home/hero-glow.png differ
+[1mdiff --git a/src/app/api/contact/route.ts b/src/app/api/contact/route.ts[m
+[1mindex e7fc032..a54cb3e 100644[m
+[1m--- a/src/app/api/contact/route.ts[m
+[1m+++ b/src/app/api/contact/route.ts[m
+[36m@@ -16,7 +16,7 @@[m [mimport nodemailer from "nodemailer";[m
+ [m
+ export const runtime = "nodejs";[m
+ [m
+[31m-const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "hztechnology999@gmail.com";[m
+[32m+[m[32mconst TO_EMAIL = process.env.CONTACT_TO_EMAIL || "bahutechnology@gmail.com";[m
+ [m
+ export async function POST(req: NextRequest) {[m
+   try {[m
+[1mdiff --git a/src/app/privacy/page.tsx b/src/app/privacy/page.tsx[m
+[1mindex a762c2d..40d8c84 100644[m
+[1m--- a/src/app/privacy/page.tsx[m
+[1m+++ b/src/app/privacy/page.tsx[m
+[36m@@ -184,7 +184,7 @@[m [mconst SECTIONS: LegalSection[] = [[m
+         type: "ul",[m
+         items: [[m
+           "Bahu Technology",[m
+[31m-          "Email: hztechnology999@gmail.com",[m
+[32m+[m[32m          "Email: bahutechnology@gmail.com",[m
+           "Phone / WhatsApp: +92 345 5163 857",[m
+           <>[m
+             Website:{" "}[m
+[1mdiff --git a/src/app/terms/page.tsx b/src/app/terms/page.tsx[m
+[1mindex b20500e..c1e0b2e 100644[m
+[1m--- a/src/app/terms/page.tsx[m
+[1m+++ b/src/app/terms/page.tsx[m
+[36m@@ -289,7 +289,7 @@[m [mconst SECTIONS: LegalSection[] = [[m
+         type: "ul",[m
+         items: [[m
+           "Bahu Technology",[m
+[31m-          "Email: hztechnology999@gmail.com",[m
+[32m+[m[32m          "Email: bahutechnology@gmail.com",[m
+           "Phone / WhatsApp: +92 345 5163 857",[m
+           <>[m
+             Website:{" "}[m
+[1mdiff --git a/src/components/About.tsx b/src/components/About.tsx[m
+[1mindex 633f918..030c5ce 100644[m
+[1m--- a/src/components/About.tsx[m
+[1m+++ b/src/components/About.tsx[m
+[36m@@ -1,4 +1,3 @@[m
+[31m-import Image from "next/image";[m
+ import Link from "next/link";[m
+ [m
+ const HIGHLIGHTS = [[m
+[36m@@ -13,55 +12,38 @@[m [mconst HIGHLIGHTS = [[m
+ export default function About() {[m
+   return ([m
+     <section id="about" className="section">[m
+[31m-      <div className="grid items-center gap-14 lg:grid-cols-2">[m
+[31m-        <div className="rgb-box relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl bg-gradient-to-br from-bg-card to-bg">[m
+[31m-          <Image[m
+[31m-            src="/team/founder-portrait.png"[m
+[31m-            alt="Ejaz Zegham — Bahu Technology"[m
+[31m-            width={900}[m
+[31m-            height={1125}[m
+[31m-            className="absolute inset-0 h-full w-full object-cover object-top"[m
+[31m-            priority[m
+[31m-          />[m
+[31m-          <div[m
+[31m-            aria-hidden[m
+[31m-            className="pointer-events-none absolute -left-6 top-10 h-24 w-1 rotate-12 bg-gold-gradient"[m
+[31m-          />[m
+[31m-        </div>[m
+[32m+[m[32m      <div className="mx-auto max-w-2xl text-center">[m
+[32m+[m[32m        <p className="flex items-center justify-center gap-3 text-xs font-semibold tracking-[0.25em] text-gold">[m
+[32m+[m[32m          <span aria-hidden className="h-px w-5 bg-gradient-to-r from-transparent to-gold" />[m
+[32m+[m[32m          ABOUT US[m
+[32m+[m[32m          <span aria-hidden className="h-px w-5 bg-gradient-to-l from-transparent to-gold" />[m
+[32m+[m[32m        </p>[m
+[32m+[m[32m        <h2 className="mt-3 font-display text-3xl font-semibold leading-snug text-ink sm:text-4xl">[m
+[32m+[m[32m          Passionate about design and code.[m
+[32m+[m[32m        </h2>[m
+[32m+[m[32m        <p className="mt-4 text-sm leading-relaxed text-muted">[m
+[32m+[m[32m          We&apos;re a team of Graphic Designers &amp; Full Stack Developers with a[m
+[32m+[m[32m          passion for creating beautiful and powerful digital experiences.[m
+[32m+[m[32m          We believe in clean code, great design, and enhancing user[m
+[32m+[m[32m          experiences.[m
+[32m+[m[32m        </p>[m
+ [m
+[31m-        <div>[m
+[31m-          <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.25em] text-gold">[m
+[31m-            <span aria-hidden className="h-px w-5 bg-gradient-to-r from-transparent to-gold" />[m
+[31m-            ABOUT ME[m
+[31m-            <span aria-hidden className="h-px w-5 bg-gradient-to-l from-transparent to-gold" />[m
+[31m-          </p>[m
+[31m-          <h2 className="mt-3 font-display text-3xl font-semibold leading-snug text-ink sm:text-4xl">[m
+[31m-            Passionate about design and code.[m
+[31m-          </h2>[m
+[31m-          <p className="mt-4 text-sm leading-relaxed text-muted">[m
+[31m-            I&apos;m a Graphic Designer &amp; Full Stack Developer with a[m
+[31m-            passion for creating beautiful and powerful digital experiences.[m
+[31m-            I believe in clean code, great design, and enhancing user[m
+[31m-            experiences.[m
+[31m-          </p>[m
+[32m+[m[32m        <ul className="mx-auto mt-8 grid max-w-lg grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">[m
+[32m+[m[32m          {HIGHLIGHTS.map((item) => ([m
+[32m+[m[32m            <li key={item} className="flex items-center gap-2 text-sm text-ink/90">[m
+[32m+[m[32m              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="shrink-0 text-gold">[m
+[32m+[m[32m                <circle cx="12" cy="12" r="10" fill="currentColor" fillOpacity="0.15" />[m
+[32m+[m[32m                <path d="M8 12.5l2.5 2.5L16 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />[m
+[32m+[m[32m              </svg>[m
+[32m+[m[32m              {item}[m
+[32m+[m[32m            </li>[m
+[32m+[m[32m          ))}[m
+[32m+[m[32m        </ul>[m
+ [m
+[31m-          <ul className="mt-8 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">[m
+[31m-            {HIGHLIGHTS.map((item) => ([m
+[31m-              <li key={item} className="flex items-center gap-2 text-sm text-ink/90">[m
+[31m-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="shrink-0 text-gold">[m
+[31m-                  <circle cx="12" cy="12" r="10" fill="currentColor" fillOpacity="0.15" />[m
+[31m-                  <path d="M8 12.5l2.5 2.5L16 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />[m
+[31m-                </svg>[m
+[31m-                {item}[m
+[31m-              </li>[m
+[31m-            ))}[m
+[31m-          </ul>[m
+[31m-[m
+[31m-          <Link href="/about" className="btn-outline mt-8">[m
+[31m-            LEARN MORE[m
+[31m-            <span aria-hidden>→</span>[m
+[31m-          </Link>[m
+[31m-        </div>[m
+[32m+[m[32m        <Link href="/about" className="btn-outline mt-8">[m
+[32m+[m[32m          LEARN MORE[m
+[32m+[m[32m          <span aria-hidden>→</span>[m
+[32m+[m[32m        </Link>[m
+       </div>[m
+     </section>[m
+   );[m
+[1mdiff --git a/src/components/admin/AdminLogin.tsx b/src/components/admin/AdminLogin.tsx[m
+[1mindex aaac204..7cdd5e7 100644[m
+[1m--- a/src/components/admin/AdminLogin.tsx[m
+[1m+++ b/src/components/admin/AdminLogin.tsx[m
+[36m@@ -2,6 +2,7 @@[m
+ [m
+ import { useState } from "react";[m
+ import Image from "next/image";[m
+[32m+[m[32mimport { Eye, EyeOff } from "lucide-react";[m
+ import { signInWithEmailAndPassword } from "firebase/auth";[m
+ import { getFirebaseAuth, isFirebaseConfigured } from "@/lib/firebase";[m
+ [m
+[36m@@ -13,6 +14,7 @@[m [mimport { getFirebaseAuth, isFirebaseConfigured } from "@/lib/firebase";[m
+ export default function AdminLogin() {[m
+   const [email, setEmail] = useState("");[m
+   const [password, setPassword] = useState("");[m
+[32m+[m[32m  const [showPassword, setShowPassword] = useState(false);[m
+   const [error, setError] = useState<string | null>(null);[m
+   const [loading, setLoading] = useState(false);[m
+ [m
+[36m@@ -49,43 +51,81 @@[m [mexport default function AdminLogin() {[m
+   }[m
+ [m
+   return ([m
+[31m-    <div className="flex min-h-screen items-center justify-center bg-bg px-6">[m
+[31m-      <div className="w-full max-w-sm rounded-xl border border-line bg-bg-card p-8">[m
+[32m+[m[32m    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-white to-bg-soft px-6">[m
+[32m+[m[32m      {/* Soft brand glow behind the card — subtle, keeps the page light */}[m
+[32m+[m[32m      <div[m
+[32m+[m[32m        aria-hidden[m
+[32m+[m[32m        className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/10 blur-3xl"[m
+[32m+[m[32m      />[m
+[32m+[m
+[32m+[m[32m      <div className="relative w-full max-w-sm rounded-2xl border border-line bg-white p-8 shadow-[0_8px_40px_-12px_rgba(13,13,16,0.15)] sm:p-10">[m
+         <div className="flex flex-col items-center text-center">[m
+           <Image[m
+[31m-            src="/logo/bahu_logo_512x512.png"[m
+[32m+[m[32m            src="/logo/bahu_logo_1024x1024.png"[m
+             alt="Bahu Technology"[m
+[31m-            width={48}[m
+[31m-            height={48}[m
+[31m-            className="h-12 w-12 object-contain"[m
+[32m+[m[32m            width={112}[m
+[32m+[m[32m            height={112}[m
+[32m+[m[32m            priority[m
+[32m+[m[32m            className="h-24 w-24 object-contain sm:h-28 sm:w-28"[m
+           />[m
+[31m-          <h1 className="mt-4 font-display text-lg font-semibold text-white">Admin Sign In</h1>[m
+[32m+[m[32m          <h1 className="mt-5 font-display text-xl font-bold text-ink">Admin Sign In</h1>[m
+           <p className="mt-1 text-xs text-muted">Sign in to manage your website.</p>[m
+         </div>[m
+ [m
+[31m-        <form onSubmit={handleSubmit} className="mt-6 space-y-4">[m
+[31m-          <input[m
+[31m-            type="email"[m
+[31m-            required[m
+[31m-            placeholder="Email address"[m
+[31m-            value={email}[m
+[31m-            onChange={(e) => setEmail(e.target.value)}[m
+[31m-            className="w-full rounded-md border border-line bg-bg px-4 py-2.5 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none"[m
+[31m-          />[m
+[31m-          <input[m
+[31m-            type="password"[m
+[31m-            required[m
+[31m-            minLength={6}[m
+[31m-            placeholder="Password"[m
+[31m-            value={password}[m
+[31m-            onChange={(e) => setPassword(e.target.value)}[m
+[31m-            className="w-full rounded-md border border-line bg-bg px-4 py-2.5 text-sm text-white placeholder:text-muted focus:border-gold focus:outline-none"[m
+[31m-          />[m
+[32m+[m[32m        <form onSubmit={handleSubmit} className="mt-8 space-y-4">[m
+[32m+[m[32m          <div>[m
+[32m+[m[32m            <label htmlFor="admin-email" className="mb-1.5 block text-xs font-semibold text-ink">[m
+[32m+[m[32m              Email address[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m            <input[m
+[32m+[m[32m              id="admin-email"[m
+[32m+[m[32m              type="email"[m
+[32m+[m[32m              required[m
+[32m+[m[32m              placeholder="you@example.com"[m
+[32m+[m[32m              value={email}[m
+[32m+[m[32m              onChange={(e) => setEmail(e.target.value)}[m
+[32m+[m[32m              className="w-full rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-muted/60 focus:border-ink focus:outline-none focus:ring-4 focus:ring-ink/5"[m
+[32m+[m[32m            />[m
+[32m+[m[32m          </div>[m
+[32m+[m
+[32m+[m[32m          <div>[m
+[32m+[m[32m            <label htmlFor="admin-password" className="mb-1.5 block text-xs font-semibold text-ink">[m
+[32m+[m[32m              Password[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m            <div className="relative">[m
+[32m+[m[32m              <input[m
+[32m+[m[32m                id="admin-password"[m
+[32m+[m[32m                type={showPassword ? "text" : "password"}[m
+[32m+[m[32m                required[m
+[32m+[m[32m                minLength={6}[m
+[32m+[m[32m                placeholder="••••••••"[m
+[32m+[m[32m                value={password}[m
+[32m+[m[32m                onChange={(e) => setPassword(e.target.value)}[m
+[32m+[m[32m                className="w-full rounded-lg border border-line bg-white px-4 py-2.5 pr-11 text-sm text-ink placeholder:text-muted/60 focus:border-ink focus:outline-none focus:ring-4 focus:ring-ink/5"[m
+[32m+[m[32m              />[m
+[32m+[m[32m              <button[m
+[32m+[m[32m                type="button"[m
+[32m+[m[32m                onClick={() => setShowPassword((v) => !v)}[m
+[32m+[m[32m                aria-label={showPassword ? "Hide password" : "Show password"}[m
+[32m+[m[32m                className="absolute right-3 top-1/2 -translate-y-1/2 text-ink/60 transition hover:text-ink"[m
+[32m+[m[32m              >[m
+[32m+[m[32m                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}[m
+[32m+[m[32m              </button>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m          </div>[m
+ [m
+[31m-          {error && <p className="text-xs text-rose-400">{error}</p>}[m
+[32m+[m[32m          {error && ([m
+[32m+[m[32m            <p className="rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-xs font-medium text-rose-600">[m
+[32m+[m[32m              {error}[m
+[32m+[m[32m            </p>[m
+[32m+[m[32m          )}[m
+ [m
+[31m-          <button type="submit" disabled={loading} className="btn-primary w-full justify-center disabled:opacity-60">[m
+[31m-            {loading ? "Please wait…" : "SIGN IN"}[m
+[32m+[m[32m          <button[m
+[32m+[m[32m            type="submit"[m
+[32m+[m[32m            disabled={loading}[m
+[32m+[m[32m            className="w-full rounded-lg border-2 border-ink bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:bg-ink hover:text-white disabled:cursor-not-allowed disabled:opacity-50"[m
+[32m+[m[32m          >[m
+[32m+[m[32m            {loading ? "Please wait…" : "Sign In"}[m
+           </button>[m
+         </form>[m
+       </div>[m
+[1mdiff --git a/src/lib/firestore/settings.ts b/src/lib/firestore/settings.ts[m
+[1mindex 7463101..8ca6751 100644[m
+[1m--- a/src/lib/firestore/settings.ts[m
+[1m+++ b/src/lib/firestore/settings.ts[m
+[36m@@ -39,7 +39,7 @@[m [mexport type SiteSettings = {[m
+ };[m
+ [m
+ export const DEFAULT_SETTINGS: SiteSettings = {[m
+[31m-  contactEmail: "hztechnology999@gmail.com",[m
+[32m+[m[32m  contactEmail: "bahutechnology@gmail.com",[m
+   contactPhone: "+92 345 5163 857",[m
+   whatsappNumber: "923455163857",[m
+   whatsappMessage: "Hi Bahu Technology! I'd like to talk about a project.",[m
