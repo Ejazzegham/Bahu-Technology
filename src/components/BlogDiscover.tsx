@@ -1,6 +1,6 @@
 export default function BlogDiscover() {
   return (
-    <section className="section pt-0">
+    <section className="section">
       <div className="border-t border-line pt-14">
         <div className="mx-auto max-w-2xl text-center">
           <p className="flex items-center justify-center gap-3 text-xs font-semibold tracking-[0.25em] text-gold">

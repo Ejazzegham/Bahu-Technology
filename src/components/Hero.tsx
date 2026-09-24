@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[480px] items-center overflow-hidden lg:min-h-[600px]"
+      className="relative flex min-h-[384px] items-center overflow-hidden lg:min-h-[480px]"
     >
       {/* Full-bleed artwork — spans the entire section width, not boxed or
           cropped to a card. Its own background is already near-black, so it

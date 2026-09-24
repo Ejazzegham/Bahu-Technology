@@ -130,7 +130,7 @@ export default function PricingExplorer() {
   return (
     <>
       {/* Intro copy above the 4 main service cards */}
-      <div className="section pb-0 pt-0">
+      <div className="section pb-0">
         <div
           className="rgb-box w-full rounded-xl px-6 py-10 sm:px-12 lg:px-16"
           style={{ ["--box-fill" as string]: "#ffffff" }}

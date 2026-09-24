@@ -11,7 +11,7 @@ const CORE_VALUES = [
 
 export default function AboutStory() {
   return (
-    <section className="section pt-0">
+    <section className="section">
       <div className="mx-auto max-w-3xl text-center">
         <p className="flex items-center justify-center gap-3 text-xs font-semibold tracking-[0.25em] text-gold">
           <span aria-hidden className="h-px w-5 bg-gradient-to-r from-transparent to-gold" />

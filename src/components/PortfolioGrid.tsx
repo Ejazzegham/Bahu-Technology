@@ -65,7 +65,7 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
   }, [totalPages, page]);
 
   return (
-    <div id="portfolio-grid-top" className="section pt-0">
+    <div id="portfolio-grid-top" className="section">
       <div className="flex flex-wrap justify-center gap-3">
         {FILTERS.map((f) => (
           <button

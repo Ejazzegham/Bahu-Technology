@@ -9,7 +9,7 @@ const CHECKLIST = [
 export default function PricingHero() {
   return (
     <section
-      className="relative flex min-h-[480px] items-center overflow-hidden lg:min-h-[600px]"
+      className="relative flex min-h-[384px] items-center overflow-hidden lg:min-h-[480px]"
     >
       {/* Full-bleed artwork — same treatment as the homepage hero: spans the
           entire section width, no box/frame. Its own background is already

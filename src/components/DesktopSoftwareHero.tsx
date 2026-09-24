@@ -10,7 +10,7 @@ export default function DesktopSoftwareHero() {
   return (
     <section
       id="desktop-software-hero"
-      className="relative flex min-h-[480px] items-center overflow-hidden lg:min-h-[600px]"
+      className="relative flex min-h-[384px] items-center overflow-hidden lg:min-h-[480px]"
     >
       <div className="absolute inset-0 -z-10">
         <Image

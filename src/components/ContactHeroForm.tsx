@@ -83,7 +83,7 @@ export default function ContactHeroForm() {
   }
 
   return (
-    <section className="section pt-0 grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-stretch">
+    <section className="section grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-stretch">
       <div className="lg:order-2">
         <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.25em] text-gold">
           <span aria-hidden className="h-px w-5 bg-gradient-to-r from-transparent to-gold" />
