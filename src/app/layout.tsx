@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
+import BackToTop from "@/components/BackToTop";
 import GlobalMotion from "@/components/GlobalMotion";
 import { getSettingsOnce } from "@/lib/firestore/settings";
 import "./globals.css";
@@ -86,6 +87,7 @@ export default async function RootLayout({
       <body className="font-body antialiased">
         <GlobalMotion />
         {children}
+        <BackToTop />
         <WhatsAppFloatingButton />
       </body>
     </html>

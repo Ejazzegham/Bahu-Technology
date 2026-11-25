@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Eye, EyeOff } from "lucide-react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirebaseAuth, isFirebaseConfigured } from "@/lib/firebase";
+import { isAdminEmail } from "@/lib/admin-emails";
 
 // Sign-in only, on purpose — there is no "create account" option here.
 // This admin panel is meant for a single owner account. If you ever need a
@@ -17,6 +18,39 @@ export default function AdminLogin() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [info, setInfo] = useState<string | null>(null);
+
+  async function handleReset() {
+    setError(null);
+    setInfo(null);
+    if (!isFirebaseConfigured) {
+      setError("Firebase isn't configured. Add your keys to .env.local first.");
+      return;
+    }
+    if (!email.trim()) {
+      setError("Enter your admin email above first, then click Forgot password.");
+      return;
+    }
+    setLoading(true);
+    try {
+      // Only admin addresses may trigger a reset from this page.
+      if (isAdminEmail(email)) {
+        await sendPasswordResetEmail(getFirebaseAuth(), email.trim());
+      }
+      setInfo("If that admin account exists, a password reset link has been sent. Check your inbox and spam folder.");
+    } catch (err) {
+      const code = (err as { code?: string }).code ?? "";
+      if (code.includes("too-many-requests")) {
+        setError("Too many attempts. Please wait a moment and try again.");
+      } else if (code.includes("invalid-email")) {
+        setError("That doesn't look like a valid email address.");
+      } else {
+        setError(`Couldn't send the reset email${code ? ` (${code})` : ""}.`);
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -113,6 +147,23 @@ export default function AdminLogin() {
               </button>
             </div>
           </div>
+
+          <div className="-mt-1 text-right">
+            <button
+              type="button"
+              onClick={handleReset}
+              disabled={loading}
+              className="text-xs font-semibold text-ink/70 underline-offset-2 transition hover:text-ink hover:underline disabled:opacity-50"
+            >
+              Forgot password?
+            </button>
+          </div>
+
+          {info && (
+            <p className="rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-medium text-emerald-700">
+              {info}
+            </p>
+          )}
 
           {error && (
             <p className="rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-xs font-medium text-rose-600">

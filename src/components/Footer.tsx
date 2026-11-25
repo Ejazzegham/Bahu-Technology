@@ -164,6 +164,42 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-line">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-10 text-sm leading-relaxed text-muted lg:grid-cols-[1.4fr_1fr] lg:px-10">
+          <div>
+            <h3 className="text-xs font-semibold tracking-[0.2em] text-gold">ABOUT THE COMPANY</h3>
+            <p className="mt-3">
+              Bahu Technology is a creative digital agency and software
+              development studio. Our team of graphic designers and full-stack
+              developers turns ideas into brands, websites, mobile apps and
+              desktop software that look premium and perform reliably.
+            </p>
+            <p className="mt-3">
+              With 15+ years of experience, 2000+ projects delivered and 1330+
+              happy clients, we focus on clean code, thoughtful design,
+              transparent pricing and fast, dependable support, from the first
+              conversation to long after launch.
+            </p>
+          </div>
+          <ul className="space-y-2.5 self-center">
+            {[
+              "Graphic Design, Web, Mobile & Desktop under one roof",
+              `Based in ${settings.address}, serving clients worldwide`,
+              "Clear packages and honest timelines",
+              "Dedicated support after your project goes live",
+            ].map((line) => (
+              <li key={line} className="flex items-start gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="mt-0.5 shrink-0 text-gold">
+                  <circle cx="12" cy="12" r="10" fill="currentColor" fillOpacity="0.15" />
+                  <path d="M8 12.5l2.5 2.5L16 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-line">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-6 text-xs text-muted sm:flex-row lg:px-10">
           <p>© {new Date().getFullYear()} Bahu Technology. All rights reserved.</p>
           <div className="flex gap-6">

@@ -4,6 +4,7 @@ import PricingExplorer from "@/components/PricingExplorer";
 import PricingTrustBar from "@/components/PricingTrustBar";
 import HowWeWork from "@/components/HowWeWork";
 import PricingFAQ from "@/components/PricingFAQ";
+import WhyChoose from "@/components/WhyChoose";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
@@ -24,6 +25,7 @@ export default function PricingPage() {
         <PricingExplorer />
         <PricingTrustBar />
         <HowWeWork />
+        <WhyChoose />
         <PricingFAQ />
         <CtaBanner />
       </main>

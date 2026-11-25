@@ -4,6 +4,7 @@ import DesktopSoftwareTrustBar from "@/components/DesktopSoftwareTrustBar";
 import DesktopSoftwareServices from "@/components/DesktopSoftwareServices";
 import HowWeWork from "@/components/HowWeWork";
 import DesktopSoftwareFaq from "@/components/DesktopSoftwareFaq";
+import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
@@ -25,6 +26,7 @@ export default function DesktopSoftwarePage() {
         <DesktopSoftwareServices />
         <HowWeWork />
         <DesktopSoftwareFaq />
+        <RelatedServices current="desktop" />
         <CtaBanner
           title={
             <>

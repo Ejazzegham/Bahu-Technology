@@ -4,6 +4,7 @@ import GraphicDesignTrustBar from "@/components/GraphicDesignTrustBar";
 import GraphicDesignServices from "@/components/GraphicDesignServices";
 import HowWeWork from "@/components/HowWeWork";
 import GraphicDesignFaq from "@/components/GraphicDesignFaq";
+import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
@@ -25,6 +26,7 @@ export default function GraphicDesignPage() {
         <GraphicDesignServices />
         <HowWeWork />
         <GraphicDesignFaq />
+        <RelatedServices current="design" />
         <CtaBanner
           title={
             <>

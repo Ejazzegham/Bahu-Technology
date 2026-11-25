@@ -4,6 +4,7 @@ import WebDesignTrustBar from "@/components/WebDesignTrustBar";
 import WebDesignServices from "@/components/WebDesignServices";
 import HowWeWork from "@/components/HowWeWork";
 import WebDesignFaq from "@/components/WebDesignFaq";
+import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
@@ -25,6 +26,7 @@ export default function WebDesignPage() {
         <WebDesignServices />
         <HowWeWork />
         <WebDesignFaq />
+        <RelatedServices current="web" />
         <CtaBanner
           title={
             <>

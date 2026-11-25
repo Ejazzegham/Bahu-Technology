@@ -3,6 +3,8 @@ import AboutHero from "@/components/AboutHero";
 import AboutStory from "@/components/AboutStory";
 import AboutWhyJourney from "@/components/AboutWhyJourney";
 import AboutTeam from "@/components/AboutTeam";
+import StatsCounter from "@/components/StatsCounter";
+import WhyChoose from "@/components/WhyChoose";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
@@ -23,6 +25,8 @@ export default function AboutPage() {
         <AboutStory />
         <AboutWhyJourney />
         <AboutTeam />
+        <StatsCounter />
+        <WhyChoose />
         <CtaBanner
           title={
             <>

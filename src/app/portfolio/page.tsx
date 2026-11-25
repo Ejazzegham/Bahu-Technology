@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import PortfolioHero from "@/components/PortfolioHero";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import PortfolioStatsCta from "@/components/PortfolioStatsCta";
+import TechMarquee from "@/components/TechMarquee";
 import Footer from "@/components/Footer";
 import { getAllProjects } from "@/lib/projects";
 import type { Metadata } from "next";
@@ -23,6 +24,7 @@ export default async function PortfolioPage() {
         <PortfolioHero />
         <PortfolioGrid projects={projects} />
         <PortfolioStatsCta />
+        <TechMarquee />
       </main>
       <Footer />
     </>

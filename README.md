@@ -60,7 +60,7 @@ lives in three places and **must match exactly**:
 - `src/lib/admin-emails.ts` (`ADMIN_EMAILS` — controls the admin UI only)
 
 Right now all three list `ejazzegham@gmail.com` and
-`hztechnology999@gmail.com` as placeholders. **Before you deploy these
+`bahutechnology@gmail.com` as the admin accounts. **Before you deploy these
 rules, open all three files and make sure the email you actually use to
 sign in at `/admin` is in that list** — add it if it isn't, in all three
 places. If you skip this and your real login email isn't listed, you will

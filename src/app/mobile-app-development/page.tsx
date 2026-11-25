@@ -4,6 +4,7 @@ import MobileAppTrustBar from "@/components/MobileAppTrustBar";
 import MobileAppServices from "@/components/MobileAppServices";
 import HowWeWork from "@/components/HowWeWork";
 import MobileAppFaq from "@/components/MobileAppFaq";
+import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
@@ -25,6 +26,7 @@ export default function MobileAppPage() {
         <MobileAppServices />
         <HowWeWork />
         <MobileAppFaq />
+        <RelatedServices current="mobile" />
         <CtaBanner
           title={
             <>

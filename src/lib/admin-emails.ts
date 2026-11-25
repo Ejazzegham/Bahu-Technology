@@ -9,7 +9,7 @@
 // To add a second admin: create their account in Firebase console →
 // Authentication → Users → Add user, then add their email to all three
 // places (here, firestore.rules, storage.rules).
-export const ADMIN_EMAILS = ["ejazzegham@gmail.com", "hztechnology999@gmail.com"];
+export const ADMIN_EMAILS = ["ejazzegham@gmail.com", "bahutechnology@gmail.com"];
 
 export function isAdminEmail(email: string | null | undefined): boolean {
   if (!email) return false;

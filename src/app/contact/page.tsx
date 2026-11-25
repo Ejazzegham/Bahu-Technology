@@ -3,6 +3,7 @@ import ContactHero from "@/components/ContactHero";
 import ContactHeroForm from "@/components/ContactHeroForm";
 import ContactMap from "@/components/ContactMap";
 import ContactWhyReach from "@/components/ContactWhyReach";
+import HomeFaq from "@/components/HomeFaq";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
@@ -23,6 +24,7 @@ export default function ContactPage() {
         <ContactHeroForm />
         <ContactMap />
         <ContactWhyReach />
+        <HomeFaq />
         <CtaBanner
           title={
             <>
