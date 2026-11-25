@@ -2,6 +2,9 @@ import Navbar from "@/components/Navbar";
 import AboutHero from "@/components/AboutHero";
 import AboutStory from "@/components/AboutStory";
 import AboutWhyJourney from "@/components/AboutWhyJourney";
+import AboutMissionVision from "@/components/AboutMissionVision";
+import AboutToolbox from "@/components/AboutToolbox";
+import AboutJourney from "@/components/AboutJourney";
 import AboutTeam from "@/components/AboutTeam";
 import StatsCounter from "@/components/StatsCounter";
 import WhyChoose from "@/components/WhyChoose";
@@ -23,8 +26,11 @@ export default function AboutPage() {
       <main>
         <AboutHero />
         <AboutStory />
+        <AboutMissionVision />
         <AboutWhyJourney />
+        <AboutJourney />
         <AboutTeam />
+        <AboutToolbox />
         <StatsCounter />
         <WhyChoose />
         <CtaBanner

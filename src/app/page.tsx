@@ -6,6 +6,8 @@ import StatsCounter from "@/components/StatsCounter";
 import WhyChoose from "@/components/WhyChoose";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
+import HomeGuarantees from "@/components/HomeGuarantees";
+import HomeEngagement from "@/components/HomeEngagement";
 import HowWeWork from "@/components/HowWeWork";
 import Testimonials from "@/components/Testimonials";
 import ServicePicker from "@/components/ServicePicker";
@@ -31,9 +33,11 @@ export default function Home() {
         <StatsCounter />
         <WhyChoose />
         <About />
+        <HomeGuarantees />
         <Projects />
         <Industries />
         <PricingSnapshot />
+        <HomeEngagement />
         <div className="pb-20 pt-4">
           <HowWeWork />
         </div>
