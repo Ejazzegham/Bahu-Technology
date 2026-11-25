@@ -97,7 +97,7 @@ export default function GlobalMotion() {
           );
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+      { threshold: 0, rootMargin: "0px 0px -6% 0px" }
     );
 
     const scan = () => {
@@ -110,7 +110,8 @@ export default function GlobalMotion() {
         if (el.parentElement?.closest(TARGETS)) return;
 
         const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) return;
+        // Already on screen, or already scrolled past: never hide it.
+        if (rect.top < window.innerHeight * 0.92) return;
 
         const siblings = el.parentElement
           ? Array.from(el.parentElement.children).filter((c) => c.matches(TARGETS))
@@ -136,11 +137,32 @@ export default function GlobalMotion() {
     });
     mo.observe(document.body, { childList: true, subtree: true });
 
+    // Safety net: anything still hidden after a few seconds while it is on
+    // screen (or above it) is shown, so a section can never stay blank.
+    const failsafe = window.setTimeout(() => {
+      document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
+        if (el.getAttribute("data-reveal") === "in") return;
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          io.unobserve(el);
+          el.setAttribute("data-reveal", "in");
+        }
+      });
+    }, 3000);
+    timers.push(failsafe);
+
     return () => {
       io.disconnect();
       mo.disconnect();
       if (raf) cancelAnimationFrame(raf);
       timers.forEach((t) => window.clearTimeout(t));
+      // Reset every element this run touched. Without this, React's dev
+      // double-run of effects (and route changes) left sections marked as
+      // "seen" but no longer observed, so they stayed invisible forever.
+      document.querySelectorAll<HTMLElement>("[data-motion-seen]").forEach((el) => {
+        el.removeAttribute("data-motion-seen");
+        el.removeAttribute("data-reveal");
+        el.style.removeProperty("--rd");
+      });
     };
   }, [pathname, skip]);
 
