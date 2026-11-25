@@ -3,6 +3,9 @@ import PortfolioHero from "@/components/PortfolioHero";
 import PortfolioFeatured from "@/components/PortfolioFeatured";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import PortfolioStatsCta from "@/components/PortfolioStatsCta";
+import PortfolioProcess from "@/components/PortfolioProcess";
+import PortfolioFaq from "@/components/PortfolioFaq";
+import Testimonials from "@/components/Testimonials";
 import TechMarquee from "@/components/TechMarquee";
 import Footer from "@/components/Footer";
 import { getAllProjects } from "@/lib/projects";
@@ -25,6 +28,9 @@ export default async function PortfolioPage() {
         <PortfolioHero />
         <PortfolioFeatured projects={projects} />
         <PortfolioGrid projects={projects} />
+        <PortfolioProcess />
+        <Testimonials />
+        <PortfolioFaq />
         <PortfolioStatsCta />
         <TechMarquee />
       </main>

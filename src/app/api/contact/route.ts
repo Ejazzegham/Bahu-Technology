@@ -25,6 +25,16 @@ export async function POST(req: NextRequest) {
     const email = String(body.email ?? "").trim();
     const subject = String(body.subject ?? "").trim();
     const message = String(body.message ?? "").trim();
+    const phone = String(body.phone ?? "").trim();
+    const service = String(body.service ?? "").trim();
+    const budget = String(body.budget ?? "").trim();
+    const timeline = String(body.timeline ?? "").trim();
+    const extras = [
+      phone && `Phone: ${phone}`,
+      service && `Service: ${service}`,
+      budget && `Budget: ${budget}`,
+      timeline && `Timeline: ${timeline}`,
+    ].filter(Boolean) as string[];
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
@@ -58,6 +68,7 @@ export async function POST(req: NextRequest) {
 Name: ${name}
 Email: ${email}
 Subject: ${subject || "(none)"}
+${extras.join("\n")}
 
 Message:
 ${message}`,
@@ -67,6 +78,7 @@ ${message}`,
           <p><strong>Name:</strong> ${escapeHtml(name)}</p>
           <p><strong>Email:</strong> ${escapeHtml(email)}</p>
           <p><strong>Subject:</strong> ${escapeHtml(subject || "(none)")}</p>
+          ${extras.map((e) => `<p>${escapeHtml(e)}</p>`).join("")}
           <p><strong>Message:</strong></p>
           <p style="white-space: pre-wrap;">${escapeHtml(message)}</p>
         </div>

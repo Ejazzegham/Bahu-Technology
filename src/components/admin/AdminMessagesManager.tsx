@@ -24,7 +24,13 @@ export default function AdminMessagesManager({
   onDelete: (id: string) => void;
 }) {
   const [filter, setFilter] = useState<"all" | "unread">("all");
-  const visible = filter === "unread" ? messages.filter((m) => !m.read) : messages;
+  const [search, setSearch] = useState("");
+  const q = search.trim().toLowerCase();
+  const visible = (filter === "unread" ? messages.filter((m) => !m.read) : messages).filter(
+    (m) =>
+      !q ||
+      [m.name, m.email, m.subject, m.message, m.service, m.phone].some((f) => f?.toLowerCase().includes(q))
+  );
 
   return (
     <div className="card !p-6 sm:!p-8">
@@ -50,6 +56,15 @@ export default function AdminMessagesManager({
         </div>
       </div>
 
+      <input
+        type="search"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search name, email, service or message"
+        aria-label="Search messages"
+        className="mt-5 w-full rounded-md border border-line bg-white px-3 py-2 text-xs text-ink placeholder:text-muted/70 focus:border-gold focus:outline-none"
+      />
+
       {visible.length === 0 ? (
         <p className="mt-8 text-center text-xs text-muted">
           {filter === "unread" ? "No unread messages." : "No messages yet — they'll appear here when someone submits the contact form."}
@@ -69,7 +84,24 @@ export default function AdminMessagesManager({
               </div>
               <p className="text-xs text-muted">{m.email}</p>
               <p className="mt-1 text-xs font-medium text-gold">{m.subject || "(no subject)"}</p>
-              <p className="mt-1 text-xs leading-relaxed text-muted">{m.message}</p>
+              {m.phone && <p className="text-xs text-muted">{m.phone}</p>}
+              {(m.service || m.budget || m.timeline) && (
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {[
+                    ["Service", m.service],
+                    ["Budget", m.budget],
+                    ["Timeline", m.timeline],
+                  ].map(
+                    ([label, value]) =>
+                      value && (
+                        <span key={label} className="rounded-full border border-gold/30 bg-gold/5 px-2.5 py-0.5 text-[10px] font-medium text-gold">
+                          {label}: {value}
+                        </span>
+                      )
+                  )}
+                </div>
+              )}
+              <p className="mt-2 whitespace-pre-wrap text-xs leading-relaxed text-muted">{m.message}</p>
               <div className="mt-3 flex items-center gap-4 text-[11px]">
                 {!m.read && (
                   <button onClick={() => onMarkRead(m.id)} className="font-semibold text-gold hover:underline">
@@ -79,6 +111,21 @@ export default function AdminMessagesManager({
                 <a href={`mailto:${m.email}`} className="text-muted hover:text-gold">
                   Reply
                 </a>
+                {m.phone && (
+                  <>
+                    <a href={`tel:${m.phone.replace(/[^\d+]/g, "")}`} className="text-muted hover:text-gold">
+                      Call
+                    </a>
+                    <a
+                      href={`https://wa.me/${m.phone.replace(/\D/g, "")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted hover:text-gold"
+                    >
+                      WhatsApp
+                    </a>
+                  </>
+                )}
                 <button onClick={() => onDelete(m.id)} className="text-muted hover:text-rose-400">
                   Delete
                 </button>

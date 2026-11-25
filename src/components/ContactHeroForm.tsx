@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { submitContactMessage } from "@/lib/firestore/messages";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import Dropdown from "@/components/ui/Dropdown";
 import { DEFAULT_SETTINGS, subscribeSettings } from "@/lib/firestore/settings";
 
 const ICONS = {
@@ -27,6 +28,18 @@ const ICONS = {
   ),
 };
 
+const SERVICES = [
+  { value: "", label: "Select a service (optional)" },
+  { value: "Graphic Design", label: "Graphic Design" },
+  { value: "Web Design & Development", label: "Web Design & Development" },
+  { value: "Mobile App Development", label: "Mobile App Development" },
+  { value: "Desktop Software", label: "Desktop Software" },
+  { value: "Something else", label: "Something else" },
+];
+const BUDGETS = ["Under $500", "$500 – $2,000", "$2,000 – $5,000", "$5,000+", "Not sure yet"];
+const TIMELINES = ["ASAP", "1 – 2 months", "3+ months", "Flexible"];
+const MAX_MESSAGE = 1500;
+
 export default function ContactHeroForm() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
@@ -35,6 +48,11 @@ export default function ContactHeroForm() {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [phone, setPhone] = useState("");
+  const [service, setService] = useState("");
+  const [budget, setBudget] = useState("");
+  const [timeline, setTimeline] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot — real users never fill this
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
 
   useEffect(() => {
@@ -51,13 +69,17 @@ export default function ContactHeroForm() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (website) {
+      setSent(true); // silently drop bots
+      return;
+    }
     setError(null);
     setSending(true);
     try {
       // Always save to Firestore first — this is what powers the Admin
       // dashboard's Messages panel and must succeed for the user to see
       // "Message sent!".
-      await submitContactMessage({ name, email, subject, message });
+      await submitContactMessage({ name, email, subject, message, phone, service, budget, timeline });
       setSent(true);
     } catch {
       setError("Couldn't send your message right now. Please try again in a moment.");
@@ -73,7 +95,7 @@ export default function ContactHeroForm() {
       await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, subject, message }),
+        body: JSON.stringify({ name, email, subject, message, phone, service, budget, timeline }),
       });
     } catch {
       // ignore — message is already saved
@@ -185,14 +207,44 @@ export default function ContactHeroForm() {
               onChange={(e) => setSubject(e.target.value)}
               className="w-full rounded-md border border-line bg-bg px-4 py-3 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none"
             />
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <input
+                type="tel"
+                placeholder="Phone / WhatsApp (optional)"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="w-full rounded-md border border-line bg-bg px-4 py-3 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none"
+              />
+              <Dropdown
+                ariaLabel="Service"
+                value={service}
+                onChange={(v) => setService(String(v))}
+                options={SERVICES}
+                className="w-full rounded-md border border-line bg-bg px-4 py-3 text-sm text-ink focus:border-gold focus:outline-none"
+              />
+            </div>
+            <ChipGroup label="Estimated budget" options={BUDGETS} value={budget} onChange={setBudget} />
+            <ChipGroup label="Timeline" options={TIMELINES} value={timeline} onChange={setTimeline} />
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+              className="hidden"
+              name="website"
+            />
             <textarea
               required
+              maxLength={MAX_MESSAGE}
               rows={6}
               placeholder="Your Message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               className="w-full rounded-md border border-line bg-bg px-4 py-3 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none"
             />
+            <p className="text-right text-[11px] text-muted">{message.length}/{MAX_MESSAGE}</p>
             {error && <p className="text-xs text-rose-400">{error}</p>}
             <button type="submit" disabled={sending} className="btn-primary w-full justify-center disabled:opacity-60">
               {sending ? "Sending…" : "SEND MESSAGE"} <span aria-hidden>→</span>
@@ -201,5 +253,41 @@ export default function ContactHeroForm() {
         )}
       </div>
     </section>
+  );
+}
+
+function ChipGroup({
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  label: string;
+  options: string[];
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div>
+      <p className="mb-2 text-xs font-semibold text-muted">{label} <span className="font-normal">(optional)</span></p>
+      <div className="flex flex-wrap gap-2" role="group" aria-label={label}>
+        {options.map((o) => {
+          const on = value === o;
+          return (
+            <button
+              key={o}
+              type="button"
+              aria-pressed={on}
+              onClick={() => onChange(on ? "" : o)}
+              className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                on ? "border-gold bg-gold/10 text-gold" : "border-line text-muted hover:border-gold/50 hover:text-gold"
+              }`}
+            >
+              {o}
+            </button>
+          );
+        })}
+      </div>
+    </div>
   );
 }

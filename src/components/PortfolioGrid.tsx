@@ -42,6 +42,7 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<SortKey>("newest");
   const [tech, setTech] = useState<string | null>(null);
+  const [view, setView] = useState<"grid" | "list">("grid");
 
   // Project count per category, shown on the filter chips.
   const counts = useMemo(() => {
@@ -195,11 +196,28 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
         </div>
       )}
 
-      <p className="mt-6 text-center text-xs text-muted" aria-live="polite">
-        Showing {visible.length} {visible.length === 1 ? "project" : "projects"}
-      </p>
+      <div className="mt-6 flex items-center justify-center gap-4">
+        <p className="text-xs text-muted" aria-live="polite">
+          Showing {visible.length} {visible.length === 1 ? "project" : "projects"}
+        </p>
+        <div className="inline-flex overflow-hidden rounded-md border border-line" role="group" aria-label="Layout">
+          {(["grid", "list"] as const).map((v) => (
+            <button
+              key={v}
+              type="button"
+              aria-pressed={view === v}
+              onClick={() => setView(v)}
+              className={`px-3 py-1.5 text-xs font-semibold capitalize transition-colors ${
+                view === v ? "bg-gold/10 text-gold" : "text-muted hover:text-gold"
+              }`}
+            >
+              {v}
+            </button>
+          ))}
+        </div>
+      </div>
 
-      <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className={`mt-6 grid gap-8 ${view === "grid" ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" : "grid-cols-1 lg:grid-cols-2"}`}>
         {paged.map((project) => {
           return (
             <Link
@@ -218,6 +236,11 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
                       quality={70}
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
+                    {project.featured && (
+                      <span className="absolute left-2 top-2 rounded-full bg-gradient-to-r from-sky-500 to-violet-500 px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-white">
+                        FEATURED
+                      </span>
+                    )}
                     {project.images.length > 1 && (
                       <span className="absolute bottom-2 right-2 rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-medium text-white">
                         {project.images.length} photos
@@ -238,7 +261,13 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
                     <h3 className="font-display text-sm font-semibold text-gold">
                       {project.title}
                     </h3>
-                    <p className="text-xs text-muted">{CATEGORY_LABELS[project.category]}</p>
+                    <p className="text-xs text-muted">
+                      {CATEGORY_LABELS[project.category]}
+                      {project.status === "In Progress" && <span className="ml-2 font-semibold text-amber-600">· In progress</span>}
+                    </p>
+                    {view === "list" && project.description && (
+                      <p className="mt-2 line-clamp-2 text-xs text-muted">{project.description}</p>
+                    )}
                   </div>
                   <span aria-hidden className="text-gold transition-transform group-hover:translate-x-1">
                     →

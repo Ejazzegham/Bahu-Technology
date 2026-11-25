@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar";
 import ContactHero from "@/components/ContactHero";
+import ContactQuickActions from "@/components/ContactQuickActions";
+import ContactNextSteps from "@/components/ContactNextSteps";
 import ContactHeroForm from "@/components/ContactHeroForm";
 import ContactMap from "@/components/ContactMap";
 import ContactWhyReach from "@/components/ContactWhyReach";
@@ -21,7 +23,9 @@ export default function ContactPage() {
       <Navbar active="Contact" />
       <main>
         <ContactHero />
+        <ContactQuickActions />
         <ContactHeroForm />
+        <ContactNextSteps />
         <ContactMap />
         <ContactWhyReach />
         <HomeFaq />

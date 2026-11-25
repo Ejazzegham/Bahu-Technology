@@ -18,6 +18,10 @@ export type ContactMessage = {
   email: string;
   subject: string;
   message: string;
+  phone?: string;
+  service?: string;
+  budget?: string;
+  timeline?: string;
   read: boolean;
   createdAt: number;
 };
@@ -27,6 +31,10 @@ export async function submitContactMessage(input: {
   email: string;
   subject: string;
   message: string;
+  phone?: string;
+  service?: string;
+  budget?: string;
+  timeline?: string;
 }): Promise<void> {
   if (!isFirebaseConfigured) throw new Error("Firebase is not configured.");
   await addDoc(collection(getDb(), "messages"), {
@@ -54,6 +62,10 @@ export function subscribeMessages(cb: (messages: ContactMessage[]) => void): Uns
             email: (data.email as string) ?? "",
             subject: (data.subject as string) ?? "",
             message: (data.message as string) ?? "",
+            phone: (data.phone as string) || undefined,
+            service: (data.service as string) || undefined,
+            budget: (data.budget as string) || undefined,
+            timeline: (data.timeline as string) || undefined,
             read: Boolean(data.read),
             createdAt: (data.createdAt as { toMillis?: () => number } | undefined)?.toMillis?.() ?? Date.now(),
           };
