@@ -1,8 +1,24 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import VisitorGlobe from "./VisitorGlobe";
 
-type Stats = { online: number; today: number; total: number; pageViews: number };
+type Stats = {
+  online: number;
+  today: number;
+  total: number;
+  pageViews: number;
+  livePoints?: { cc: string; lat: number; lng: number; city?: string }[];
+  countries?: { cc: string; name: string; lat: number; lng: number; count: number }[];
+  you?: { cc: string; lat: number; lng: number; city?: string } | null;
+};
+
+/** 🇵🇰 from "PK" — regional-indicator letters. */
+function flag(cc: string): string {
+  return cc
+    .toUpperCase()
+    .replace(/./g, (c) => String.fromCodePoint(127397 + c.charCodeAt(0)));
+}
 
 const VISITOR_KEY = "bahu_vid";
 const SESSION_KEY = "bahu_vcounted";
@@ -119,29 +135,27 @@ export default function VisitorInsights() {
     };
   }, []);
 
-  // Never show a broken or empty widget.
-  if (failed && !stats) return null;
-  if (!stats) return null;
-
+  // The section always renders (so it can never silently vanish); numbers
+  // fill in once the API answers, and a short note appears if it can't.
   const CARDS = [
     {
       key: "online" as const,
       label: "ONLINE NOW",
-      value: stats.online,
+      value: stats?.online ?? 0,
       note: "People browsing right now",
       live: true,
     },
     {
       key: "today" as const,
       label: "VISITORS TODAY",
-      value: stats.today,
+      value: stats?.today ?? 0,
       note: "Unique visitors since midnight (Pakistan time)",
       live: false,
     },
     {
       key: "total" as const,
       label: "TOTAL VISITORS",
-      value: stats.total,
+      value: stats?.total ?? 0,
       note: "Unique visitors since we started counting",
       live: false,
     },
@@ -170,48 +184,97 @@ export default function VisitorInsights() {
           </p>
         </div>
 
-        <div className="relative mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
-          {CARDS.map((c) => (
+        <div className="relative mt-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+          {/* Globe */}
+          <div className="relative">
             <div
-              key={c.key}
-              className="group relative overflow-hidden rounded-2xl border-[1px] border-white/10 bg-white/[0.04] p-7 text-center backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-gold-light/50 hover:bg-white/[0.07]"
-            >
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -top-12 left-1/2 h-24 w-40 -translate-x-1/2 rounded-full bg-gold/20 blur-3xl transition-opacity duration-300 group-hover:opacity-100"
-                style={{ opacity: 0.6 }}
-              />
-              <span className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-xl border-[1px] border-gold-light/30 bg-gold/10 text-gold-light">
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  {ICONS[c.key]}
-                </svg>
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-1/2 h-3/4 w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/20 blur-3xl"
+            />
+            <VisitorGlobe
+              live={(stats?.livePoints ?? []).map((p) => ({ lat: p.lat, lng: p.lng, label: p.city }))}
+              countries={(stats?.countries ?? []).map((c) => ({ lat: c.lat, lng: c.lng, count: c.count }))}
+              you={stats?.you ? { lat: stats.you.lat, lng: stats.you.lng } : null}
+            />
+            <div className="relative mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-[11px] text-white/55">
+              <span className="inline-flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-emerald-400" /> Online now
               </span>
-
-              <p className="stat-number relative mt-5 font-display text-4xl font-bold sm:text-5xl">
-                <AnimatedNumber value={c.value} />
-              </p>
-
-              <p className="relative mt-3 flex items-center justify-center gap-2 text-[11px] font-semibold tracking-[0.2em] text-white/70">
-                {c.live && (
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  </span>
-                )}
-                {c.label}
-              </p>
-              <p className="relative mt-2 text-xs leading-snug text-white/40">{c.note}</p>
+              <span className="inline-flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-blue-300" /> Visitor countries
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-amber-400" /> Bahu HQ
+              </span>
+              <span className="text-white/35">Drag to rotate</span>
             </div>
-          ))}
+          </div>
+
+          {/* Numbers + top countries */}
+          <div className="relative">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1">
+              {CARDS.map((c) => (
+                <div
+                  key={c.key}
+                  className="group relative flex items-center gap-5 overflow-hidden rounded-2xl border-[1px] border-white/10 bg-white/[0.04] p-5 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-light/50 hover:bg-white/[0.07] sm:flex-col sm:text-center lg:flex-row lg:text-left"
+                >
+                  <span className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border-[1px] border-gold-light/30 bg-gold/10 text-gold-light">
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      {ICONS[c.key]}
+                    </svg>
+                  </span>
+                  <div className="relative min-w-0">
+                    <p className="stat-number font-display text-3xl font-bold sm:text-4xl">
+                      {stats ? <AnimatedNumber value={c.value} /> : "—"}
+                    </p>
+                    <p className="mt-1 flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] text-white/70 sm:justify-center lg:justify-start">
+                      {c.live && (
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                        </span>
+                      )}
+                      {c.label}
+                    </p>
+                    <p className="mt-1 text-xs leading-snug text-white/40">{c.note}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {stats?.countries && stats.countries.length > 0 && (
+              <div className="mt-5 rounded-2xl border-[1px] border-white/10 bg-white/[0.04] p-5 backdrop-blur">
+                <p className="text-[11px] font-semibold tracking-[0.2em] text-white/70">TOP VISITOR COUNTRIES</p>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {stats.countries.slice(0, 8).map((c) => (
+                    <li
+                      key={c.cc}
+                      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs text-white/80"
+                    >
+                      <span aria-hidden>{flag(c.cc)}</span>
+                      {c.name}
+                      <span className="font-semibold text-gold-light">{c.count.toLocaleString("en-US")}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {failed && !stats && (
+              <p role="status" className="mt-4 text-xs text-white/45">
+                Live numbers are temporarily unavailable. The globe will fill in as soon as they are.
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </section>

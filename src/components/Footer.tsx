@@ -72,7 +72,6 @@ export default function Footer() {
   }, []);
 
   const activeSocials = SOCIAL_LABELS.filter((s) => settings.social[s.key]);
-  const whatsappHref = `https://wa.me/${settings.whatsappNumber}?text=${encodeURIComponent(settings.whatsappMessage)}`;
 
   const contactItems = [
     { key: "email", label: "Email", value: settings.contactEmail, href: `mailto:${settings.contactEmail}`, icon: CONTACT_ICONS.email },
@@ -100,33 +99,8 @@ export default function Footer() {
       <div aria-hidden className="hero-grid absolute inset-0 opacity-70" />
 
       <div className="section relative pb-10 pt-16">
-        {/* Call to action */}
-        <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur sm:p-9 lg:flex-row lg:items-center">
-          <div className="max-w-xl">
-            <h2 className="font-display text-2xl font-semibold leading-snug text-white sm:text-3xl">
-              Have a project in mind? Let&apos;s talk about it.
-            </h2>
-            <p className="mt-2 text-sm leading-relaxed text-white/60">
-              Tell us the goal and we&apos;ll suggest the right way to get there.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/contact" className="btn-primary">
-              Start a project
-            </Link>
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-            >
-              Chat on WhatsApp
-            </a>
-          </div>
-        </div>
-
         {/* Main columns */}
-        <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12">
           <div className="sm:col-span-2 lg:col-span-4">
             <Link href="/" className="inline-flex items-center gap-3" aria-label="Bahu Technology home">
               <Image
