@@ -47,6 +47,7 @@ type Stats = {
 };
 
 let cache: { at: number; stats: Stats } | null = null;
+let warnedNotConfigured = false;
 const lastSeenByVisitor = new Map<string, number>();
 
 function dayKey(d = new Date()): string {
@@ -212,7 +213,15 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     // Most likely Firebase Admin isn't configured. The home-page section
     // hides itself on any non-200, so the site never shows a broken widget.
-    console.error("POST /api/visitors failed:", err);
+    const notConfigured = err instanceof Error && err.message.startsWith("Firebase Admin is not configured");
+    if (notConfigured) {
+      if (!warnedNotConfigured) {
+        warnedNotConfigured = true;
+        console.warn("[visitors] Firebase Admin env vars are missing on this deployment; visitor stats are disabled.");
+      }
+    } else {
+      console.error("POST /api/visitors failed:", err);
+    }
     return NextResponse.json({ error: "Visitor stats unavailable." }, { status: 503 });
   }
 }

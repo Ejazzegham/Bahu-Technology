@@ -26,6 +26,10 @@ const TARGETS = [
   "main details",
   "main section > div > p",
   "main form",
+  "main figure",
+  "main .grid > a",
+  "main .grid > li",
+  "footer .grid > div",
 ].join(",");
 
 const SKIP_PATHS = ["/admin", "/login"];
@@ -107,6 +111,7 @@ export default function GlobalMotion() {
 
         // Skip page heroes (they have their own entrance) and nested targets.
         if (el.closest("main > :first-child")) return;
+        if (el.closest("[data-no-reveal]")) return;
         if (el.parentElement?.closest(TARGETS)) return;
 
         const rect = el.getBoundingClientRect();
