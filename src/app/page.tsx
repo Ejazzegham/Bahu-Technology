@@ -6,6 +6,8 @@ import StatsCounter from "@/components/StatsCounter";
 import WhyChoose from "@/components/WhyChoose";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
+import HomeComparison from "@/components/HomeComparison";
+import HomeDeliverables from "@/components/HomeDeliverables";
 import HomeGuarantees from "@/components/HomeGuarantees";
 import HomeEngagement from "@/components/HomeEngagement";
 import HowWeWork from "@/components/HowWeWork";
@@ -37,7 +39,9 @@ export default function Home() {
         <StatsCounter />
         <WhyChoose />
         <About />
+        <HomeDeliverables />
         <HomeGuarantees />
+        <HomeComparison />
         <Projects />
         <Industries />
         <HomeCapabilities />
