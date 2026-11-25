@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import PortfolioHero from "@/components/PortfolioHero";
+import PortfolioFeatured from "@/components/PortfolioFeatured";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import PortfolioStatsCta from "@/components/PortfolioStatsCta";
 import TechMarquee from "@/components/TechMarquee";
@@ -22,6 +23,7 @@ export default async function PortfolioPage() {
       <Navbar active="Portfolio" />
       <main>
         <PortfolioHero />
+        <PortfolioFeatured projects={projects} />
         <PortfolioGrid projects={projects} />
         <PortfolioStatsCta />
         <TechMarquee />
