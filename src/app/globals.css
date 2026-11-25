@@ -687,6 +687,89 @@ main { animation: page-in 0.7s ease both; }
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
+/* Premium colourful tech capsules. Each pill sets --c1 / --c2 inline.
+   Gradient hairline border + soft tint + glowing dot; on hover the whole
+   capsule fills with its gradient and lifts with a coloured glow. */
+.marquee-track { gap: 0.75rem; padding-right: 0.75rem; }
+.tech-pill {
+  --c1: #3b82f6;
+  --c2: #8b5cf6;
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.6rem;
+  overflow: hidden;
+  padding: 0.55rem 1.25rem 0.55rem 0.9rem;
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #1c1c28;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, var(--c1), var(--c2)) border-box;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--c1) 12%, #fff), color-mix(in srgb, var(--c2) 12%, #fff)) padding-box,
+    linear-gradient(135deg, var(--c1), var(--c2)) border-box;
+  box-shadow:
+    0 6px 16px -8px color-mix(in srgb, var(--c1) 55%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  cursor: default;
+}
+.tech-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.tech-pill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  z-index: 1;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+.tech-pill-dot {
+  position: relative;
+  z-index: 2;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c1) 22%, transparent), 0 0 10px var(--c1);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.tech-pill-label { position: relative; z-index: 2; white-space: nowrap; }
+.tech-pill:hover {
+  transform: translateY(-3px) scale(1.04);
+  color: #fff;
+  box-shadow: 0 14px 28px -10px var(--c1), 0 0 0 1px color-mix(in srgb, var(--c2) 40%, transparent);
+}
+.tech-pill:hover::before { opacity: 1; }
+.tech-pill:hover::after { animation: shine-sweep 0.8s ease; }
+.tech-pill:hover .tech-pill-dot { background: #fff; box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35), 0 0 10px #fff; }
+
+/* Gentle idle shimmer so the capsules feel alive even before hovering */
+@keyframes tech-pill-glow {
+  0%, 100% { box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--c1) 55%, transparent), inset 0 1px 0 rgba(255,255,255,0.9); }
+  50% { box-shadow: 0 10px 22px -8px color-mix(in srgb, var(--c2) 70%, transparent), inset 0 1px 0 rgba(255,255,255,0.9); }
+}
+.marquee-track .tech-pill:not(:hover) { animation: tech-pill-glow 4s ease-in-out infinite; }
+.marquee-track .tech-pill:nth-child(3n) { animation-delay: -1.3s; }
+.marquee-track .tech-pill:nth-child(3n + 1) { animation-delay: -2.6s; }
+
 /* --- Floating icons + card spotlight + button shine --- */
 @keyframes icon-float {
   0%, 100% { transform: translateY(0); }
@@ -727,6 +810,7 @@ main { animation: page-in 0.7s ease both; }
   * { animation-iteration-count: 1 !important; }
   [data-reveal] { opacity: 1 !important; transform: none !important; }
   .marquee-track,
+  .tech-pill,
   .hero-orb,
   .hero-grid,
   .hero-particle,

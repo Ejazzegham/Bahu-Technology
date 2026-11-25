@@ -138,17 +138,21 @@ export default function PricingSnapshot() {
                 return (
                   <div
                     key={t.id}
-                    className={`group relative flex flex-col overflow-hidden rounded-2xl bg-white text-center shadow-xl shadow-black/20 transition-transform duration-300 hover:-translate-y-2 ${
+                    className={`group relative flex flex-col rounded-2xl shadow-xl shadow-black/20 transition-transform duration-300 hover:-translate-y-2 ${
                       t.highlighted ? "ring-4 ring-amber-300 lg:-translate-y-3" : ""
-                    }`}
+                    } ${t.badge ? "mt-3 lg:mt-0" : ""}`}
                   >
-                    <div className={`h-2 w-full bg-gradient-to-r ${c.bar}`} />
+                    {/* Badge sits OUTSIDE the clipped card so it can straddle the top edge, centred */}
                     {t.badge && (
-                      <span className={`absolute right-3 top-4 rounded-full bg-gradient-to-r ${c.bar} px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-white shadow`}>
+                      <span
+                        className={`absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-gradient-to-r ${c.bar} px-4 py-1 text-[10px] font-bold tracking-[0.18em] text-white shadow-lg shadow-black/30 ring-2 ring-white`}
+                      >
                         {t.badge}
                       </span>
                     )}
-                    <div className="flex flex-1 flex-col p-5">
+                    <div className="flex flex-1 flex-col overflow-hidden rounded-2xl bg-white text-center">
+                    <div className={`h-2 w-full bg-gradient-to-r ${c.bar}`} />
+                    <div className="flex flex-1 flex-col p-5 pt-6">
                       <p className="flex items-center justify-center gap-2 text-xs font-semibold tracking-[0.15em] text-muted">
                         <span className={`h-2 w-2 rounded-full ${c.dot}`} aria-hidden />
                         {t.name.toUpperCase()}
@@ -179,6 +183,7 @@ export default function PricingSnapshot() {
                       >
                         VIEW PACKAGE <span aria-hidden>→</span>
                       </Link>
+                    </div>
                     </div>
                   </div>
                 );
