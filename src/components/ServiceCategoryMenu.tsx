@@ -158,7 +158,7 @@ export default function ServiceCategoryMenu({
                   className="col-span-full grid grid-rows-[1fr] opacity-100 transition-[grid-template-rows,opacity] duration-300 ease-out"
                 >
                   <div className="overflow-hidden">
-                    <div className="mt-2 rounded-2xl border border-gold/30 bg-bg-card p-6 sm:p-8">
+                    <div className="dd-inline-panel mt-2 p-6 sm:p-8">
                       <div className="mb-6 flex items-center gap-4 border-b border-line pb-6">
                         <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-gold/40 text-gold">
                           <svg

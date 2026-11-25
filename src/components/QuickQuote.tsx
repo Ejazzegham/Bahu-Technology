@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { submitContactMessage } from "@/lib/firestore/messages";
+import Dropdown from "@/components/ui/Dropdown";
 
 const SERVICES = [
   "Website design & development",
@@ -174,18 +175,13 @@ export default function QuickQuote() {
                 <label htmlFor="qq-service" className="mb-1.5 block text-xs font-medium text-ink">
                   What do you need?
                 </label>
-                <select
+                <Dropdown
                   id="qq-service"
                   value={service}
-                  onChange={(e) => setService(e.target.value)}
+                  onChange={setService}
+                  options={SERVICES.map((s) => ({ value: s, label: s }))}
                   className={FIELD}
-                >
-                  {SERVICES.map((s) => (
-                    <option key={s} value={s}>
-                      {s}
-                    </option>
-                  ))}
-                </select>
+                />
               </div>
 
               <div>

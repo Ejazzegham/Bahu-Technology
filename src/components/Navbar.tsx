@@ -56,6 +56,7 @@ const NAV_LINKS = [
 const SERVICES = [
   {
     label: "Graphic Design",
+    desc: "Logos, branding & visuals",
     href: "/graphic-design",
     icon: (
       <>
@@ -67,6 +68,7 @@ const SERVICES = [
   },
   {
     label: "Web Design",
+    desc: "Websites that convert",
     href: "/web-development",
     icon: (
       <>
@@ -77,6 +79,7 @@ const SERVICES = [
   },
   {
     label: "Mobile App Design",
+    desc: "iOS & Android apps",
     href: "/mobile-app-development",
     icon: (
       <>
@@ -87,6 +90,7 @@ const SERVICES = [
   },
   {
     label: "Desktop App Design",
+    desc: "Windows & Mac software",
     href: "/desktop-software",
     icon: (
       <>
@@ -120,7 +124,7 @@ function ServicesDesktopDropdown({ active }: { active: boolean }) {
   const [mounted, setMounted] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-  const style = usePopoverPosition(triggerRef, open, { align: "left", width: 208, estimatedHeight: 220 });
+  const style = usePopoverPosition(triggerRef, open, { align: "left", width: 292, estimatedHeight: 290 });
 
   useEffect(() => setMounted(true), []);
 
@@ -179,19 +183,40 @@ function ServicesDesktopDropdown({ active }: { active: boolean }) {
           <div
             ref={menuRef}
             style={style}
-            className="z-50 overflow-hidden rounded-lg border border-line bg-bg-card shadow-lg shadow-black/50"
+            className="dd-panel dd-menu z-[70]"
+            role="menu"
+            aria-label="Services"
           >
+            <p className="dd-eyebrow">Our Services</p>
             {SERVICES.map((service) => (
               <Link
                 key={service.label}
                 href={service.href}
+                role="menuitem"
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2.5 border-b border-line px-3 py-2.5 text-[13px] text-ink/90 transition-colors last:border-b-0 hover:bg-gold/10 hover:text-gold"
+                className="dd-link"
               >
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center text-gold">
+                <span className="dd-tile">
                   <NavLinkIcon>{service.icon}</NavLinkIcon>
                 </span>
-                {service.label}
+                <span className="min-w-0">
+                  <span className="block text-[13px] font-semibold leading-tight">{service.label}</span>
+                  <span className="mt-0.5 block text-[11px] leading-tight text-muted">{service.desc}</span>
+                </span>
+                <svg
+                  aria-hidden
+                  className="dd-arrow"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
               </Link>
             ))}
           </div>,
@@ -398,21 +423,34 @@ export default function Navbar({ active = "Home" }: { active?: string }) {
                   </svg>
                 </button>
 
-                {mobileServicesOpen && (
-                  <div className="mt-1 space-y-1 pl-6">
-                    {SERVICES.map((service) => (
-                      <Link
-                        key={service.label}
-                        href={service.href}
-                        onClick={() => setOpen(false)}
-                        className="flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm text-muted transition-colors hover:bg-black/5 hover:text-ink"
-                      >
-                        <NavLinkIcon>{service.icon}</NavLinkIcon>
-                        <span>{service.label}</span>
-                      </Link>
-                    ))}
+                <div
+                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                    mobileServicesOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                  aria-hidden={!mobileServicesOpen}
+                >
+                  <div className="overflow-hidden">
+                    <div className="mb-1 ml-7 mt-1 space-y-1 border-l-[1.5px] border-gold/25 pl-3">
+                      {SERVICES.map((service) => (
+                        <Link
+                          key={service.label}
+                          href={service.href}
+                          tabIndex={mobileServicesOpen ? 0 : -1}
+                          onClick={() => setOpen(false)}
+                          className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-gold/[0.07]"
+                        >
+                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-gradient-to-br from-[#f2f7ff] to-[#e3eeff] text-gold shadow-[inset_0_0_0_1px_rgba(20,119,245,0.18)] transition-colors group-hover:bg-gold-gradient group-hover:text-white">
+                            <NavLinkIcon>{service.icon}</NavLinkIcon>
+                          </span>
+                          <span className="min-w-0">
+                            <span className="block text-[13px] font-semibold leading-tight text-ink">{service.label}</span>
+                            <span className="mt-0.5 block text-[11px] leading-tight text-muted">{service.desc}</span>
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
 
               {NAV_LINKS.map((link, i) => {

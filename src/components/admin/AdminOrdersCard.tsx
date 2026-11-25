@@ -8,6 +8,7 @@ import {
   type Order,
   type OrderStatus,
 } from "@/lib/firestore/orders";
+import Dropdown from "@/components/ui/Dropdown";
 
 const STATUSES: OrderStatus[] = ["New", "In Progress", "Completed", "Cancelled"];
 
@@ -77,17 +78,15 @@ export default function AdminOrdersCard() {
                   </p>
                 </div>
                 <div className="flex shrink-0 flex-col items-end gap-2">
-                  <select
+                  <Dropdown
+                    ariaLabel="Order status"
                     value={o.status}
-                    onChange={(e) => setOrderStatus(o.id, e.target.value as OrderStatus)}
+                    onChange={(v) => setOrderStatus(o.id, v as OrderStatus)}
+                    options={STATUSES.map((s) => ({ value: s, label: s }))}
+                    align="right"
+                    minPanelWidth={160}
                     className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold ${statusColor(o.status)}`}
-                  >
-                    {STATUSES.map((s) => (
-                      <option key={s} value={s} className="bg-bg text-ink">
-                        {s}
-                      </option>
-                    ))}
-                  </select>
+                  />
                   <button
                     onClick={() => handleDelete(o)}
                     className="text-[11px] font-semibold text-rose-400 hover:underline"

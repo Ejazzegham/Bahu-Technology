@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { OrderedImage, Project, ProjectCategory } from "@/lib/projects";
 import { CATEGORY_LABELS, createProject, deleteProject, updateProject } from "@/lib/projects";
 import { addTag, deleteTag, subscribeTechnologies, type Tag } from "@/lib/firestore/taxonomy";
+import Dropdown from "@/components/ui/Dropdown";
 
 const TABS = ["All Portfolio", "Add Portfolio", "Technologies"] as const;
 export type Tab = (typeof TABS)[number];
@@ -433,17 +434,13 @@ function AddPortfolioWizard({
                 />
               </Field>
               <Field label="Category">
-                <select
+                <Dropdown
+                  ariaLabel="Category"
                   className={inputClass}
                   value={form.category}
-                  onChange={(e) => update("category", e.target.value as ProjectCategory)}
-                >
-                  {CATEGORY_OPTIONS.map((c) => (
-                    <option key={c.value} value={c.value}>
-                      {c.label}
-                    </option>
-                  ))}
-                </select>
+                  onChange={(v) => update("category", v as ProjectCategory)}
+                  options={CATEGORY_OPTIONS.map((c) => ({ value: c.value, label: c.label }))}
+                />
               </Field>
               <Field label="Technologies Used">
                 <input
@@ -515,14 +512,16 @@ function AddPortfolioWizard({
             </Field>
             <div className="space-y-5">
               <Field label="Status">
-                <select
+                <Dropdown
+                  ariaLabel="Status"
                   className={inputClass}
                   value={form.status}
-                  onChange={(e) => update("status", e.target.value as "Completed" | "In Progress")}
-                >
-                  <option value="Completed">Completed</option>
-                  <option value="In Progress">In Progress</option>
-                </select>
+                  onChange={(v) => update("status", v as "Completed" | "In Progress")}
+                  options={[
+                    { value: "Completed", label: "Completed" },
+                    { value: "In Progress", label: "In Progress" },
+                  ]}
+                />
               </Field>
               <label className="flex items-center gap-2 text-xs text-muted">
                 <input

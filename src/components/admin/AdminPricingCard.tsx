@@ -9,6 +9,7 @@ import {
   updatePricingTier,
   type FirestorePricingTier,
 } from "@/lib/firestore/pricing";
+import Dropdown from "@/components/ui/Dropdown";
 
 const inputClass =
   "w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none";
@@ -141,41 +142,32 @@ export default function AdminPricingCard() {
       <div className="mx-auto mt-6 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-2">
         <div>
           <label className="mb-1.5 block text-xs font-medium text-muted">Service Group</label>
-          <select
+          <Dropdown
+            ariaLabel="Service group"
             value={groupIndex}
-            onChange={(e) => {
-              const idx = Number(e.target.value);
+            options={GROUP_OPTIONS.map((g, i) => ({ value: i, label: g.groupLabel }))}
+            className={inputClass}
+            onChange={(idx) => {
               setGroupIndex(idx);
               setSelected(GROUP_OPTIONS[idx]?.subcategories[0]?.slug ?? null);
               setShowTierForm(false);
               setEditingTier(null);
             }}
-            className={inputClass}
-          >
-            {GROUP_OPTIONS.map((g, i) => (
-              <option key={g.groupLabel} value={i}>
-                {g.groupLabel}
-              </option>
-            ))}
-          </select>
+          />
         </div>
         <div>
           <label className="mb-1.5 block text-xs font-medium text-muted">Category</label>
-          <select
+          <Dropdown
+            ariaLabel="Category"
             value={selected ?? ""}
-            onChange={(e) => {
-              setSelected(e.target.value);
+            options={currentSubcategories.map((s) => ({ value: s.slug, label: s.label }))}
+            className={inputClass}
+            onChange={(v) => {
+              setSelected(v);
               setShowTierForm(false);
               setEditingTier(null);
             }}
-            className={inputClass}
-          >
-            {currentSubcategories.map((s) => (
-              <option key={s.slug} value={s.slug}>
-                {s.label}
-              </option>
-            ))}
-          </select>
+          />
         </div>
       </div>
 
@@ -202,13 +194,13 @@ export default function AdminPricingCard() {
               <input type="text" required placeholder="Price (e.g. $25 or Custom)" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} className={inputClass} />
               <input type="text" placeholder="Price note (e.g. One Time)" value={form.priceNote} onChange={(e) => setForm({ ...form, priceNote: e.target.value })} className={inputClass} />
               <input type="text" placeholder="Badge (optional, e.g. MOST POPULAR)" value={form.badge} onChange={(e) => setForm({ ...form, badge: e.target.value })} className={inputClass} />
-              <select value={form.stars} onChange={(e) => setForm({ ...form, stars: Number(e.target.value) })} className={inputClass}>
-                {[1, 2, 3, 4, 5].map((n) => (
-                  <option key={n} value={n}>
-                    {n} star{n > 1 ? "s" : ""}
-                  </option>
-                ))}
-              </select>
+              <Dropdown
+                ariaLabel="Stars"
+                value={form.stars}
+                onChange={(n) => setForm({ ...form, stars: n })}
+                options={[1, 2, 3, 4, 5].map((n) => ({ value: n, label: `${n} star${n > 1 ? "s" : ""}` }))}
+                className={inputClass}
+              />
               <input type="text" placeholder="Button text (e.g. ORDER NOW)" value={form.cta} onChange={(e) => setForm({ ...form, cta: e.target.value })} className={inputClass} />
               <textarea
                 rows={4}

@@ -124,6 +124,183 @@ body {
   display: none; /* Chrome, Safari, Opera */
 }
 
+/* ------------------------------------------------------------------
+   Premium dropdown panel — shared by the navbar Services menu, the
+   Let's Talk popover and the custom <Dropdown> select. Every scrollable
+   dropdown list also uses .no-scrollbar, so no scrollbar is ever shown.
+   ------------------------------------------------------------------ */
+@keyframes dd-pop-down {
+  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes dd-pop-up {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.dd-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.97);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  backdrop-filter: saturate(180%) blur(14px);
+  box-shadow:
+    0 0 0 1px rgba(13, 13, 16, 0.07),
+    0 2px 4px rgba(13, 13, 16, 0.04),
+    0 14px 28px -8px rgba(13, 13, 16, 0.14),
+    0 34px 64px -18px rgba(20, 119, 245, 0.22);
+  transform-origin: top center;
+  animation: dd-pop-down 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.dd-panel[data-side="up"] {
+  transform-origin: bottom center;
+  animation-name: dd-pop-up;
+}
+/* thin blue accent line along the top edge */
+.dd-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #5b9dff 25%, #1477f5 50%, #5b9dff 75%, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+/* soft fade at the top/bottom edge when the list can scroll further */
+.dd-list {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--dd-fade-top, 0px), #000 calc(100% - var(--dd-fade-bottom, 0px)), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 var(--dd-fade-top, 0px), #000 calc(100% - var(--dd-fade-bottom, 0px)), transparent 100%);
+}
+.dd-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #2a2a33;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.14s ease, color 0.14s ease;
+}
+.dd-item[data-active="true"] {
+  background: rgba(20, 119, 245, 0.09);
+  color: #0a3fc4;
+}
+.dd-item[aria-selected="true"] {
+  color: #1477f5;
+  font-weight: 600;
+}
+.dd-item[aria-selected="true"][data-active="false"] {
+  background: rgba(20, 119, 245, 0.05);
+}
+.dd-item-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rich menu rows (navbar Services, Let's Talk): icon tile + title + hint */
+.dd-menu { padding: 8px; }
+.dd-eyebrow {
+  padding: 8px 10px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a8a96;
+}
+.dd-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  color: #0d0d10;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.dd-link:hover,
+.dd-link:focus-visible {
+  background: rgba(20, 119, 245, 0.07);
+  outline: none;
+}
+.dd-link .dd-tile {
+  display: flex;
+  height: 36px;
+  width: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: #1477f5;
+  background: linear-gradient(145deg, #f2f7ff, #e3eeff);
+  box-shadow: inset 0 0 0 1px rgba(20, 119, 245, 0.18);
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.dd-link:hover .dd-tile,
+.dd-link:focus-visible .dd-tile {
+  color: #fff;
+  background: linear-gradient(135deg, #5b9dff 0%, #1477f5 55%, #0a3fc4 100%);
+  box-shadow: 0 6px 14px -4px rgba(20, 119, 245, 0.55);
+  transform: scale(1.04);
+}
+.dd-link .dd-arrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: #1477f5;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.dd-link:hover .dd-arrow,
+.dd-link:focus-visible .dd-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+.dd-link--wa .dd-tile {
+  color: #1da851;
+  background: linear-gradient(145deg, #f0fff6, #dcf8e8);
+  box-shadow: inset 0 0 0 1px rgba(37, 211, 102, 0.3);
+}
+.dd-link--wa:hover,
+.dd-link--wa:focus-visible { background: rgba(37, 211, 102, 0.09); }
+.dd-link--wa:hover .dd-tile,
+.dd-link--wa:focus-visible .dd-tile {
+  color: #fff;
+  background: linear-gradient(135deg, #3be07d 0%, #25d366 55%, #14a84c 100%);
+  box-shadow: 0 6px 14px -4px rgba(37, 211, 102, 0.6);
+}
+.dd-link--wa .dd-arrow { color: #1da851; }
+/* Inline category panel on the service pages — same premium finish as the
+   floating dropdowns, but flows in the page layout. */
+.dd-inline-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+  box-shadow:
+    0 0 0 1px rgba(20, 119, 245, 0.18),
+    0 2px 4px rgba(13, 13, 16, 0.04),
+    0 18px 36px -12px rgba(13, 13, 16, 0.12),
+    0 40px 80px -24px rgba(20, 119, 245, 0.2);
+  animation: dd-pop-down 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.dd-inline-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #5b9dff 20%, #1477f5 50%, #5b9dff 80%, transparent);
+  pointer-events: none;
+}
+
+.dd-divider { margin: 4px 10px; height: 1px; background: rgba(13, 13, 16, 0.07); }
+
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html {

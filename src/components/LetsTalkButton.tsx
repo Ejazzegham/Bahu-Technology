@@ -15,7 +15,7 @@ type Props = {
   onNavigate?: () => void;
 };
 
-const MENU_WIDTH = 240;
+const MENU_WIDTH = 272;
 
 export default function LetsTalkButton({
   label = "LET'S TALK",
@@ -36,7 +36,7 @@ export default function LetsTalkButton({
   // coordinates — this is what lets it escape a rounded CTA card's
   // `overflow: hidden`, or the mobile nav drawer's own stacking, instead of
   // getting clipped like a normal `position: absolute` child would.
-  const style = usePopoverPosition(triggerRef, open, { align, width: MENU_WIDTH, estimatedHeight: 168 });
+  const style = usePopoverPosition(triggerRef, open, { align, width: MENU_WIDTH, estimatedHeight: 150 });
 
   useEffect(() => setMounted(true), []);
 
@@ -88,43 +88,43 @@ export default function LetsTalkButton({
 
       {open && mounted &&
         createPortal(
-          <div
-            ref={menuRef}
-            style={style}
-            className="z-50 overflow-hidden rounded-lg border border-gold/30 bg-bg-card shadow-lg shadow-black/50"
-          >
-            <Link
-              href="/contact"
-              onClick={close}
-              className="flex items-center gap-3 px-4 py-3 text-left text-sm text-ink/90 transition-colors hover:bg-gold/10 hover:text-gold"
-            >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold/40 text-gold">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <div ref={menuRef} style={style} className="dd-panel dd-menu z-[70]" role="menu">
+            <Link href="/contact" role="menuitem" onClick={close} className="dd-link">
+              <span className="dd-tile">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="5" width="18" height="14" rx="2" />
                   <path d="M3 7l9 6 9-6" />
                 </svg>
               </span>
-              <span>
-                <span className="block font-semibold">Send a Message</span>
-                <span className="block text-[11px] text-muted">Use our contact form</span>
+              <span className="min-w-0">
+                <span className="block text-[13px] font-semibold leading-tight">Send a Message</span>
+                <span className="mt-0.5 block text-[11px] leading-tight text-muted">Use our contact form</span>
               </span>
+              <svg aria-hidden className="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
             </Link>
+            <div className="dd-divider" aria-hidden />
             <a
               href={`https://wa.me/${settings.whatsappNumber}?text=${encodeURIComponent(settings.whatsappMessage)}`}
               target="_blank"
               rel="noopener noreferrer"
+              role="menuitem"
               onClick={close}
-              className="flex items-center gap-3 border-t border-line px-4 py-3 text-left text-sm text-ink/90 transition-colors hover:bg-[#25D366]/10 hover:text-[#25D366]"
+              className="dd-link dd-link--wa"
             >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#25D366]/50 text-[#25D366]">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              <span className="dd-tile">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
                 </svg>
               </span>
-              <span>
-                <span className="block font-semibold">Chat on WhatsApp</span>
-                <span className="block text-[11px] text-muted">{settings.contactPhone}</span>
+              <span className="min-w-0">
+                <span className="block text-[13px] font-semibold leading-tight">Chat on WhatsApp</span>
+                <span className="mt-0.5 block text-[11px] leading-tight text-muted">{settings.contactPhone}</span>
               </span>
+              <svg aria-hidden className="dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
             </a>
           </div>,
           document.body

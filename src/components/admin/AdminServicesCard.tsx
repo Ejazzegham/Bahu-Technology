@@ -8,6 +8,7 @@ import {
   SERVICE_ICON_OPTIONS,
   type Service,
 } from "@/lib/firestore/services";
+import Dropdown from "@/components/ui/Dropdown";
 
 export default function AdminServicesCard() {
   const [services, setServices] = useState<Service[]>([]);
@@ -54,17 +55,13 @@ export default function AdminServicesCard() {
           onChange={(e) => setTitle(e.target.value)}
           className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none"
         />
-        <select
+        <Dropdown
+          ariaLabel="Service icon"
           value={icon}
-          onChange={(e) => setIcon(e.target.value)}
+          onChange={setIcon}
+          options={SERVICE_ICON_OPTIONS.map((opt) => ({ value: opt, label: opt }))}
           className="w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink focus:border-gold focus:outline-none"
-        >
-          {SERVICE_ICON_OPTIONS.map((opt) => (
-            <option key={opt} value={opt}>
-              {opt}
-            </option>
-          ))}
-        </select>
+        />
         <textarea
           required
           rows={2}

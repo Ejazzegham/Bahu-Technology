@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { PRICING_GROUPS } from "@/lib/pricing";
 import { subscribePricingTiers, type FirestorePricingTier } from "@/lib/firestore/pricing";
+import Dropdown from "@/components/ui/Dropdown";
 
 /**
  * Home-page "pricing at a glance": pick a service, pick a category, and see
@@ -67,20 +68,18 @@ export default function PricingSnapshot() {
       </div>
 
       <div className="mt-4 flex justify-center">
-        <label className="flex items-center gap-3 text-sm text-muted">
+        <div className="flex items-center gap-3 text-sm text-muted">
           <span className="font-semibold text-ink">Category</span>
-          <select
-            value={subSlug}
-            onChange={(e) => setSubSlug(e.target.value)}
-            className="max-w-[16rem] rounded-md border border-line bg-white px-3 py-2 text-sm text-ink focus:border-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/40 sm:max-w-xs"
-          >
-            {group.subcategories.map((s) => (
-              <option key={s.slug} value={s.slug}>
-                {s.label}
-              </option>
-            ))}
-          </select>
-        </label>
+          <div className="w-64 max-w-[16rem] sm:w-72 sm:max-w-xs">
+            <Dropdown
+              ariaLabel="Category"
+              value={subSlug}
+              onChange={setSubSlug}
+              options={group.subcategories.map((s) => ({ value: s.slug, label: s.label }))}
+              className="w-full rounded-md border border-line bg-white px-3 py-2 text-sm text-ink transition-colors hover:border-gold/60 focus:border-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/40"
+            />
+          </div>
+        </div>
       </div>
 
       <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-5">

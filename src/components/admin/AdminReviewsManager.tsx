@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { Review } from "@/lib/firestore/reviews";
 import { addReview } from "@/lib/firestore/reviews";
+import Dropdown from "@/components/ui/Dropdown";
 
 function timeAgo(ms: number): string {
   const diff = Date.now() - ms;
@@ -97,17 +98,14 @@ export default function AdminReviewsManager({
           />
           <div className="flex items-center gap-2">
             <label className="text-xs text-muted">Rating</label>
-            <select
+            <Dropdown
+              ariaLabel="Rating"
               value={rating}
-              onChange={(e) => setRating(Number(e.target.value))}
-              className="rounded-md border border-line bg-bg px-2 py-1 text-xs text-ink focus:border-gold focus:outline-none"
-            >
-              {[5, 4, 3, 2, 1].map((n) => (
-                <option key={n} value={n}>
-                  {n} star{n > 1 ? "s" : ""}
-                </option>
-              ))}
-            </select>
+              onChange={setRating}
+              minPanelWidth={120}
+              options={[5, 4, 3, 2, 1].map((n) => ({ value: n, label: `${n} star${n > 1 ? "s" : ""}` }))}
+              className="min-w-[6.5rem] rounded-md border border-line bg-bg px-2 py-1 text-xs text-ink focus:border-gold focus:outline-none"
+            />
           </div>
           <textarea
             required
