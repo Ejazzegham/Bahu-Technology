@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Palette, Code2, Smartphone, MonitorCog, Check, type LucideIcon } from "lucide-react";
+import { Palette, Code2, Smartphone, Monitor, Check, type LucideIcon } from "lucide-react";
 
 const TABS: {
   id: string;
@@ -43,7 +43,7 @@ const TABS: {
   {
     id: "desktop",
     label: "Desktop Software",
-    icon: MonitorCog,
+    icon: Monitor,
     headline: "Software shaped around your workflow",
     blurb: "Custom business tools that save time and keep your data organised.",
     items: ["Custom business software", "Billing & inventory tools", "Reports & data export", "Secure user roles", "Training & ongoing support"],

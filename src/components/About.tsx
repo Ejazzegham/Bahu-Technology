@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Palette, Code2, Smartphone, MonitorCog, Award, Star, ArrowUpRight, ShieldCheck } from "lucide-react";
+import { Palette, Code2, Smartphone, Monitor, Award, Star, ArrowUpRight, ShieldCheck } from "lucide-react";
 
 const PILLARS = [
   { icon: Palette, title: "Graphic Design", text: "Logos, brand identity and marketing creatives." },
   { icon: Code2, title: "Web Development", text: "Fast, responsive and SEO-ready websites." },
   { icon: Smartphone, title: "Mobile Apps", text: "Smooth Android & iOS experiences." },
-  { icon: MonitorCog, title: "Desktop Software", text: "Custom tools that run your business." },
+  { icon: Monitor, title: "Desktop Software", text: "Custom tools that run your business." },
 ];
 
 const HIGHLIGHTS = [
