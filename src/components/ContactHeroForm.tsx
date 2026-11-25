@@ -14,12 +14,6 @@ const ICONS = {
       <path d="M3 7l9 6 9-6" />
     </>
   ),
-  address: (
-    <>
-      <path d="M12 22s7-6.3 7-12a7 7 0 10-14 0c0 5.7 7 12 7 12z" />
-      <circle cx="12" cy="10" r="2.4" />
-    </>
-  ),
   hours: (
     <>
       <circle cx="12" cy="12" r="9" />
@@ -55,6 +49,17 @@ export default function ContactHeroForm() {
   const [website, setWebsite] = useState(""); // honeypot — real users never fill this
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
 
+  // Topic cards above the form pre-fill the service and subject.
+  useEffect(() => {
+    const onPrefill = (e: Event) => {
+      const d = (e as CustomEvent<{ service?: string; subject?: string }>).detail;
+      if (d?.service) setService(d.service);
+      if (d?.subject) setSubject(d.subject);
+    };
+    window.addEventListener("contact:prefill", onPrefill);
+    return () => window.removeEventListener("contact:prefill", onPrefill);
+  }, []);
+
   useEffect(() => {
     const unsub = subscribeSettings(setSettings);
     return () => unsub?.();
@@ -63,7 +68,6 @@ export default function ContactHeroForm() {
   const INFO = [
     { title: "Call Us", value: settings.contactPhone, icon: ICONS.phone },
     { title: "Email Us", value: settings.contactEmail, icon: ICONS.email },
-    { title: "Visit Us", value: settings.address, icon: ICONS.address },
     { title: "Working Hours", value: settings.workingHours, icon: ICONS.hours },
   ];
 
@@ -105,7 +109,7 @@ export default function ContactHeroForm() {
   }
 
   return (
-    <section className="section grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-stretch">
+    <section id="contact-form" className="section grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-stretch">
       <div className="lg:order-2">
         <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.25em] text-gold">
           <span aria-hidden className="h-px w-5 bg-gradient-to-r from-transparent to-gold" />

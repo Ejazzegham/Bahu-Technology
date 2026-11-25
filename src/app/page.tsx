@@ -16,6 +16,8 @@ import QuickQuote from "@/components/QuickQuote";
 import VisitorInsights from "@/components/VisitorInsights";
 import Industries from "@/components/Industries";
 import PricingSnapshot from "@/components/PricingSnapshot";
+import HomeCapabilities from "@/components/HomeCapabilities";
+import HomeQuickPaths from "@/components/HomeQuickPaths";
 import HomeTechStack from "@/components/HomeTechStack";
 import HomeGetStarted from "@/components/HomeGetStarted";
 import LatestPosts from "@/components/LatestPosts";
@@ -38,6 +40,7 @@ export default function Home() {
         <HomeGuarantees />
         <Projects />
         <Industries />
+        <HomeCapabilities />
         <HomeTechStack />
         <PricingSnapshot />
         <div className="pt-20">
@@ -52,6 +55,7 @@ export default function Home() {
         <ClientsStrip />
         <VisitorInsights />
         <LatestPosts />
+        <HomeQuickPaths />
         <HomeFaq />
         <CtaBanner />
       </main>

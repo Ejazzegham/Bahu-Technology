@@ -3,7 +3,8 @@ import ContactHero from "@/components/ContactHero";
 import ContactQuickActions from "@/components/ContactQuickActions";
 import ContactNextSteps from "@/components/ContactNextSteps";
 import ContactHeroForm from "@/components/ContactHeroForm";
-import ContactMap from "@/components/ContactMap";
+import ContactTopics from "@/components/ContactTopics";
+import ContactPerks from "@/components/ContactPerks";
 import ContactWhyReach from "@/components/ContactWhyReach";
 import HomeFaq from "@/components/HomeFaq";
 import CtaBanner from "@/components/CtaBanner";
@@ -23,10 +24,11 @@ export default function ContactPage() {
       <Navbar active="Contact" />
       <main>
         <ContactHero />
+        <ContactTopics />
         <ContactQuickActions />
         <ContactHeroForm />
         <ContactNextSteps />
-        <ContactMap />
+        <ContactPerks />
         <ContactWhyReach />
         <HomeFaq />
         <CtaBanner

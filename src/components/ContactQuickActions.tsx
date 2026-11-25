@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Phone, Mail, MessageCircle } from "lucide-react";
 import { DEFAULT_SETTINGS, subscribeSettings } from "@/lib/firestore/settings";
 
 // Standard schedule, evaluated in Pakistan time regardless of visitor location.
@@ -63,11 +64,13 @@ export default function ContactQuickActions() {
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         <div className={card} style={fill}>
+          <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 text-white"><Phone size={20} strokeWidth={1.8} /></span>
           <h3 className="font-display text-base font-semibold text-ink">Call us</h3>
           <p className="mt-1 text-sm text-muted">{settings.contactPhone}</p>
           <a href={`tel:${settings.contactPhone.replace(/\s/g, "")}`} className="btn-outline mt-5 justify-center">CALL NOW</a>
         </div>
         <div className={card} style={fill}>
+          <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 text-white"><Mail size={20} strokeWidth={1.8} /></span>
           <h3 className="font-display text-base font-semibold text-ink">Email us</h3>
           <p className="mt-1 break-all text-sm text-muted">{settings.contactEmail}</p>
           <div className="mt-5 flex gap-3">
@@ -78,6 +81,7 @@ export default function ContactQuickActions() {
           </div>
         </div>
         <div className={card} style={fill}>
+          <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 text-white"><MessageCircle size={20} strokeWidth={1.8} /></span>
           <h3 className="font-display text-base font-semibold text-ink">WhatsApp</h3>
           <p className="mt-1 text-sm text-muted">Fastest way to share files and ideas.</p>
           <a href={wa} target="_blank" rel="noopener noreferrer" className="btn-primary mt-5 justify-center">CHAT NOW</a>
