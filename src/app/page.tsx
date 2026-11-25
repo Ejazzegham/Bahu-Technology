@@ -10,6 +10,8 @@ import HowWeWork from "@/components/HowWeWork";
 import Testimonials from "@/components/Testimonials";
 import ServicePicker from "@/components/ServicePicker";
 import ClientsStrip from "@/components/ClientsStrip";
+import QuickQuote from "@/components/QuickQuote";
+import VisitorInsights from "@/components/VisitorInsights";
 import Industries from "@/components/Industries";
 import LatestPosts from "@/components/LatestPosts";
 import HomeFaq from "@/components/HomeFaq";
@@ -34,7 +36,9 @@ export default function Home() {
           <HowWeWork />
         </div>
         <Testimonials />
+        <QuickQuote />
         <ClientsStrip />
+        <VisitorInsights />
         <LatestPosts />
         <HomeFaq />
         <CtaBanner />
