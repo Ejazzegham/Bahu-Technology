@@ -360,7 +360,7 @@ export default function SpecialOffer() {
         </div>
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-10 lg:py-24">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 pb-14 pt-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-10 lg:pb-16 lg:pt-8">
         {/* ---- left: pitch ---- */}
         <div>
           <div className="offer-rise" style={{ ["--i" as string]: 0 }}>
