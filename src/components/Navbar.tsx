@@ -370,6 +370,14 @@ export default function Navbar({ active = "Home" }: { active?: string }) {
                         ))}
                       </div>
                       <Link
+                        href="/services"
+                        onClick={() => setServicesOpen(false)}
+                        className="nav-mega-foot"
+                      >
+                        <span>View all services</span>
+                        <span aria-hidden className="nav-mega-foot-arrow">→</span>
+                      </Link>
+                      <Link
                         href="/contact"
                         onClick={() => setServicesOpen(false)}
                         className="nav-mega-foot"
@@ -544,6 +552,14 @@ export default function Navbar({ active = "Home" }: { active?: string }) {
                           </span>
                         </Link>
                       ))}
+                      <Link
+                        href="/services"
+                        tabIndex={mobileServicesOpen ? 0 : -1}
+                        onClick={() => setOpen(false)}
+                        className="block rounded-xl px-3 py-2.5 text-[13px] font-semibold text-gold hover:bg-gold/[0.07]"
+                      >
+                        View all services →
+                      </Link>
                     </div>
                   </div>
                 </div>
