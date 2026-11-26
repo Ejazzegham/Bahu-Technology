@@ -1697,3 +1697,111 @@ main h2 { position: relative; }
   .offer-rise { opacity: 1; transform: none; filter: none; }
   .offer-title { background-position: 0 center; }
 }
+
+
+/* ---------- Diagonal red "Special Offer" sticker badge ---------- */
+@keyframes offer-badge-bob {
+  0%, 100% { transform: rotate(-7deg) translateY(0) scale(1); }
+  50% { transform: rotate(-5deg) translateY(-5px) scale(1.025); }
+}
+@keyframes offer-badge-shine { 0%, 55% { left: -60%; } 100% { left: 140%; } }
+@keyframes offer-cf-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  50% { transform: translateY(-5px) rotate(14deg); opacity: 0.75; }
+}
+@keyframes offer-cf-twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.25; transform: scale(0.5); } }
+@keyframes offer-dash-move { to { stroke-dashoffset: -20; } }
+
+.offer-badge-wrap {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 26px 40px 30px 26px;
+  transform-origin: 20% 60%;
+}
+.offer-confetti { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.offer-confetti .cf { transform-box: fill-box; transform-origin: center; animation: offer-cf-float 4s ease-in-out infinite; }
+.offer-confetti .cf-2, .offer-confetti .cf-4 { animation-delay: -1.3s; }
+.offer-confetti .cf-3, .offer-confetti .cf-5 { animation-delay: -2.4s; animation-duration: 5s; }
+.offer-confetti .cf-6, .offer-confetti .cf-7, .offer-confetti .cf-8, .offer-confetti .cf-9,
+.offer-confetti .cf-10, .offer-confetti .cf-11 { animation-name: offer-cf-twinkle; animation-duration: 2.2s; }
+.offer-confetti .cf-7 { animation-delay: -0.7s; }
+.offer-confetti .cf-8 { animation-delay: -1.4s; }
+.offer-confetti .cf-9 { animation-delay: -0.3s; }
+.offer-confetti .cf-10 { animation-delay: -1s; }
+.offer-confetti .cf-11 { animation-delay: -1.8s; }
+.offer-confetti .cf-dash { animation: offer-dash-move 1.4s linear infinite; }
+
+.offer-badge {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  padding: 12px 38px 14px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #ff5a4d 0%, #e5171f 55%, #c4101a 100%);
+  border: 3px solid #151015;
+  box-shadow:
+    0 6px 0 #151015,
+    0 14px 30px -6px rgba(255, 40, 60, 0.65),
+    inset 0 3px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -5px 0 rgba(120, 5, 15, 0.35);
+  transform: rotate(-7deg);
+  animation: offer-badge-bob 4.6s ease-in-out infinite;
+}
+.offer-badge-shine {
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 36%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-20deg);
+  animation: offer-badge-shine 3.6s ease-in-out infinite;
+}
+.offer-badge-text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: var(--font-script), "Brush Script MT", cursive;
+  color: #fff;
+  line-height: 0.92;
+  transform: skewX(-4deg);
+  text-shadow:
+    2px 2px 0 #7a0a12,
+    3px 3px 0 #7a0a12,
+    4px 4px 0 #4a060c,
+    5px 5px 0 #151015,
+    0 8px 16px rgba(60, 0, 8, 0.45);
+  -webkit-text-stroke: 1.2px #151015;
+  paint-order: stroke fill;
+}
+.offer-badge-l1 { font-size: clamp(30px, 4.4vw, 46px); }
+.offer-badge-l2 { margin-left: 22px; font-size: clamp(38px, 5.6vw, 58px); }
+.offer-badge-tag {
+  position: relative;
+  z-index: 2;
+  margin: -6px 0 0 70px;
+  padding: 5px 16px;
+  border-radius: 9999px;
+  border: 2px solid #151015;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #2a1400;
+  background: linear-gradient(180deg, #ffe066, #ffb800);
+  box-shadow: 0 3px 0 #151015;
+  transform: rotate(-7deg);
+  white-space: nowrap;
+}
+
+@media (max-width: 420px) {
+  .offer-badge-wrap { padding: 22px 26px 26px 18px; }
+  .offer-badge { padding: 10px 26px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .offer-badge { transform: rotate(-7deg); }
+}

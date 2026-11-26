@@ -40,6 +40,13 @@ const playfair = localFont({
   display: "swap",
 });
 
+// Bold script used by the "Special Offer" badge on the home page.
+const lobster = localFont({
+  src: [{ path: "./fonts/lobster-latin-400-normal.woff2", weight: "400", style: "normal" }],
+  variable: "--font-script",
+  display: "swap",
+});
+
 export async function generateMetadata(): Promise<Metadata> {
   const { seo } = await getSettingsOnce();
   return {
@@ -97,7 +104,7 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${poppins.variable} ${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${poppins.variable} ${inter.variable} ${playfair.variable} ${lobster.variable}`}>
       <head>
         <script
           type="application/ld+json"

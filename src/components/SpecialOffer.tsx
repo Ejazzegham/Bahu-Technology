@@ -105,6 +105,42 @@ function Countdown({ endsAt, now }: { endsAt: number; now: number }) {
 }
 
 
+/** Diagonal red "sticker" badge with confetti, in the style of a sale tag. */
+function OfferBadge({ text, save }: { text: string; save: string }) {
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  const last = words.length > 1 ? words.pop()! : "";
+  const first = words.join(" ");
+  return (
+    <div className="offer-badge-wrap" aria-label={text}>
+      {/* confetti */}
+      <svg aria-hidden className="offer-confetti" viewBox="0 0 330 150">
+        <path className="cf cf-1" d="M12 40 L34 22 L38 52 Z" fill="#ffc21a" />
+        <path className="cf cf-2" d="M292 18 L318 30 L298 50 Z" fill="#ffc21a" />
+        <path className="cf cf-3" d="M300 108 L324 118 L302 132 Z" fill="#ff3b3b" />
+        <path className="cf cf-4" d="M22 112 L44 120 L26 136 Z" fill="#ff3b3b" />
+        <path className="cf cf-5" d="M262 6 L276 14 L264 24 Z" fill="#ff5ec4" />
+        <circle className="cf cf-6" cx="58" cy="10" r="4.5" fill="none" stroke="#ff6a6a" strokeWidth="2" />
+        <circle className="cf cf-7" cx="318" cy="70" r="4" fill="none" stroke="#ffc21a" strokeWidth="2" />
+        <circle className="cf cf-8" cx="8" cy="80" r="3.5" fill="#ffc21a" />
+        <circle className="cf cf-9" cx="236" cy="142" r="4" fill="#ff6a6a" />
+        <path className="cf cf-10" d="M96 142 v10 M91 147 h10" stroke="#ffc21a" strokeWidth="2.4" strokeLinecap="round" />
+        <path className="cf cf-11" d="M180 4 v10 M175 9 h10" stroke="#ff6a6a" strokeWidth="2.4" strokeLinecap="round" />
+        <path className="cf-dash" d="M20 96 C 6 60 24 20 70 16" fill="none" stroke="#ff7a7a" strokeWidth="1.6" strokeDasharray="4 6" strokeLinecap="round" />
+        <path className="cf-dash" d="M312 52 C 326 84 310 118 270 134" fill="none" stroke="#ff7a7a" strokeWidth="1.6" strokeDasharray="4 6" strokeLinecap="round" />
+      </svg>
+
+      <div className="offer-badge">
+        <span className="offer-badge-shine" aria-hidden />
+        <span className="offer-badge-text">
+          {first && <span className="offer-badge-l1">{first}</span>}
+          <span className="offer-badge-l2">{last || (first ? "" : "Offer")}</span>
+        </span>
+      </div>
+      <span className="offer-badge-tag">{save}</span>
+    </div>
+  );
+}
+
 /** 28-point scalloped starburst outline for the badge. */
 const BURST = (() => {
   const pts: string[] = [];
@@ -317,10 +353,12 @@ export default function SpecialOffer() {
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-10 lg:py-24">
         {/* ---- left: pitch ---- */}
         <div>
-          <span className="offer-rise offer-pill" style={{ ["--i" as string]: 0 }}>
-            <span className="offer-pill-dot" />
-            {offer.badge || "Special Offer"}
-          </span>
+          <div className="offer-rise" style={{ ["--i" as string]: 0 }}>
+            <OfferBadge
+              text={offer.badge || "Special Offer"}
+              save={`Save ${discountLabel(offer)} today`}
+            />
+          </div>
 
           <h2 className="offer-rise offer-title" style={{ ["--i" as string]: 1 }}>
             {titleHead}
