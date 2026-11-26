@@ -2020,3 +2020,16 @@ main h2 { position: relative; }
    hero above and the dark Special Offer section below on the home page). */
 .odfd-wrap { background: #ffffff; padding: 28px 0; }
 @media (min-width: 1024px) { .odfd-wrap { padding: 44px 0; } }
+
+/* ---------- Animated clock emblem (replaces the bolt orb) ---------- */
+@keyframes odfd-hand { to { transform: rotate(360deg); } }
+@keyframes odfd-clock-glow {
+  0%, 100% { filter: drop-shadow(0 0 14px rgba(20, 119, 245, 0.7)); }
+  50% { filter: drop-shadow(0 0 26px rgba(255, 214, 90, 0.65)); }
+}
+.odfd-clock { position: relative; width: 92px; height: 92px; animation: odfd-clock-glow 3.2s ease-in-out infinite; }
+@media (min-width: 1024px) { .odfd-clock { width: 108px; height: 108px; } }
+.odfd-hand { transform-box: view-box; transform-origin: 50% 50%; }
+.odfd-hand-hour { animation: odfd-hand 48s linear infinite; }
+.odfd-hand-min { animation: odfd-hand 8s linear infinite; }
+.odfd-hand-sec { animation: odfd-hand 2.4s linear infinite; }

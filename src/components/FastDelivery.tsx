@@ -87,9 +87,36 @@ export default function FastDelivery({ variant = "home" }: { variant?: Variant }
             <span className="odfd-ring odfd-ring-a" />
             <span className="odfd-ring odfd-ring-b" />
             <span className="odfd-pulse" />
-            <span className="odfd-core">
-              <Bolt className="odfd-bolt" />
-            </span>
+            <svg className="odfd-clock" viewBox="0 0 100 100">
+              <defs>
+                <radialGradient id={`odfd-face-${variant}`} cx="30%" cy="25%" r="85%">
+                  <stop offset="0%" stopColor="#2f56e0" />
+                  <stop offset="100%" stopColor="#0a1a55" />
+                </radialGradient>
+              </defs>
+              <circle cx="50" cy="50" r="46" fill={`url(#odfd-face-${variant})`} stroke="#8ab8ff" strokeOpacity="0.6" strokeWidth="2" />
+              {Array.from({ length: 12 }).map((_, i) => (
+                <line
+                  key={i}
+                  x1="50" y1="9" x2="50" y2={i % 3 === 0 ? 17 : 13}
+                  stroke={i % 3 === 0 ? "#ffd65a" : "#bcd4ff"}
+                  strokeWidth={i % 3 === 0 ? 3 : 1.6}
+                  strokeLinecap="round"
+                  transform={`rotate(${i * 30} 50 50)`}
+                />
+              ))}
+              <g className="odfd-hand odfd-hand-hour">
+                <line x1="50" y1="54" x2="50" y2="29" stroke="#ffffff" strokeWidth="4.2" strokeLinecap="round" />
+              </g>
+              <g className="odfd-hand odfd-hand-min">
+                <line x1="50" y1="56" x2="50" y2="19" stroke="#dbe8ff" strokeWidth="3" strokeLinecap="round" />
+              </g>
+              <g className="odfd-hand odfd-hand-sec">
+                <line x1="50" y1="62" x2="50" y2="14" stroke="#ffd65a" strokeWidth="1.8" strokeLinecap="round" />
+              </g>
+              <circle cx="50" cy="50" r="4.5" fill="#ffd65a" />
+              <circle cx="50" cy="50" r="1.8" fill="#0a1a55" />
+            </svg>
           </div>
 
           <div className="odfd-body">
