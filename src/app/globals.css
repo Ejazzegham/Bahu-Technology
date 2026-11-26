@@ -1779,7 +1779,12 @@ main h2 { position: relative; }
   paint-order: stroke fill;
 }
 .offer-badge-l1 { font-size: clamp(30px, 4.4vw, 46px); }
-.offer-badge-l2 { margin-left: 22px; font-size: clamp(38px, 5.6vw, 58px); }
+.offer-badge-l2 { margin-left: 22px; font-size: clamp(36px, 5.4vw, 56px); }
+/* big first letter, small rest — for every word */
+.ob-word { display: inline-flex; align-items: baseline; margin-right: 0.18em; }
+.ob-word:last-child { margin-right: 0; }
+.ob-cap { font-size: 1.62em; line-height: 0.8; margin-right: 0.02em; }
+.ob-rest { font-size: 0.82em; letter-spacing: 0.01em; }
 .offer-badge-tag {
   position: relative;
   z-index: 2;

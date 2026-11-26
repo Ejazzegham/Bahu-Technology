@@ -105,6 +105,20 @@ function Countdown({ endsAt, now }: { endsAt: number; now: number }) {
 }
 
 
+/** "Special" -> big S + small "pecial": every word gets a large first letter. */
+function CapWords({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/\s+/).filter(Boolean).map((w, i) => (
+        <span key={i} className="ob-word">
+          <span className="ob-cap">{w.charAt(0).toUpperCase()}</span>
+          <span className="ob-rest">{w.slice(1).toLowerCase()}</span>
+        </span>
+      ))}
+    </>
+  );
+}
+
 /** Diagonal red "sticker" badge with confetti, in the style of a sale tag. */
 function OfferBadge({ text, save }: { text: string; save: string }) {
   const words = text.trim().split(/\s+/).filter(Boolean);
@@ -132,8 +146,14 @@ function OfferBadge({ text, save }: { text: string; save: string }) {
       <div className="offer-badge">
         <span className="offer-badge-shine" aria-hidden />
         <span className="offer-badge-text">
-          {first && <span className="offer-badge-l1">{first}</span>}
-          <span className="offer-badge-l2">{last || (first ? "" : "Offer")}</span>
+          {first && (
+            <span className="offer-badge-l1">
+              <CapWords text={first} />
+            </span>
+          )}
+          <span className="offer-badge-l2">
+            <CapWords text={last || (first ? "" : "Offer")} />
+          </span>
         </span>
       </div>
       <span className="offer-badge-tag">{save}</span>
