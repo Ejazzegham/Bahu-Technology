@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TechMarquee from "@/components/TechMarquee";
+import SpecialOffer from "@/components/SpecialOffer";
 import Categories from "@/components/Categories";
 import StatsCounter from "@/components/StatsCounter";
 import WhyChoose from "@/components/WhyChoose";
@@ -34,6 +35,7 @@ export default function Home() {
       <main>
         <Hero />
         <TechMarquee />
+        <SpecialOffer />
         <Categories />
         <ServicePicker />
         <StatsCounter />

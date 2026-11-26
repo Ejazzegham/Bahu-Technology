@@ -25,6 +25,7 @@ const ICONS = {
   portfolio: <path d="M3 7h18v13H3zM8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" />,
   services: <path d="M12 8a4 4 0 100 8 4 4 0 000-8zM12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />,
   pricing: <path d="M20.6 12.3L12.7 20.2a2 2 0 01-2.8 0L3 13.3V4h9.3l8.3 8.3a2 2 0 010 2.8zM7 8h.01" />,
+  offers: <path d="M20.6 12.3L12.7 20.2a2 2 0 01-2.8 0L3 13.3V4h9.3l8.3 8.3a2 2 0 010 2.8zM8.5 8.5l7 7M8.5 8.8h.01M15.5 15.2h.01" />,
   testimonials: <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" />,
   reviews: <path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.5 9.4l6.6-.9L12 2.5z" />,
   team: (
@@ -88,6 +89,7 @@ const NAV: Item[] = [
   },
   { label: "Services", icon: ICONS.services, href: "/admin/services" },
   { label: "Pricing Packages", icon: ICONS.pricing, href: "/admin/pricing" },
+  { label: "Special Offers", icon: ICONS.offers, href: "/admin/offers" },
   { label: "Testimonials", icon: ICONS.testimonials, href: "/admin/testimonials" },
   { label: "Reviews", icon: ICONS.reviews, href: "/admin/reviews" },
   { label: "Team Members", icon: ICONS.team, href: "/admin/team" },

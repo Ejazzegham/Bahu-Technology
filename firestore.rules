@@ -66,6 +66,13 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    // Home-page special offers. Visitors can only read offers that are
+    // switched on; the app's public query always filters on active == true.
+    match /offers/{id} {
+      allow get, list: if isAdmin() || resource.data.active == true;
+      allow write: if isAdmin();
+    }
+
     match /reviews/{id} {
       allow read: if true;
       // Reviews are added from the admin dashboard only (there's no public
