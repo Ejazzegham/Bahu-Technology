@@ -17,6 +17,18 @@ import { deleteFile, uploadFiles, type UploadItem } from "@/lib/storage";
 
 export type ProjectCategory = "graphic" | "web" | "mobile" | "desktop";
 
+export type CaseStudyMetric = { label: string; value: string };
+
+/** Optional "results" story shown on the project page and the portfolio Results section. */
+export type CaseStudy = {
+  challenge?: string;
+  solution?: string;
+  result?: string;
+  beforeImage?: string;
+  afterImage?: string;
+  metrics: CaseStudyMetric[];
+};
+
 export type Project = {
   id: string;
   title: string;
@@ -29,6 +41,11 @@ export type Project = {
   images?: string[];
   status?: "Completed" | "In Progress";
   featured?: boolean;
+  /** Direct video file (.mp4/.webm) plays on hover; a YouTube/Vimeo link opens in the preview window. */
+  videoUrl?: string;
+  /** Live site shown in the preview window (falls back to `link` if empty). */
+  demoUrl?: string;
+  caseStudy?: CaseStudy;
   createdAt?: number;
   /** Shared, site-wide counts — anyone can like/favorite, no sign-in required. */
   likeCount?: number;
@@ -55,6 +72,44 @@ function randomColor(): string {
   return COLORS[Math.floor(Math.random() * COLORS.length)];
 }
 
+/** "+212% | Organic traffic" per line → metrics. Used by the admin form. */
+export function parseMetrics(text: string): CaseStudyMetric[] {
+  return text
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean)
+    .map((l) => {
+      const [value, ...rest] = l.split("|");
+      return { value: (value ?? "").trim(), label: rest.join("|").trim() };
+    })
+    .filter((m) => m.value && m.label)
+    .slice(0, 6);
+}
+
+export function metricsToText(metrics: CaseStudyMetric[] = []): string {
+  return metrics.map((m) => `${m.value} | ${m.label}`).join("\n");
+}
+
+function parseCaseStudy(raw: unknown): CaseStudy | undefined {
+  if (!raw || typeof raw !== "object") return undefined;
+  const r = raw as Record<string, unknown>;
+  const metrics = Array.isArray(r.metrics)
+    ? (r.metrics as Record<string, unknown>[])
+        .map((m) => ({ label: String(m?.label ?? ""), value: String(m?.value ?? "") }))
+        .filter((m) => m.label && m.value)
+    : [];
+  const cs: CaseStudy = {
+    challenge: (r.challenge as string) || undefined,
+    solution: (r.solution as string) || undefined,
+    result: (r.result as string) || undefined,
+    beforeImage: (r.beforeImage as string) || undefined,
+    afterImage: (r.afterImage as string) || undefined,
+    metrics,
+  };
+  const empty = !cs.challenge && !cs.solution && !cs.result && !cs.beforeImage && !cs.afterImage && metrics.length === 0;
+  return empty ? undefined : cs;
+}
+
 function docToProject(id: string, data: Record<string, unknown>): Project {
   return {
     id,
@@ -68,6 +123,9 @@ function docToProject(id: string, data: Record<string, unknown>): Project {
     images: (data.images as string[] | undefined) ?? [],
     status: (data.status as "Completed" | "In Progress" | undefined) ?? "Completed",
     featured: Boolean(data.featured),
+    videoUrl: (data.videoUrl as string) || undefined,
+    demoUrl: (data.demoUrl as string) || undefined,
+    caseStudy: parseCaseStudy(data.caseStudy),
     createdAt: (data.createdAt as { toMillis?: () => number } | undefined)?.toMillis?.() ?? Date.now(),
     likeCount: (data.likeCount as number | undefined) ?? 0,
     favoriteCount: (data.favoriteCount as number | undefined) ?? 0,
@@ -130,6 +188,9 @@ export type NewProjectInput = {
   description?: string;
   status?: "Completed" | "In Progress";
   featured?: boolean;
+  videoUrl?: string;
+  demoUrl?: string;
+  caseStudy?: CaseStudy | null;
   /** Each image tagged with a stable key so the caller can match failures back to its own state. */
   images: UploadItem[];
 };
@@ -170,6 +231,9 @@ export async function createProject(
     description: input.description ?? "",
     status: input.status ?? "Completed",
     featured: Boolean(input.featured),
+    videoUrl: input.videoUrl ?? "",
+    demoUrl: input.demoUrl ?? "",
+    caseStudy: input.caseStudy ?? null,
     color: randomColor(),
     images: [],
     createdAt: serverTimestamp(),

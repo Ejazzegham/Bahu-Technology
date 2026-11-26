@@ -2,6 +2,9 @@ import Navbar from "@/components/Navbar";
 import PortfolioHero from "@/components/PortfolioHero";
 import PortfolioFeatured from "@/components/PortfolioFeatured";
 import PortfolioGrid from "@/components/PortfolioGrid";
+import PortfolioResults from "@/components/PortfolioResults";
+import ClientLogoWall from "@/components/ClientLogoWall";
+import ProjectEstimator from "@/components/ProjectEstimator";
 import PortfolioStatsCta from "@/components/PortfolioStatsCta";
 import PortfolioProcess from "@/components/PortfolioProcess";
 import PortfolioFaq from "@/components/PortfolioFaq";
@@ -30,6 +33,9 @@ export default async function PortfolioPage() {
         <FastDelivery variant="portfolio" />
         <PortfolioFeatured projects={projects} />
         <PortfolioGrid projects={projects} />
+        <PortfolioResults projects={projects} />
+        <ClientLogoWall />
+        <ProjectEstimator />
         <PortfolioProcess />
         <Testimonials />
         <PortfolioFaq />

@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProjectGallery from "@/components/ProjectGallery";
 import ProjectReactions from "@/components/ProjectReactions";
+import ProjectPreviewButtons from "@/components/ProjectPreviewButtons";
+import CaseStudyBlock from "@/components/CaseStudyBlock";
 import { CATEGORY_LABELS, getProjectById } from "@/lib/projects";
 
 export async function generateMetadata({
@@ -76,16 +78,19 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
                 {project.technologies && <span>Tech: {project.technologies}</span>}
                 <span>Status: {project.status ?? "Completed"}</span>
               </div>
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary mt-5"
-                >
-                  Visit Live Site <span aria-hidden>↗</span>
-                </a>
-              )}
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary mt-5"
+                  >
+                    Visit Live Site <span aria-hidden>↗</span>
+                  </a>
+                )}
+                <ProjectPreviewButtons project={project} />
+              </div>
             </div>
           </div>
         </section>
@@ -113,6 +118,8 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
               <p className="text-sm text-muted">No images uploaded for this project yet.</p>
             )}
           </div>
+
+          {project.caseStudy && <CaseStudyBlock cs={project.caseStudy} title={project.title} />}
         </section>
       </main>
       <Footer />

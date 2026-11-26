@@ -3,6 +3,8 @@ import ContactHero from "@/components/ContactHero";
 import ContactQuickActions from "@/components/ContactQuickActions";
 import ContactNextSteps from "@/components/ContactNextSteps";
 import ContactHeroForm from "@/components/ContactHeroForm";
+import BookCall from "@/components/BookCall";
+import ProjectBriefForm from "@/components/ProjectBriefForm";
 import ContactTopics from "@/components/ContactTopics";
 import ContactPerks from "@/components/ContactPerks";
 import ContactWhyReach from "@/components/ContactWhyReach";
@@ -26,6 +28,8 @@ export default function ContactPage() {
         <ContactHero />
         <ContactTopics />
         <ContactQuickActions />
+        <BookCall />
+        <ProjectBriefForm />
         <ContactHeroForm />
         <ContactNextSteps />
         <ContactPerks />

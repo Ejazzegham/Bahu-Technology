@@ -16,6 +16,39 @@ with a fully functional Firebase-backed admin dashboard.
 - `/account` — Customer sign in/up + order history (separate from admin login)
 - `/admin` — Admin dashboard (Firebase Auth-protected, admin-email allowlist only)
 
+## Portfolio & Contact upgrades
+
+### Portfolio (`/portfolio`, `/portfolio/[id]`)
+- **Client logo wall + rating summary** — `ClientLogoWall`. Logos come from Admin → Clients (new optional logo + website
+  fields); clients without a logo show as text. The average rating and 5-to-1 star breakdown are computed live from
+  Admin → Reviews. Hidden until there is data.
+- **Video / live-demo previews on cards** — `ProjectCard` + `ProjectPreviewModal`. In Admin → Portfolio → Details, set
+  *Video URL* (YouTube, Vimeo or a direct .mp4/.webm — a direct file also plays muted on card hover) and *Live demo URL*
+  (falls back to *Project Link*). Some sites refuse to be embedded in an iframe; the modal always offers "Open in a new tab".
+- **Project budget & timeline estimator** — `ProjectEstimator`. **The prices in `src/lib/estimator.ts` are placeholders —
+  put in your real rates.** "Get an exact quote" opens the Contact page with the project brief pre-filled.
+- **Case studies** — Admin → Portfolio → Details → *Case study*: metrics (`+212% | Organic traffic`, one per line),
+  challenge / solution / result, and before & after image URLs. Shows animated metrics + a drag-to-compare slider on the
+  project page, and a "Results" strip on `/portfolio` for projects that have one.
+
+### Contact (`/contact`)
+- **Book a call** — `BookCall` + `/api/bookings`. Working hours, slot length, days ahead etc. live in `src/lib/booking.ts`
+  (defaults: Mon–Sat, 11:00–19:00 PKT, 30 min, 14 days ahead, 4 h notice). Visitors see times in their own time zone.
+  Each slot is one Firestore document (`bookings/{slot}`) created atomically, so a slot can never be double-booked.
+- **Multi-step project brief with file upload** — `ProjectBriefForm`, `/api/brief`, `/api/brief/presign`. Files (max 5,
+  15 MB each, whitelisted types) go straight from the browser to R2 under `briefs/`; the brief is stored in the `briefs`
+  collection.
+- Both also create an entry in **Admin → Messages** (subject starts with 📞 or 📋) and email `CONTACT_TO_EMAIL` using the
+  existing `EMAIL_USER` / `EMAIL_APP_PASSWORD`. No new environment variables are needed.
+
+**Notes**
+- The new API routes use Firebase Admin, so `FIREBASE_ADMIN_*` must be set in production (the like/favorite feature
+  already needs this). `bookings` and `briefs` are closed to browsers by the default-deny rule in `firestore.rules` — no
+  rules change is required.
+- The R2 bucket's CORS policy must allow `PUT` from your site's origin (already needed for admin uploads).
+- The rate limiter in `src/lib/rate-limit.ts` is in-memory (per server instance). Fine to start; use a shared store if you
+  get hit by spam.
+
 ## Run it locally
 
 ```bash

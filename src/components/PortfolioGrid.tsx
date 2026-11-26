@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { CATEGORY_LABELS, type Project, type ProjectCategory } from "@/lib/projects";
-import ProjectReactions from "@/components/ProjectReactions";
+import type { Project, ProjectCategory } from "@/lib/projects";
+import ProjectCard from "@/components/ProjectCard";
+import ProjectPreviewModal, { type PreviewTab } from "@/components/ProjectPreviewModal";
 import Dropdown from "@/components/ui/Dropdown";
 
 type SortKey = "newest" | "oldest" | "liked" | "az";
@@ -43,6 +42,7 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
   const [sort, setSort] = useState<SortKey>("newest");
   const [tech, setTech] = useState<string | null>(null);
   const [view, setView] = useState<"grid" | "list">("grid");
+  const [preview, setPreview] = useState<{ project: Project; tab: PreviewTab } | null>(null);
 
   // Project count per category, shown on the filter chips.
   const counts = useMemo(() => {
@@ -218,73 +218,14 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
       </div>
 
       <div className={`mt-6 grid gap-8 ${view === "grid" ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" : "grid-cols-1 lg:grid-cols-2"}`}>
-        {paged.map((project) => {
-          return (
-            <Link
-              key={project.id}
-              href={`/portfolio/${project.id}`}
-              className="portfolio-card group block"
-            >
-              <div className="portfolio-card-inner border border-line">
-                {project.images && project.images.length > 0 ? (
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={project.images[0]}
-                      alt={`${project.title} — ${CATEGORY_LABELS[project.category]} project by Bahu Technology`}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      quality={70}
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    {project.featured && (
-                      <span className="absolute left-2 top-2 rounded-full bg-gradient-to-r from-sky-500 to-violet-500 px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-white">
-                        FEATURED
-                      </span>
-                    )}
-                    {project.images.length > 1 && (
-                      <span className="absolute bottom-2 right-2 rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-medium text-white">
-                        {project.images.length} photos
-                      </span>
-                    )}
-                  </div>
-                ) : (
-                  <div
-                    className={`flex aspect-[4/3] items-center justify-center bg-gradient-to-br ${project.color}`}
-                  >
-                    <span className="font-display text-sm font-medium tracking-wide text-white/25">
-                      {CATEGORY_LABELS[project.category]}
-                    </span>
-                  </div>
-                )}
-                <div className="flex items-center justify-between px-5 py-4">
-                  <div>
-                    <h3 className="font-display text-sm font-semibold text-gold">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs text-muted">
-                      {CATEGORY_LABELS[project.category]}
-                      {project.status === "In Progress" && <span className="ml-2 font-semibold text-amber-600">· In progress</span>}
-                    </p>
-                    {view === "list" && project.description && (
-                      <p className="mt-2 line-clamp-2 text-xs text-muted">{project.description}</p>
-                    )}
-                  </div>
-                  <span aria-hidden className="text-gold transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </div>
-                <div className="px-5 pb-4">
-                  <ProjectReactions
-                    projectId={project.id}
-                    initialLikes={project.likeCount}
-                    initialFavorites={project.favoriteCount}
-                    size="sm"
-                  />
-                </div>
-              </div>
-            </Link>
-          );
-        })}
+        {paged.map((project) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            view={view}
+            onPreview={(p, tab) => setPreview({ project: p, tab })}
+          />
+        ))}
       </div>
 
       {visible.length === 0 && (
@@ -340,6 +281,9 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
             →
           </button>
         </nav>
+      )}
+      {preview && (
+        <ProjectPreviewModal project={preview.project} initialTab={preview.tab} onClose={() => setPreview(null)} />
       )}
     </div>
   );

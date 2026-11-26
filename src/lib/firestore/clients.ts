@@ -11,7 +11,14 @@ import {
 } from "firebase/firestore";
 import { getDb, isFirebaseConfigured } from "@/lib/firebase";
 
-export type Client = { id: string; name: string; createdAt: number };
+export type Client = {
+  id: string;
+  name: string;
+  /** Optional logo image (uploaded from Admin → Clients). Without one the wall shows the name as text. */
+  logoUrl?: string;
+  website?: string;
+  createdAt: number;
+};
 
 export function subscribeClients(cb: (clients: Client[]) => void): Unsubscribe | null {
   if (!isFirebaseConfigured) {
@@ -28,6 +35,8 @@ export function subscribeClients(cb: (clients: Client[]) => void): Unsubscribe |
           return {
             id: d.id,
             name: (data.name as string) ?? "",
+            logoUrl: (data.logoUrl as string) || undefined,
+            website: (data.website as string) || undefined,
             createdAt: (data.createdAt as { toMillis?: () => number } | undefined)?.toMillis?.() ?? Date.now(),
           };
         })
@@ -36,9 +45,14 @@ export function subscribeClients(cb: (clients: Client[]) => void): Unsubscribe |
   );
 }
 
-export async function addClient(name: string): Promise<void> {
+export async function addClient(name: string, logoUrl?: string, website?: string): Promise<void> {
   if (!isFirebaseConfigured) throw new Error("Firebase is not configured.");
-  await addDoc(collection(getDb(), "clients"), { name, createdAt: serverTimestamp() });
+  await addDoc(collection(getDb(), "clients"), {
+    name,
+    ...(logoUrl ? { logoUrl } : {}),
+    ...(website ? { website } : {}),
+    createdAt: serverTimestamp(),
+  });
 }
 
 export async function deleteClient(id: string): Promise<void> {

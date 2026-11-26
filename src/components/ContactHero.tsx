@@ -47,6 +47,15 @@ export default function ContactHero() {
             can help bring your vision to life.
           </p>
 
+          <div className="mx-auto mt-7 flex flex-wrap items-center justify-center gap-3 lg:mx-0 lg:justify-start">
+            <a href="#book-a-call" className="btn-primary">
+              Book a call <span aria-hidden>→</span>
+            </a>
+            <a href="#project-brief" className="btn-outline">
+              Send a project brief
+            </a>
+          </div>
+
           <ul className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-x-8 gap-y-3 lg:mx-0 lg:justify-start">
             {CHECKLIST.map((item) => (
               <li key={item} className="flex items-center gap-2 text-sm text-white/90">

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { OrderedImage, Project, ProjectCategory } from "@/lib/projects";
-import { CATEGORY_LABELS, createProject, deleteProject, updateProject } from "@/lib/projects";
+import { CATEGORY_LABELS, createProject, deleteProject, metricsToText, parseMetrics, updateProject } from "@/lib/projects";
 import { addTag, deleteTag, subscribeTechnologies, type Tag } from "@/lib/firestore/taxonomy";
 import Dropdown from "@/components/ui/Dropdown";
 
@@ -118,6 +118,15 @@ type FormState = {
   description: string;
   status: "Completed" | "In Progress";
   featured: boolean;
+  videoUrl: string;
+  demoUrl: string;
+  csChallenge: string;
+  csSolution: string;
+  csResult: string;
+  csBefore: string;
+  csAfter: string;
+  /** One metric per line, "value | label" — e.g. "+212% | Organic traffic". */
+  csMetrics: string;
 };
 
 const EMPTY_FORM: FormState = {
@@ -129,7 +138,36 @@ const EMPTY_FORM: FormState = {
   description: "",
   status: "Completed",
   featured: false,
+  videoUrl: "",
+  demoUrl: "",
+  csChallenge: "",
+  csSolution: "",
+  csResult: "",
+  csBefore: "",
+  csAfter: "",
+  csMetrics: "",
 };
+
+/** Turns the flat form into what projects.ts stores (case study fields folded into one object). */
+function toProjectFields(f: FormState) {
+  const { csChallenge, csSolution, csResult, csBefore, csAfter, csMetrics, ...rest } = f;
+  const metrics = parseMetrics(csMetrics);
+  const hasCaseStudy = csChallenge.trim() || csSolution.trim() || csResult.trim() || csBefore.trim() || csAfter.trim() || metrics.length > 0;
+  return {
+    ...rest,
+    caseStudy: hasCaseStudy
+      ? {
+          challenge: csChallenge.trim(),
+          solution: csSolution.trim(),
+          result: csResult.trim(),
+          // The slider needs both images, so only keep them as a pair.
+          beforeImage: csBefore.trim() && csAfter.trim() ? csBefore.trim() : "",
+          afterImage: csBefore.trim() && csAfter.trim() ? csAfter.trim() : "",
+          metrics,
+        }
+      : null,
+  };
+}
 
 type ImageItem =
   | { key: string; kind: "existing"; url: string }
@@ -171,6 +209,14 @@ function AddPortfolioWizard({
         description: editingProject.description ?? "",
         status: editingProject.status ?? "Completed",
         featured: Boolean(editingProject.featured),
+        videoUrl: editingProject.videoUrl ?? "",
+        demoUrl: editingProject.demoUrl ?? "",
+        csChallenge: editingProject.caseStudy?.challenge ?? "",
+        csSolution: editingProject.caseStudy?.solution ?? "",
+        csResult: editingProject.caseStudy?.result ?? "",
+        csBefore: editingProject.caseStudy?.beforeImage ?? "",
+        csAfter: editingProject.caseStudy?.afterImage ?? "",
+        csMetrics: metricsToText(editingProject.caseStudy?.metrics),
       });
       setStep(1);
       setSuccess(false);
@@ -257,14 +303,14 @@ function AddPortfolioWizard({
             ? { type: "existing", url: item.url, key: item.key }
             : { type: "new", file: item.file, key: item.key }
         );
-        const res = await updateProject(targetId, { ...form, orderedImages, removedImages }, onProgress);
+        const res = await updateProject(targetId, { ...toProjectFields(form), orderedImages, removedImages }, onProgress);
         urlByKey = res.urlByKey;
         failedKeys = res.failedKeys;
       } else {
         const newItems = imageItems
           .filter((i): i is Extract<ImageItem, { kind: "new" }> => i.kind === "new")
           .map((i) => ({ key: i.key, file: i.file }));
-        const res = await createProject({ ...form, images: newItems }, onProgress);
+        const res = await createProject({ ...toProjectFields(form), images: newItems }, onProgress);
         setCreatedProjectId(res.id);
         urlByKey = res.urlByKey;
         failedKeys = res.failedKeys;
@@ -532,6 +578,73 @@ function AddPortfolioWizard({
                 />
                 Feature this project on the homepage
               </label>
+            </div>
+
+            <div className="space-y-5 border-t border-line pt-5 sm:col-span-2">
+              <div>
+                <p className="font-display text-sm font-semibold text-ink">Preview (optional)</p>
+                <p className="mt-0.5 text-[11px] text-muted">Adds “Video” and “Live demo” buttons to the project card.</p>
+              </div>
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <Field label="Video URL">
+                  <input
+                    type="url"
+                    placeholder="YouTube / Vimeo link, or a direct .mp4 link"
+                    className={inputClass}
+                    value={form.videoUrl}
+                    onChange={(e) => update("videoUrl", e.target.value)}
+                  />
+                  <p className="mt-1 text-[11px] text-muted">A direct .mp4/.webm file also plays silently when someone hovers the card.</p>
+                </Field>
+                <Field label="Live demo URL">
+                  <input
+                    type="url"
+                    placeholder="https://demo.example.com (defaults to Project Link)"
+                    className={inputClass}
+                    value={form.demoUrl}
+                    onChange={(e) => update("demoUrl", e.target.value)}
+                  />
+                </Field>
+              </div>
+            </div>
+
+            <div className="space-y-5 border-t border-line pt-5 sm:col-span-2">
+              <div>
+                <p className="font-display text-sm font-semibold text-ink">Case study (optional)</p>
+                <p className="mt-0.5 text-[11px] text-muted">Fill in any of this to show a Results section on the project page.</p>
+              </div>
+              <Field label="Metrics — one per line as “value | label”">
+                <textarea
+                  rows={4}
+                  placeholder={"+212% | Organic traffic\n3.4x | Return on ad spend\n40% | Faster checkout"}
+                  className={inputClass}
+                  value={form.csMetrics}
+                  onChange={(e) => update("csMetrics", e.target.value)}
+                />
+              </Field>
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+                <Field label="The challenge">
+                  <textarea rows={4} className={inputClass} value={form.csChallenge} onChange={(e) => update("csChallenge", e.target.value)} />
+                </Field>
+                <Field label="Our solution">
+                  <textarea rows={4} className={inputClass} value={form.csSolution} onChange={(e) => update("csSolution", e.target.value)} />
+                </Field>
+                <Field label="The result">
+                  <textarea rows={4} className={inputClass} value={form.csResult} onChange={(e) => update("csResult", e.target.value)} />
+                </Field>
+              </div>
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <Field label="Before image URL">
+                  <input type="url" placeholder="https://…" className={inputClass} value={form.csBefore} onChange={(e) => update("csBefore", e.target.value)} />
+                </Field>
+                <Field label="After image URL">
+                  <input type="url" placeholder="https://…" className={inputClass} value={form.csAfter} onChange={(e) => update("csAfter", e.target.value)} />
+                </Field>
+              </div>
+              <p className="text-[11px] text-muted">
+                Both images are needed for the before/after slider. Tip: upload them with this project (Images step), save, then copy their
+                addresses from the live project page.
+              </p>
             </div>
           </div>
         )}
