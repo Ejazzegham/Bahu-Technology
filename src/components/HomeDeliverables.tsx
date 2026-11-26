@@ -68,7 +68,7 @@ export default function HomeDeliverables() {
         </h2>
       </div>
 
-      <div role="tablist" aria-label="Services" className="no-scrollbar mx-auto mt-10 flex max-w-3xl gap-2 overflow-x-auto rounded-full border border-line bg-bg-soft p-1.5">
+      <div role="tablist" aria-label="Services" className="no-scrollbar mx-auto mt-10 flex max-w-3xl gap-2 overflow-x-auto rounded-md border border-line bg-bg-soft p-1.5">
         {TABS.map((t) => {
           const on = t.id === active;
           return (
@@ -77,7 +77,7 @@ export default function HomeDeliverables() {
               role="tab"
               aria-selected={on}
               onClick={() => setActive(t.id)}
-              className={`flex shrink-0 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold transition-all ${
+              className={`flex shrink-0 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 py-2.5 text-sm font-semibold transition-all ${
                 on ? "bg-gold-gradient text-white shadow-gold" : "text-muted hover:text-ink"
               }`}
             >
@@ -104,7 +104,7 @@ export default function HomeDeliverables() {
         <ul className="space-y-3">
           {tab.items.map((item) => (
             <li key={item} className="flex items-center gap-3 rounded-xl border border-line bg-bg-soft px-4 py-3 text-sm font-medium text-ink">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-gold/15 text-gold">
                 <Check size={14} strokeWidth={2.6} />
               </span>
               {item}

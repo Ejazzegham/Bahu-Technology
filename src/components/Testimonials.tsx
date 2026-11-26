@@ -93,14 +93,14 @@ export default function Testimonials() {
                 <button
                   aria-label="Previous reviews"
                   onClick={() => setPage((p) => (p - 1 + totalPages) % totalPages)}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted hover:border-gold hover:text-gold"
+                  className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted hover:border-gold hover:text-gold"
                 >
                   ‹
                 </button>
                 <button
                   aria-label="Next reviews"
                   onClick={() => setPage((p) => (p + 1) % totalPages)}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted hover:border-gold hover:text-gold"
+                  className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted hover:border-gold hover:text-gold"
                 >
                   ›
                 </button>
@@ -129,7 +129,7 @@ export default function Testimonials() {
             <button
               aria-label="Previous reviews"
               onClick={() => setPage((p) => (p - 1 + totalPages) % totalPages)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted hover:border-gold hover:text-gold"
+              className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted hover:border-gold hover:text-gold"
             >
               ‹
             </button>
@@ -139,7 +139,7 @@ export default function Testimonials() {
             <button
               aria-label="Next reviews"
               onClick={() => setPage((p) => (p + 1) % totalPages)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted hover:border-gold hover:text-gold"
+              className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted hover:border-gold hover:text-gold"
             >
               ›
             </button>

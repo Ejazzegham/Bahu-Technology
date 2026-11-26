@@ -39,7 +39,7 @@ export default function PortfolioProcess() {
         {STEPS.map((s, i) => (
           <li key={s.title} className="rgb-box relative rounded-xl p-6" style={{ ["--box-fill" as string]: "#ffffff" }}>
             <span className="absolute right-5 top-4 font-display text-4xl font-bold text-gold/10">0{i + 1}</span>
-            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/40 text-gold">
+            <span className="flex h-11 w-11 items-center justify-center rounded-md border border-gold/40 text-gold">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 {s.icon}
               </svg>

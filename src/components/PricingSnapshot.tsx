@@ -100,7 +100,7 @@ export default function PricingSnapshot() {
                 role="tab"
                 aria-selected={on}
                 onClick={() => setGroupSlug(g.slug)}
-                className={`rounded-full border px-4 py-2 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 ${
+                className={`rounded-md border px-4 py-2 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 ${
                   on
                     ? "border-white bg-white text-indigo-700 shadow-lg shadow-black/20"
                     : "border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white/20"
@@ -145,7 +145,7 @@ export default function PricingSnapshot() {
                     {/* Badge sits OUTSIDE the clipped card so it can straddle the top edge, centred */}
                     {t.badge && (
                       <span
-                        className={`absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-gradient-to-r ${c.bar} px-4 py-1 text-[10px] font-bold tracking-[0.18em] text-white shadow-lg shadow-black/30 ring-2 ring-white`}
+                        className={`absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-gradient-to-r ${c.bar} px-4 py-1 text-[10px] font-bold tracking-[0.18em] text-white shadow-lg shadow-black/30 ring-2 ring-white`}
                       >
                         {t.badge}
                       </span>
@@ -163,7 +163,7 @@ export default function PricingSnapshot() {
                       <p className="mt-1 text-xs text-muted">{t.priceNote}</p>
 
                       {delivery(t) && (
-                        <p className={`mx-auto mt-3 rounded-full px-3 py-1 text-xs font-semibold ${c.soft}`}>{delivery(t)}</p>
+                        <p className={`mx-auto mt-3 rounded-md px-3 py-1 text-xs font-semibold ${c.soft}`}>{delivery(t)}</p>
                       )}
 
                       {extras.length > 0 && (
@@ -194,7 +194,7 @@ export default function PricingSnapshot() {
           {PERKS.map((p) => (
             <li
               key={p}
-              className="flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-medium text-white backdrop-blur"
+              className="flex items-center gap-2 rounded-md border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-medium text-white backdrop-blur"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
               {p}

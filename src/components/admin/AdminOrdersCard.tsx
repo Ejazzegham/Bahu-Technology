@@ -85,7 +85,7 @@ export default function AdminOrdersCard() {
                     options={STATUSES.map((s) => ({ value: s, label: s }))}
                     align="right"
                     minPanelWidth={160}
-                    className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold ${statusColor(o.status)}`}
+                    className={`rounded-md border px-2.5 py-1 text-[11px] font-semibold ${statusColor(o.status)}`}
                   />
                   <button
                     onClick={() => handleDelete(o)}

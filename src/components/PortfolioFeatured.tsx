@@ -67,7 +67,7 @@ function SpotlightCard({ project, large = false }: { project: Project; large?: b
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-5">
-          <span className="rounded-full bg-gradient-to-r from-sky-500 to-violet-500 px-3 py-1 text-[10px] font-bold tracking-wider text-white">
+          <span className="rounded-md bg-gradient-to-r from-sky-500 to-violet-500 px-3 py-1 text-[10px] font-bold tracking-wider text-white">
             {CATEGORY_LABELS[project.category].toUpperCase()}
           </span>
           <h3 className={`mt-3 font-display font-semibold text-white ${large ? "text-2xl" : "text-lg"}`}>{project.title}</h3>
@@ -75,7 +75,7 @@ function SpotlightCard({ project, large = false }: { project: Project; large?: b
           {techs.length > 0 && (
             <ul className="mt-3 flex flex-wrap gap-2">
               {techs.map((t) => (
-                <li key={t} className="rounded-full border border-white/30 bg-white/10 px-2.5 py-0.5 text-[10px] font-medium text-white backdrop-blur">
+                <li key={t} className="rounded-md border border-white/30 bg-white/10 px-2.5 py-0.5 text-[10px] font-medium text-white backdrop-blur">
                   {t}
                 </li>
               ))}

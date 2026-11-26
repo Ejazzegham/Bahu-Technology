@@ -25,7 +25,7 @@ function StepIndicator({ step }: { step: number }) {
           <div key={label} className="flex items-center gap-3">
             <div className="flex items-center gap-2">
               <span
-                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-xs font-semibold ${
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md border text-xs font-semibold ${
                   state === "active"
                     ? "border-gold text-gold"
                     : state === "done"
@@ -83,7 +83,7 @@ function TechChipPicker({
             key={tag.id}
             type="button"
             onClick={() => onToggle(tag.name)}
-            className={`rounded-full border px-2.5 py-1 text-[11px] transition-colors ${
+            className={`rounded-md border px-2.5 py-1 text-[11px] transition-colors ${
               isOn
                 ? "border-gold bg-gold/15 text-gold"
                 : "border-line text-muted hover:border-gold/60 hover:text-ink"
@@ -360,7 +360,7 @@ function AddPortfolioWizard({
         dragOver ? "border-gold bg-gold/5" : "border-line"
       }`}
     >
-      <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 text-gold">
+      <span className="flex h-12 w-12 items-center justify-center rounded-md border border-gold/40 text-gold">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
           <path d="M12 16V4M12 4l-4 4M12 4l4 4" strokeLinecap="round" strokeLinejoin="round" />
           <path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3" strokeLinecap="round" />
@@ -423,7 +423,7 @@ function AddPortfolioWizard({
                       type="button"
                       aria-label="Set as thumbnail"
                       onClick={() => makeThumbnail(item.key)}
-                      className="flex h-6 w-6 items-center justify-center rounded-full bg-black/70 text-white hover:text-gold"
+                      className="flex h-6 w-6 items-center justify-center rounded-md bg-black/70 text-white hover:text-gold"
                     >
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -434,7 +434,7 @@ function AddPortfolioWizard({
                     type="button"
                     aria-label="Remove image"
                     onClick={() => removeImage(item.key)}
-                    className="flex h-6 w-6 items-center justify-center rounded-full bg-black/70 text-white hover:text-rose-400"
+                    className="flex h-6 w-6 items-center justify-center rounded-md bg-black/70 text-white hover:text-rose-400"
                   >
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
@@ -670,7 +670,7 @@ function AddPortfolioWizard({
                     {uploadProgress.done} / {uploadProgress.total}
                   </span>
                 </div>
-                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-line">
+                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-md bg-line">
                   <div
                     className="h-full bg-gold-gradient transition-all duration-300"
                     style={{ width: `${Math.round((uploadProgress.done / uploadProgress.total) * 100)}%` }}

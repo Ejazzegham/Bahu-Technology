@@ -50,7 +50,7 @@ export default function WhatsAppButton({
       rel="noopener noreferrer"
       className={`flex items-center gap-4 rounded-xl border border-[#25D366]/40 bg-[#25D366]/10 px-6 py-5 transition-colors hover:bg-[#25D366]/15 ${className}`}
     >
-      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-black">
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#25D366] text-black">
         <WhatsAppIcon size={22} />
       </span>
       <span>

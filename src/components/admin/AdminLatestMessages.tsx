@@ -56,7 +56,7 @@ export default function AdminLatestMessages({
               </div>
               <p className="mt-0.5 text-xs font-medium text-gold">
                 {m.subject || "(no subject)"}
-                {m.service && <span className="ml-2 rounded-full border border-gold/30 px-2 py-0.5 text-[10px] font-medium">{m.service}</span>}
+                {m.service && <span className="ml-2 rounded-md border border-gold/30 px-2 py-0.5 text-[10px] font-medium">{m.service}</span>}
               </p>
               <p className="mt-1 line-clamp-2 text-xs text-muted">{m.message}</p>
               <div className="mt-2 flex items-center gap-3 text-[11px]">

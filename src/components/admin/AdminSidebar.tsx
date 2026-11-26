@@ -214,7 +214,7 @@ export default function AdminSidebar({
                 <NavIcon>{item.icon}</NavIcon>
                 <span className="flex-1 text-left">{item.label}</span>
                 {badge && (
-                  <span className="rounded-full bg-gold px-2 py-0.5 text-[10px] font-bold text-bg">
+                  <span className="rounded-md bg-gold px-2 py-0.5 text-[10px] font-bold text-bg">
                     {badge}
                   </span>
                 )}

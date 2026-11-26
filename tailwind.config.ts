@@ -32,6 +32,18 @@ const config: Config = {
       boxShadow: {
         gold: "0 0 40px -10px rgba(20,119,245,0.35)",
       },
+      // One radius for the whole site: every rounded-* utility resolves to 6px.
+      // (`full` stays a true circle for dots, avatars and glows.)
+      borderRadius: {
+        none: "0px",
+        sm: "6px",
+        DEFAULT: "6px",
+        md: "6px",
+        lg: "6px",
+        xl: "6px",
+        "2xl": "6px",
+        "3xl": "6px",
+      },
       // Site-wide default border width, matched to the hero image frame
       // (.rgb-box) so every plain `border` utility is visually consistent.
       // border-0 / border-4 / etc. still work as normal for the rare

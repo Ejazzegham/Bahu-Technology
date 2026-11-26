@@ -25,7 +25,7 @@ export default function Industries() {
       <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {ITEMS.map((it) => (
           <div key={it.name} className="card group flex flex-col items-center !p-6 text-center">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 text-gold transition-all duration-300 group-hover:scale-110 group-hover:bg-gold group-hover:text-white">
+            <span className="flex h-12 w-12 items-center justify-center rounded-md border border-gold/40 text-gold transition-all duration-300 group-hover:scale-110 group-hover:bg-gold group-hover:text-white">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 {it.icon}
               </svg>

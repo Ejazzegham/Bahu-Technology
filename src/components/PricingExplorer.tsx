@@ -228,7 +228,7 @@ export default function PricingExplorer() {
                 <button
                   key={sub.slug}
                   onClick={() => setSelectedSubSlug(sub.slug)}
-                  className={`flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
+                  className={`flex items-center gap-2 rounded-md border px-4 py-2 text-xs font-semibold transition-colors ${
                     isActive
                       ? "border-gold bg-gold-gradient text-bg"
                       : "border-line text-muted hover:text-ink"
@@ -272,7 +272,7 @@ export default function PricingExplorer() {
                 }}
               >
                 {tier.badge && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gold-gradient px-4 py-1 text-center text-[10px] font-bold uppercase leading-tight tracking-wide text-bg">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-md bg-gold-gradient px-4 py-1 text-center text-[10px] font-bold uppercase leading-tight tracking-wide text-bg">
                     {tier.badge}
                   </span>
                 )}

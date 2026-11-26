@@ -14,7 +14,7 @@ export default function ContactNextSteps() {
       <ol className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
         {STEPS.map((s, i) => (
           <li key={s.n} className="rounded-xl border border-line bg-white p-6">
-            <span className={`inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${GRADS[i]} font-display text-sm font-bold text-white`}>{s.n}</span>
+            <span className={`inline-flex h-10 w-10 items-center justify-center rounded-md bg-gradient-to-br ${GRADS[i]} font-display text-sm font-bold text-white`}>{s.n}</span>
             <h3 className="mt-2 font-display text-base font-semibold text-ink">{s.title}</h3>
             <p className="mt-1 text-sm leading-relaxed text-muted">{s.desc}</p>
           </li>

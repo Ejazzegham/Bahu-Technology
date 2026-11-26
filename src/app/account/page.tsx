@@ -77,7 +77,7 @@ function OrdersView() {
                     })}
                   </p>
                 </div>
-                <span className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold ${statusColor(o.status)}`}>
+                <span className={`shrink-0 rounded-md px-2.5 py-1 text-[10px] font-semibold ${statusColor(o.status)}`}>
                   {o.status}
                 </span>
               </div>

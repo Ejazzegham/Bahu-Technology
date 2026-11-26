@@ -29,7 +29,7 @@ export default function PortfolioStatsCta() {
       <div className="rgb-box grid grid-cols-2 gap-8 rounded-xl px-8 py-10 sm:grid-cols-4" style={{ ["--box-fill" as string]: "#ffffff" }}>
         {STATS.map((stat) => (
           <div key={stat.label} className="flex items-center gap-3">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gold/40 text-gold">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-gold/40 text-gold">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 {stat.icon}
               </svg>

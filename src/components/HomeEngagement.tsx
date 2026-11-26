@@ -49,7 +49,7 @@ export default function HomeEngagement() {
             className={`card flex flex-col ${m.featured ? "lg:-translate-y-2 shadow-gold" : ""}`}
           >
             <span
-              className={`inline-flex w-fit rounded-full px-3 py-1 text-[10px] font-semibold tracking-[0.18em] ${
+              className={`inline-flex w-fit rounded-md px-3 py-1 text-[10px] font-semibold tracking-[0.18em] ${
                 m.featured ? "bg-gold text-white" : "bg-gold/10 text-gold"
               }`}
             >

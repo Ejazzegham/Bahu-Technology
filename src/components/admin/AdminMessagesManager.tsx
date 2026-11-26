@@ -41,12 +41,12 @@ export default function AdminMessagesManager({
             {messages.length} total · {messages.filter((m) => !m.read).length} unread
           </p>
         </div>
-        <div className="flex gap-2 rounded-full border border-line p-1">
+        <div className="flex gap-2 rounded-md border border-line p-1">
           {(["all", "unread"] as const).map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`rounded-full px-3 py-1 text-xs font-semibold capitalize transition-colors ${
+              className={`rounded-md px-3 py-1 text-xs font-semibold capitalize transition-colors ${
                 filter === f ? "bg-gold-gradient text-bg" : "text-muted hover:text-ink"
               }`}
             >
@@ -94,7 +94,7 @@ export default function AdminMessagesManager({
                   ].map(
                     ([label, value]) =>
                       value && (
-                        <span key={label} className="rounded-full border border-gold/30 bg-gold/5 px-2.5 py-0.5 text-[10px] font-medium text-gold">
+                        <span key={label} className="rounded-md border border-gold/30 bg-gold/5 px-2.5 py-0.5 text-[10px] font-medium text-gold">
                           {label}: {value}
                         </span>
                       )

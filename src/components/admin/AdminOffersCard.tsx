@@ -215,7 +215,7 @@ export default function AdminOffersCard() {
             <button
               type="button"
               onClick={() => setForm(toForm(BRANDING_TEMPLATE))}
-              className="rounded-full border border-gold/40 px-4 py-1.5 text-xs font-semibold text-gold transition-colors hover:bg-gold hover:text-white"
+              className="rounded-md border border-gold/40 px-4 py-1.5 text-xs font-semibold text-gold transition-colors hover:bg-gold hover:text-white"
             >
               ✦ Use &quot;Complete Branding&quot; template
             </button>
@@ -301,12 +301,12 @@ export default function AdminOffersCard() {
               <input type="datetime-local" className={inputClass} value={form.endsAt} onChange={(e) => set("endsAt", e.target.value)} />
               <div className="mt-2 flex flex-wrap gap-2">
                 {[3, 7, 14, 30].map((d) => (
-                  <button key={d} type="button" onClick={() => endsInDays(d)} className="rounded-full border border-line px-3 py-1 text-[11px] font-medium text-muted transition-colors hover:border-gold hover:text-gold">
+                  <button key={d} type="button" onClick={() => endsInDays(d)} className="rounded-md border border-line px-3 py-1 text-[11px] font-medium text-muted transition-colors hover:border-gold hover:text-gold">
                     {d} days from now
                   </button>
                 ))}
                 {form.endsAt && (
-                  <button type="button" onClick={() => set("endsAt", "")} className="rounded-full px-3 py-1 text-[11px] font-medium text-muted underline">
+                  <button type="button" onClick={() => set("endsAt", "")} className="rounded-md px-3 py-1 text-[11px] font-medium text-muted underline">
                     no end date
                   </button>
                 )}
@@ -355,7 +355,7 @@ export default function AdminOffersCard() {
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
                       <p className="truncate text-sm font-semibold text-ink">{o.title}</p>
-                      <span className={`rounded-full border px-2.5 py-0.5 text-[10px] font-semibold ${STATUS_STYLE[status]}`}>
+                      <span className={`rounded-md border px-2.5 py-0.5 text-[10px] font-semibold ${STATUS_STYLE[status]}`}>
                         {STATUS_LABEL[status]}
                       </span>
                     </div>

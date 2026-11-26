@@ -79,7 +79,7 @@ export default function AboutJourney() {
         <div aria-hidden className="hero-grid absolute inset-0 opacity-70" />
 
         <div className="relative mx-auto max-w-2xl text-center">
-          <p className="inline-flex items-center gap-2.5 rounded-full border-[1px] border-white/15 bg-white/[0.05] px-4 py-1.5 text-[11px] font-semibold tracking-[0.25em] text-white/80 backdrop-blur">
+          <p className="inline-flex items-center gap-2.5 rounded-md border-[1px] border-white/15 bg-white/[0.05] px-4 py-1.5 text-[11px] font-semibold tracking-[0.25em] text-white/80 backdrop-blur">
             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#fbbf24] to-[#34d399]" />
             OUR JOURNEY
           </p>
@@ -110,7 +110,7 @@ export default function AboutJourney() {
               >
                 <span
                   aria-hidden
-                  className="hww-orb absolute -left-[76px] top-0 z-10 flex h-14 w-14 items-center justify-center rounded-full text-white lg:static lg:mb-5"
+                  className="hww-orb absolute -left-[76px] top-0 z-10 flex h-14 w-14 items-center justify-center rounded-md text-white lg:static lg:mb-5"
                 >
                   <svg
                     width="22"
@@ -135,7 +135,7 @@ export default function AboutJourney() {
                     {m.year}
                   </span>
                   {m.today && (
-                    <span className="relative mb-3 inline-flex items-center gap-1.5 rounded-full border-[1px] border-emerald-300/40 bg-emerald-400/10 px-2.5 py-0.5 text-[10px] font-semibold tracking-[0.2em] text-emerald-300">
+                    <span className="relative mb-3 inline-flex items-center gap-1.5 rounded-md border-[1px] border-emerald-300/40 bg-emerald-400/10 px-2.5 py-0.5 text-[10px] font-semibold tracking-[0.2em] text-emerald-300">
                       <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-300" />
                       TODAY
                     </span>
@@ -143,7 +143,7 @@ export default function AboutJourney() {
                   <p className="jny-year relative font-display text-3xl font-bold leading-none">{m.year}</p>
                   <p className="relative mt-2 text-sm font-semibold text-white">{m.title}</p>
                   <p className="relative mt-2 text-xs leading-relaxed text-white/60">{m.text}</p>
-                  <span aria-hidden className="hww-bar relative mt-4 block h-[3px] w-10 rounded-full transition-all duration-300 group-hover:w-16 lg:mx-auto" />
+                  <span aria-hidden className="hww-bar relative mt-4 block h-[3px] w-10 rounded-md transition-all duration-300 group-hover:w-16 lg:mx-auto" />
                 </div>
               </li>
             ))}

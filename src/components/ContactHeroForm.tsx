@@ -127,7 +127,7 @@ export default function ContactHeroForm() {
         <ul className="mt-8 space-y-6">
           {INFO.map((item) => (
             <li key={item.title} className="flex items-start gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gold/40 text-gold">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-gold/40 text-gold">
                 <svg
                   width="18"
                   height="18"
@@ -154,7 +154,7 @@ export default function ContactHeroForm() {
 
       <div className="rgb-box flex flex-col rounded-xl p-8 lg:order-1" style={{ ["--box-fill" as string]: "#ffffff" }}>
         <div className="flex items-center gap-3">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/40 text-gold">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-gold/40 text-gold">
             <svg
               width="18"
               height="18"
@@ -283,7 +283,7 @@ function ChipGroup({
               type="button"
               aria-pressed={on}
               onClick={() => onChange(on ? "" : o)}
-              className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+              className={`rounded-md border px-3 py-1 text-xs font-medium transition-colors ${
                 on ? "border-gold bg-gold/10 text-gold" : "border-line text-muted hover:border-gold/50 hover:text-gold"
               }`}
             >

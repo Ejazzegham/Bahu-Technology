@@ -43,10 +43,10 @@ export default function BeforeAfterSlider({
         <img src={before} alt={`${alt} — before`} draggable={false} className="h-full w-full object-cover" />
       </div>
 
-      <span className="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2.5 py-1 text-[10px] font-bold tracking-wider text-white">
+      <span className="pointer-events-none absolute left-3 top-3 rounded-md bg-black/70 px-2.5 py-1 text-[10px] font-bold tracking-wider text-white">
         BEFORE
       </span>
-      <span className="pointer-events-none absolute right-3 top-3 rounded-full bg-emerald-500 px-2.5 py-1 text-[10px] font-bold tracking-wider text-white">
+      <span className="pointer-events-none absolute right-3 top-3 rounded-md bg-emerald-500 px-2.5 py-1 text-[10px] font-bold tracking-wider text-white">
         AFTER
       </span>
 
@@ -62,7 +62,7 @@ export default function BeforeAfterSlider({
             if (e.key === "ArrowLeft") setPos((p) => Math.max(0, p - 5));
             if (e.key === "ArrowRight") setPos((p) => Math.min(100, p + 5));
           }}
-          className="pointer-events-auto absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border-2 border-white bg-gold text-xs font-bold text-white shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gold/40"
+          className="pointer-events-auto absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-md border-2 border-white bg-gold text-xs font-bold text-white shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gold/40"
         >
           ⇄
         </button>

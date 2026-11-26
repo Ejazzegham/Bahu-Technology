@@ -69,8 +69,8 @@ export default function ClientLogoWall() {
                 return (
                   <li key={n} className="flex items-center gap-2 text-[11px] text-muted">
                     <span className="w-6 shrink-0 tabular-nums">{n}★</span>
-                    <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-line">
-                      <span className="block h-full rounded-full bg-amber-400" style={{ width: `${pct}%` }} />
+                    <span className="h-1.5 flex-1 overflow-hidden rounded-md bg-line">
+                      <span className="block h-full rounded-md bg-amber-400" style={{ width: `${pct}%` }} />
                     </span>
                     <span className="w-6 shrink-0 text-right tabular-nums">{c}</span>
                   </li>

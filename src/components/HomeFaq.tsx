@@ -77,7 +77,7 @@ export default function HomeFaq() {
                 <span className="font-display text-sm font-semibold text-ink sm:text-base">{item.q}</span>
                 <span
                   aria-hidden
-                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-gold/50 text-gold transition-transform duration-300 ${
+                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-gold/50 text-gold transition-transform duration-300 ${
                     isOpen ? "rotate-45" : ""
                   }`}
                 >

@@ -131,7 +131,7 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
             }`}
           >
             {f.label}
-            <span className="ml-2 rounded-full bg-gold/10 px-1.5 py-0.5 text-[10px] text-gold">{counts[f.value] ?? 0}</span>
+            <span className="ml-2 rounded-md bg-gold/10 px-1.5 py-0.5 text-[10px] text-gold">{counts[f.value] ?? 0}</span>
           </button>
         ))}
       </div>
@@ -173,7 +173,7 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
                 type="button"
                 aria-pressed={on}
                 onClick={() => setTech(on ? null : t)}
-                className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                className={`rounded-md border px-3 py-1 text-xs font-medium transition-colors ${
                   on ? "border-transparent bg-gradient-to-r from-sky-500 to-violet-500 text-white" : "border-line text-muted hover:border-gold/50 hover:text-gold"
                 }`}
               >

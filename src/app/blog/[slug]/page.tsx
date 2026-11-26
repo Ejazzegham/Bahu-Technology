@@ -54,7 +54,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-gold/40 px-2.5 py-1 text-[11px] text-gold"
+                  className="rounded-md border border-gold/40 px-2.5 py-1 text-[11px] text-gold"
                 >
                   {tag}
                 </span>

@@ -212,7 +212,7 @@ function AddPostForm({ editingPost, onDone }: { editingPost: BlogPost | null; on
                       isOn ? prev.filter((t) => t !== tag.name) : [...prev, tag.name]
                     )
                   }
-                  className={`rounded-full border px-2.5 py-1 text-[11px] transition-colors ${
+                  className={`rounded-md border px-2.5 py-1 text-[11px] transition-colors ${
                     isOn ? "border-gold bg-gold/15 text-gold" : "border-line text-muted hover:text-ink"
                   }`}
                 >
@@ -284,7 +284,7 @@ function CommentsTab({ posts }: { posts: BlogPost[] }) {
                 <p className="mt-1 text-xs text-muted">{c.comment}</p>
               </div>
               <span
-                className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${
+                className={`shrink-0 rounded-md px-2 py-0.5 text-[10px] font-semibold ${
                   c.approved ? "bg-emerald-500/15 text-emerald-400" : "bg-amber-500/15 text-amber-400"
                 }`}
               >

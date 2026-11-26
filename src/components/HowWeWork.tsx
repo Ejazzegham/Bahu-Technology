@@ -65,7 +65,7 @@ export default function HowWeWork() {
         <div aria-hidden className="hero-grid absolute inset-0 opacity-70" />
 
         <div className="relative mx-auto max-w-2xl text-center">
-          <p className="inline-flex items-center gap-2.5 rounded-full border-[1px] border-white/15 bg-white/[0.05] px-4 py-1.5 text-[11px] font-semibold tracking-[0.25em] text-white/80 backdrop-blur">
+          <p className="inline-flex items-center gap-2.5 rounded-md border-[1px] border-white/15 bg-white/[0.05] px-4 py-1.5 text-[11px] font-semibold tracking-[0.25em] text-white/80 backdrop-blur">
             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#5b9dff] to-[#f472b6]" />
             OUR PROCESS
           </p>
@@ -85,7 +85,7 @@ export default function HowWeWork() {
           {/* Flowing rainbow connector (desktop) */}
           <div
             aria-hidden
-            className="hww-line pointer-events-none absolute left-[8%] right-[8%] top-[34px] hidden h-[3px] rounded-full lg:block"
+            className="hww-line pointer-events-none absolute left-[8%] right-[8%] top-[34px] hidden h-[3px] rounded-md lg:block"
           />
           {STEPS.map((step, i) => (
             <li
@@ -94,7 +94,7 @@ export default function HowWeWork() {
               style={{ ["--c1" as string]: step.from, ["--c2" as string]: step.to } as CSSProperties}
             >
               <div className="hww-card relative flex h-full flex-col items-center rounded-2xl px-4 pb-6 pt-0 text-center">
-                <span className="hww-orb relative z-10 -mt-0 flex h-[68px] w-[68px] -translate-y-1/2 items-center justify-center rounded-full text-white">
+                <span className="hww-orb relative z-10 -mt-0 flex h-[68px] w-[68px] -translate-y-1/2 items-center justify-center rounded-md text-white">
                   <svg
                     width="26"
                     height="26"
@@ -113,7 +113,7 @@ export default function HowWeWork() {
                 </span>
                 <h3 className="mt-3 font-display text-base font-semibold text-white">{step.title}</h3>
                 <p className="mt-2 text-xs leading-relaxed text-white/60">{step.desc}</p>
-                <span aria-hidden className="hww-bar mt-5 h-[3px] w-10 rounded-full transition-all duration-300 group-hover:w-16" />
+                <span aria-hidden className="hww-bar mt-5 h-[3px] w-10 rounded-md transition-all duration-300 group-hover:w-16" />
               </div>
             </li>
           ))}

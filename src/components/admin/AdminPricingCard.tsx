@@ -227,7 +227,7 @@ export default function AdminPricingCard() {
                     <p className="text-sm font-semibold text-ink">
                       {t.name}
                       {t.isDefault && (
-                        <span className="ml-1.5 rounded-full bg-ink/5 px-1.5 py-0.5 text-[9px] font-normal text-muted">
+                        <span className="ml-1.5 rounded-md bg-ink/5 px-1.5 py-0.5 text-[9px] font-normal text-muted">
                           default
                         </span>
                       )}

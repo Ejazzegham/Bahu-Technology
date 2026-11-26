@@ -42,7 +42,7 @@ export default function AdminTopbar({
         <button
           onClick={() => router.push("/admin/messages")}
           aria-label="Go to messages"
-          className="relative flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted hover:text-gold"
+          className="relative flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted hover:text-gold"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
             <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" />

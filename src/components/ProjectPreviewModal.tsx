@@ -110,7 +110,7 @@ export default function ProjectPreviewModal({
             ref={closeRef}
             onClick={onClose}
             aria-label="Close preview"
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-gold hover:text-gold"
+            className="flex h-8 w-8 items-center justify-center rounded-md border border-line text-muted transition-colors hover:border-gold hover:text-gold"
           >
             ✕
           </button>

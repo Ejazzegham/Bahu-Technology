@@ -46,7 +46,7 @@ export default function MobileAppTrustBar() {
       <div className="rgb-box grid grid-cols-2 gap-x-6 gap-y-6 rounded-xl px-8 py-6 sm:grid-cols-3 lg:grid-flow-col lg:auto-cols-fr lg:grid-cols-none lg:gap-x-5">
         {BADGES.map((b) => (
           <div key={b.title} className="flex items-center gap-3 justify-center lg:justify-start">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold/40 text-gold">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-gold/40 text-gold">
               <svg
                 width="16"
                 height="16"

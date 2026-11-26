@@ -69,7 +69,7 @@ export default function HomeTechStack() {
               role="tab"
               aria-selected={on}
               onClick={() => setKey(s.key)}
-              className={`rounded-full border px-5 py-2 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 ${
+              className={`rounded-md border px-5 py-2 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 ${
                 on ? `border-transparent bg-gradient-to-r ${s.tab} text-white shadow-md` : "border-line bg-white text-ink hover:border-gold hover:text-gold"
               }`}
             >
@@ -85,7 +85,7 @@ export default function HomeTechStack() {
           {stack.items.map((name) => (
             <li
               key={name}
-              className={`rounded-full border px-4 py-1.5 text-sm font-semibold transition-colors ${stack.chip}`}
+              className={`rounded-md border px-4 py-1.5 text-sm font-semibold transition-colors ${stack.chip}`}
             >
               {name}
             </li>

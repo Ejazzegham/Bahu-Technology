@@ -107,7 +107,7 @@ export default function ProjectReactions({
         onClick={(e) => handleToggle(e, "like")}
         aria-pressed={liked}
         aria-label={liked ? "Unlike this project" : "Like this project"}
-        className={`flex items-center gap-1.5 rounded-full border transition-colors ${
+        className={`flex items-center gap-1.5 rounded-md border transition-colors ${
           isSm ? "px-2.5 py-1 text-xs" : "px-4 py-2 text-sm"
         } ${
           liked
@@ -127,7 +127,7 @@ export default function ProjectReactions({
         onClick={(e) => handleToggle(e, "favorite")}
         aria-pressed={favorited}
         aria-label={favorited ? "Remove from favorites" : "Add to favorites"}
-        className={`flex items-center gap-1.5 rounded-full border transition-colors ${
+        className={`flex items-center gap-1.5 rounded-md border transition-colors ${
           isSm ? "px-2.5 py-1 text-xs" : "px-4 py-2 text-sm"
         } ${
           favorited

@@ -463,7 +463,7 @@ export default function Navbar({ active = "Home" }: { active?: string }) {
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted hover:border-gold/50 hover:text-gold"
+                className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted hover:border-gold/50 hover:text-gold"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
@@ -535,7 +535,7 @@ export default function Navbar({ active = "Home" }: { active?: string }) {
                           onClick={() => setOpen(false)}
                           className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-gold/[0.07]"
                         >
-                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-gradient-to-br from-[#f2f7ff] to-[#e3eeff] text-gold shadow-[inset_0_0_0_1px_rgba(20,119,245,0.18)] transition-colors group-hover:bg-gold-gradient group-hover:text-white">
+                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-[#f2f7ff] to-[#e3eeff] text-gold shadow-[inset_0_0_0_1px_rgba(20,119,245,0.18)] transition-colors group-hover:bg-gold-gradient group-hover:text-white">
                             <NavLinkIcon>{service.icon}</NavLinkIcon>
                           </span>
                           <span className="min-w-0">

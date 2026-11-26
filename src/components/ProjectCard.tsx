@@ -76,17 +76,17 @@ export default function ProjectCard({
             )}
 
             {project.featured && (
-              <span className="absolute left-2 top-2 rounded-full bg-gradient-to-r from-sky-500 to-violet-500 px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-white">
+              <span className="absolute left-2 top-2 rounded-md bg-gradient-to-r from-sky-500 to-violet-500 px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-white">
                 FEATURED
               </span>
             )}
             {project.caseStudy && (
-              <span className="absolute right-2 top-2 rounded-full bg-emerald-500 px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-white">
+              <span className="absolute right-2 top-2 rounded-md bg-emerald-500 px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-white">
                 CASE STUDY
               </span>
             )}
             {project.images && project.images.length > 1 && !(video || demo) && (
-              <span className="absolute bottom-2 right-2 rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-medium text-white">
+              <span className="absolute bottom-2 right-2 rounded-md bg-black/70 px-2 py-0.5 text-[10px] font-medium text-white">
                 {project.images.length} photos
               </span>
             )}
@@ -125,7 +125,7 @@ export default function ProjectCard({
               <button
                 type="button"
                 onClick={() => onPreview(project, "video")}
-                className="inline-flex items-center gap-1 rounded-full bg-black/75 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur transition-colors hover:bg-gold"
+                className="inline-flex items-center gap-1 rounded-md bg-black/75 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur transition-colors hover:bg-gold"
               >
                 <span aria-hidden>▶</span> Video
               </button>
@@ -134,7 +134,7 @@ export default function ProjectCard({
               <button
                 type="button"
                 onClick={() => onPreview(project, "demo")}
-                className="inline-flex items-center gap-1 rounded-full bg-black/75 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur transition-colors hover:bg-gold"
+                className="inline-flex items-center gap-1 rounded-md bg-black/75 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur transition-colors hover:bg-gold"
               >
                 <span aria-hidden>◉</span> Live demo
               </button>

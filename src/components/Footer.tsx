@@ -133,7 +133,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.name}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-[10px] font-semibold uppercase text-white/70 transition-colors hover:border-gold-light hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-light"
+                    className="flex h-9 w-9 items-center justify-center rounded-md border border-white/20 text-[10px] font-semibold uppercase text-white/70 transition-colors hover:border-gold-light hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-light"
                   >
                     {s.initial}
                   </a>

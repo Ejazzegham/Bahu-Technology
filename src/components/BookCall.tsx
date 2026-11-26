@@ -208,7 +208,7 @@ export default function BookCall() {
       >
         {done ? (
           <div className="px-6 py-14 text-center sm:py-16" role="status">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/15 text-3xl text-emerald-500">✓</div>
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-md bg-emerald-500/15 text-3xl text-emerald-500">✓</div>
             <h3 className="mt-5 font-display text-2xl font-semibold text-ink">You&apos;re booked!</h3>
             <p className="mt-2 text-sm font-medium text-ink">{longFmt.format(new Date(done))}</p>
             <p className="mx-auto mt-2 max-w-sm text-xs text-muted">
@@ -224,7 +224,7 @@ export default function BookCall() {
             <div className="flex min-w-0 flex-col p-6 sm:p-9">
               <div className="flex items-center justify-between">
                 <p className="flex items-center gap-2.5 text-sm font-semibold text-ink">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold/10 text-[11px] font-bold text-gold">1</span>
+                  <span className="flex h-6 w-6 items-center justify-center rounded-md bg-gold/10 text-[11px] font-bold text-gold">1</span>
                   Choose a day
                 </p>
                 <div className="flex gap-1.5">
@@ -232,7 +232,7 @@ export default function BookCall() {
                     type="button"
                     onClick={() => scrollDays(-1)}
                     aria-label="Earlier days"
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-muted transition hover:border-gold hover:text-gold"
+                    className="flex h-8 w-8 items-center justify-center rounded-md border border-line text-muted transition hover:border-gold hover:text-gold"
                   >
                     <ChevronIcon dir="left" />
                   </button>
@@ -240,7 +240,7 @@ export default function BookCall() {
                     type="button"
                     onClick={() => scrollDays(1)}
                     aria-label="Later days"
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-muted transition hover:border-gold hover:text-gold"
+                    className="flex h-8 w-8 items-center justify-center rounded-md border border-line text-muted transition hover:border-gold hover:text-gold"
                   >
                     <ChevronIcon dir="right" />
                   </button>
@@ -289,7 +289,7 @@ export default function BookCall() {
 
               <div className="mt-7 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
                 <p className="flex items-center gap-2.5 text-sm font-semibold text-ink">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold/10 text-[11px] font-bold text-gold">2</span>
+                  <span className="flex h-6 w-6 items-center justify-center rounded-md bg-gold/10 text-[11px] font-bold text-gold">2</span>
                   Choose a time
                 </p>
                 {activeDay && <span className="text-xs text-muted">{dayFmt.format(activeDay.date)}</span>}
@@ -336,7 +336,7 @@ export default function BookCall() {
               className="min-w-0 border-t border-line bg-bg-soft/70 p-6 sm:p-9 lg:border-l lg:border-t-0"
             >
               <p className="flex items-center gap-2.5 text-sm font-semibold text-ink">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold/10 text-[11px] font-bold text-gold">3</span>
+                <span className="flex h-6 w-6 items-center justify-center rounded-md bg-gold/10 text-[11px] font-bold text-gold">3</span>
                 Your details
               </p>
 
@@ -407,7 +407,7 @@ export default function BookCall() {
                       type="button"
                       aria-pressed={on}
                       onClick={() => setTopic(t)}
-                      className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors ${
+                      className={`rounded-md border px-3.5 py-1.5 text-xs font-medium transition-colors ${
                         on ? "border-gold bg-gold/10 text-gold" : "border-line bg-white text-muted hover:border-gold/50 hover:text-ink"
                       }`}
                     >

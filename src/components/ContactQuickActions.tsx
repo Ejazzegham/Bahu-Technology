@@ -56,7 +56,7 @@ export default function ContactQuickActions() {
   return (
     <section className="section pb-0" aria-label="Quick ways to reach us">
       <div className="mb-6 flex justify-center">
-        <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-1.5 text-xs font-semibold text-ink" aria-live="polite">
+        <span className="inline-flex items-center gap-2 rounded-md border border-line bg-white px-4 py-1.5 text-xs font-semibold text-ink" aria-live="polite">
           <span className={`h-2 w-2 rounded-full ${open === null ? "bg-muted/40" : open ? "bg-emerald-500" : "bg-amber-500"}`} />
           {open === null ? "Checking availability…" : open ? "We're online now — replies within the hour" : "We're offline — we'll reply next working day"}
         </span>

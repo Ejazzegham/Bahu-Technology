@@ -44,7 +44,7 @@ export default function AdminSubscribersChart({
               contentStyle={{
                 background: "#131318",
                 border: "1px solid #232329",
-                borderRadius: 8,
+                borderRadius: 6,
                 fontSize: 12,
               }}
               labelStyle={{ color: "#f3f2ee" }}

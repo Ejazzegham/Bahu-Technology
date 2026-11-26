@@ -43,7 +43,7 @@ export default function AboutToolbox() {
               {g.items.map((item) => (
                 <li
                   key={item}
-                  className="rounded-full border border-line bg-bg-soft px-3.5 py-1.5 text-xs font-medium text-ink/80 transition-colors hover:border-gold/60 hover:text-gold"
+                  className="rounded-md border border-line bg-bg-soft px-3.5 py-1.5 text-xs font-medium text-ink/80 transition-colors hover:border-gold/60 hover:text-gold"
                 >
                   {item}
                 </li>

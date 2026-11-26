@@ -35,7 +35,7 @@ function Icon({ icon }: { icon: "logo" | "plane" | "headset" }) {
     );
 
   return (
-    <span className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gold/50 text-gold sm:flex">
+    <span className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-md border border-gold/50 text-gold sm:flex">
       <svg
         width="20"
         height="20"

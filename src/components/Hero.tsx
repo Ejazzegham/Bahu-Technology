@@ -143,7 +143,7 @@ export default function Hero() {
       <a
         href="#services"
         aria-label="Scroll to services"
-        className="absolute bottom-5 left-1/2 hidden h-10 w-6 -translate-x-1/2 items-start justify-center rounded-full border-2 border-white/30 pt-2 sm:flex"
+        className="absolute bottom-5 left-1/2 hidden h-10 w-6 -translate-x-1/2 items-start justify-center rounded-md border-2 border-white/30 pt-2 sm:flex"
       >
         <span className="scroll-cue h-2 w-1 rounded-full bg-white/70" />
       </a>

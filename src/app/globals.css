@@ -140,7 +140,7 @@ body {
 .dd-panel {
   position: relative;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 6px;
   background: rgba(255, 255, 255, 0.97);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
   backdrop-filter: saturate(180%) blur(14px);
@@ -177,7 +177,7 @@ body {
   gap: 10px;
   width: 100%;
   padding: 9px 12px;
-  border-radius: 10px;
+  border-radius: 6px;
   font-size: 13px;
   font-weight: 500;
   line-height: 1.3;
@@ -220,7 +220,7 @@ body {
   align-items: center;
   gap: 12px;
   padding: 9px 10px;
-  border-radius: 10px;
+  border-radius: 6px;
   color: #0d0d10;
   transition: background-color 0.15s ease, transform 0.15s ease;
 }
@@ -236,7 +236,7 @@ body {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 6px;
   color: #1477f5;
   background: linear-gradient(145deg, #f2f7ff, #e3eeff);
   box-shadow: inset 0 0 0 1px rgba(20, 119, 245, 0.18);
@@ -281,7 +281,7 @@ body {
 .dd-inline-panel {
   position: relative;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 6px;
   background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
   box-shadow:
     0 0 0 1px rgba(20, 119, 245, 0.18),
@@ -315,7 +315,7 @@ body {
 /* RGB border on portfolio cards — only lights up and spins on hover. */
 .glow-card {
   position: relative;
-  border-radius: 18px;
+  border-radius: 6px;
   isolation: isolate;
 }
 
@@ -356,7 +356,7 @@ body {
   position: relative;
   z-index: 1;
   margin: 2px;
-  border-radius: 16px;
+  border-radius: 6px;
   overflow: hidden;
   background: #ffffff;
 }
@@ -375,7 +375,7 @@ body {
    other card style on the site (blog, services, etc.) is unaffected. */
 .portfolio-card {
   position: relative;
-  border-radius: 0 12px;
+  border-radius: 0 6px;
   isolation: isolate;
 }
 
@@ -416,7 +416,7 @@ body {
   position: relative;
   z-index: 1;
   margin: 2px;
-  border-radius: 0 10px;
+  border-radius: 0 6px;
   overflow: hidden;
   background: #ffffff;
 }
@@ -477,7 +477,7 @@ body {
 .lightbox-frame {
   --box-fill: #0a0a0d;
   border: 2px solid transparent;
-  border-radius: 12px;
+  border-radius: 6px;
   background-image: linear-gradient(var(--box-fill), var(--box-fill)),
     conic-gradient(from var(--border-angle), #ff3b3b, #ffe94f, #4dff6a, #4d9fff, #c14dff, #ff3b3b);
   animation: rgb-border-spin 4s linear infinite;
@@ -703,7 +703,7 @@ main { animation: page-in 0.7s ease both; }
   overflow: hidden;
   padding: 0.55rem 1.25rem 0.55rem 0.9rem;
   border: 2px solid transparent;
-  border-radius: 9999px;
+  border-radius: 6px;
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -1036,7 +1036,7 @@ a[aria-label="Chat on WhatsApp"] { animation: wa-pulse 2.6s ease-out infinite; }
 .nav-rail {
   gap: 2px;
   padding: 4px;
-  border-radius: 9999px;
+  border-radius: 6px;
   border: 1px solid rgba(13, 13, 16, 0.06);
   background: rgba(245, 246, 248, 0.7);
 }
@@ -1045,7 +1045,7 @@ a[aria-label="Chat on WhatsApp"] { animation: wa-pulse 2.6s ease-out infinite; }
   top: 4px;
   bottom: 4px;
   left: 0;
-  border-radius: 9999px;
+  border-radius: 6px;
   background: #fff;
   box-shadow: 0 2px 10px -2px rgba(20, 119, 245, 0.25), 0 0 0 1px rgba(20, 119, 245, 0.12);
   transition:
@@ -1061,7 +1061,7 @@ a[aria-label="Chat on WhatsApp"] { animation: wa-pulse 2.6s ease-out infinite; }
   align-items: center;
   gap: 6px;
   padding: 8px 16px;
-  border-radius: 9999px;
+  border-radius: 6px;
   font-size: 13.5px;
   font-weight: 500;
   color: #5b5b66;
@@ -1099,7 +1099,7 @@ a[aria-label="Chat on WhatsApp"] { animation: wa-pulse 2.6s ease-out infinite; }
   position: relative;
   width: 440px;
   padding: 14px;
-  border-radius: 20px;
+  border-radius: 6px;
   background: rgba(255, 255, 255, 0.97);
   border: 1px solid rgba(20, 119, 245, 0.14);
   box-shadow: 0 30px 70px -24px rgba(13, 13, 16, 0.35), 0 8px 24px -12px rgba(20, 119, 245, 0.25);
@@ -1132,7 +1132,7 @@ a[aria-label="Chat on WhatsApp"] { animation: wa-pulse 2.6s ease-out infinite; }
   align-items: flex-start;
   gap: 12px;
   padding: 12px;
-  border-radius: 14px;
+  border-radius: 6px;
   border: 1px solid transparent;
   transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   animation: nav-mega-item-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -1151,7 +1151,7 @@ a[aria-label="Chat on WhatsApp"] { animation: wa-pulse 2.6s ease-out infinite; }
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  border-radius: 11px;
+  border-radius: 6px;
   color: #1477f5;
   background: linear-gradient(135deg, #f2f7ff, #e3eeff);
   box-shadow: inset 0 0 0 1px rgba(20, 119, 245, 0.18);
@@ -1169,7 +1169,7 @@ a[aria-label="Chat on WhatsApp"] { animation: wa-pulse 2.6s ease-out infinite; }
   justify-content: space-between;
   margin-top: 10px;
   padding: 11px 14px;
-  border-radius: 12px;
+  border-radius: 6px;
   font-size: 12px;
   font-weight: 500;
   color: #3a3a46;
@@ -1187,7 +1187,7 @@ a[aria-label="Chat on WhatsApp"] { animation: wa-pulse 2.6s ease-out infinite; }
   width: 38px;
   align-items: center;
   justify-content: center;
-  border-radius: 9999px;
+  border-radius: 6px;
   border: 1px solid rgba(13, 13, 16, 0.1);
   color: #5b5b66;
   background: #fff;
@@ -1207,7 +1207,7 @@ a[aria-label="Chat on WhatsApp"] { animation: wa-pulse 2.6s ease-out infinite; }
   gap: 8px;
   padding: 11px 22px;
   border: 0;
-  border-radius: 9999px;
+  border-radius: 6px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -1245,7 +1245,7 @@ a[aria-label="Chat on WhatsApp"] { animation: wa-pulse 2.6s ease-out infinite; }
   width: 42px;
   align-items: center;
   justify-content: center;
-  border-radius: 9999px;
+  border-radius: 6px;
   border: 1px solid rgba(13, 13, 16, 0.1);
   background: #fff;
   color: #3a3a46;
@@ -1443,7 +1443,7 @@ main h2 { position: relative; }
   align-items: center;
   gap: 10px;
   padding: 8px 16px;
-  border-radius: 9999px;
+  border-radius: 6px;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.22em;
@@ -1490,7 +1490,7 @@ main h2 { position: relative; }
   align-items: center;
   justify-content: center;
   margin-top: 1px;
-  border-radius: 9999px;
+  border-radius: 6px;
   color: #fff;
   background: linear-gradient(135deg, #1477f5, #c14dff);
   box-shadow: 0 0 14px -2px rgba(193, 77, 255, 0.8);
@@ -1504,7 +1504,7 @@ main h2 { position: relative; }
   align-items: center;
   gap: 10px;
   padding: 15px 30px;
-  border-radius: 9999px;
+  border-radius: 6px;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -1533,7 +1533,7 @@ main h2 { position: relative; }
   align-items: center;
   gap: 12px;
   padding: 11px 14px 11px 18px;
-  border-radius: 9999px;
+  border-radius: 6px;
   border: 1.5px dashed rgba(255, 216, 107, 0.65);
   background: rgba(255, 216, 107, 0.07);
   color: #fff;
@@ -1543,12 +1543,12 @@ main h2 { position: relative; }
 .offer-coupon:hover { background: rgba(255, 216, 107, 0.14); transform: translateY(-2px); }
 .offer-coupon-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); }
 .offer-coupon strong { font-size: 15px; letter-spacing: 0.14em; color: #ffd86b; }
-.offer-coupon-copy { padding: 4px 10px; border-radius: 9999px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1a1030; background: #ffd86b; }
+.offer-coupon-copy { padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1a1030; background: #ffd86b; }
 
 /* offer card */
 .offer-card {
   position: relative;
-  border-radius: 28px;
+  border-radius: 6px;
   padding: 2px;
   background: conic-gradient(from var(--border-angle), #ff3b3b, #ffe94f, #4dff6a, #4d9fff, #c14dff, #ff3b3b);
   animation: offer-card-border 6s linear infinite;
@@ -1559,7 +1559,7 @@ main h2 { position: relative; }
 .offer-card-inner {
   position: relative;
   overflow: hidden;
-  border-radius: 26px;
+  border-radius: 6px;
   padding: 38px 30px 34px;
   background: linear-gradient(160deg, rgba(20, 14, 48, 0.96), rgba(8, 9, 24, 0.98));
 }
@@ -1567,7 +1567,7 @@ main h2 { position: relative; }
   position: absolute;
   inset: 2px;
   z-index: 1;
-  border-radius: 26px;
+  border-radius: 6px;
   pointer-events: none;
   background: radial-gradient(360px circle at var(--ox) var(--oy), rgba(154, 208, 255, 0.16), transparent 60%);
   mix-blend-mode: screen;
@@ -1675,7 +1675,7 @@ main h2 { position: relative; }
   font-size: 28px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
   animation: offer-tick 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -1737,7 +1737,7 @@ main h2 { position: relative; }
   overflow: hidden;
   display: inline-block;
   padding: 7px 30px 9px;
-  border-radius: 9999px;
+  border-radius: 6px;
   background: linear-gradient(180deg, #ff5a4d 0%, #e5171f 55%, #c4101a 100%);
   border: 2.5px solid #151015;
   box-shadow:
@@ -1786,7 +1786,7 @@ main h2 { position: relative; }
   right: 8px;
   bottom: 4px;
   padding: 3px 12px;
-  border-radius: 9999px;
+  border-radius: 6px;
   border: 2px solid #151015;
   font-size: 9.5px;
   font-weight: 800;
@@ -1890,7 +1890,7 @@ main h2 { position: relative; }
   justify-items: center;
   text-align: center;
   padding: 36px 24px;
-  border-radius: 28px;
+  border-radius: 6px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
@@ -1943,7 +1943,7 @@ main h2 { position: relative; }
 
 .odfd-live {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 5px 14px 5px 11px; border-radius: 9999px;
+  padding: 5px 14px 5px 11px; border-radius: 6px;
   font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
   color: #a7f3d0; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(52, 211, 153, 0.35);
 }
@@ -1978,7 +1978,7 @@ main h2 { position: relative; }
 .odfd-cta {
   position: relative; overflow: hidden;
   display: inline-flex; align-items: center; gap: 10px;
-  padding: 15px 28px; border-radius: 9999px;
+  padding: 15px 28px; border-radius: 6px;
   font-size: 0.95rem; font-weight: 700; color: #1a1200; white-space: nowrap;
   background: linear-gradient(135deg, #ffe58a, #ffc933 55%, #ffae00);
   box-shadow: 0 10px 34px -8px rgba(255, 190, 40, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6);

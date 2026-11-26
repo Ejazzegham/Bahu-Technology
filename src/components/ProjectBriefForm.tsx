@@ -189,7 +189,7 @@ export default function ProjectBriefForm() {
       type="button"
       aria-pressed={on}
       onClick={onClick}
-      className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+      className={`rounded-md border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
         on ? "border-gold bg-gold/10 text-gold" : "border-line text-muted hover:border-gold/50 hover:text-gold"
       }`}
     >
@@ -216,7 +216,7 @@ export default function ProjectBriefForm() {
       <div className="rgb-box mx-auto mt-10 max-w-3xl rounded-xl p-6 sm:p-8" style={{ ["--box-fill" as string]: "#ffffff" }}>
         {done ? (
           <div className="py-8 text-center" role="status">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/15 text-2xl text-emerald-500">✓</div>
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-md bg-emerald-500/15 text-2xl text-emerald-500">✓</div>
             <h3 className="mt-4 font-display text-xl font-semibold text-ink">Brief received — thank you!</h3>
             <p className="mt-2 text-sm text-muted">We&apos;ll review it and reply to {email} with next steps, usually within one business day.</p>
           </div>
@@ -226,7 +226,7 @@ export default function ProjectBriefForm() {
               {STEPS.map((label, i) => (
                 <li key={label} className="flex flex-1 items-center last:flex-none" aria-current={i === step ? "step" : undefined}>
                   <span
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition-colors ${
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md border-2 text-xs font-bold transition-colors ${
                       i < step ? "border-gold bg-gold text-white" : i === step ? "border-gold text-gold" : "border-line text-muted"
                     }`}
                   >
@@ -389,8 +389,8 @@ export default function ProjectBriefForm() {
                             </span>
                           </div>
                           {sending && (
-                            <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-line">
-                              <div className="h-full rounded-full bg-gold transition-[width]" style={{ width: `${Math.round((progress[i] ?? 0) * 100)}%` }} />
+                            <div className="mt-2 h-1.5 overflow-hidden rounded-md bg-line">
+                              <div className="h-full rounded-md bg-gold transition-[width]" style={{ width: `${Math.round((progress[i] ?? 0) * 100)}%` }} />
                             </div>
                           )}
                         </li>

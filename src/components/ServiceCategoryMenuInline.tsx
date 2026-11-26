@@ -128,7 +128,7 @@ export default function ServiceCategoryMenu({
                 </span>
 
                 <span
-                  className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${
+                  className={`rounded-md px-2.5 py-0.5 text-[10px] font-semibold ${
                     isActive ? "bg-gold/20 text-gold" : "bg-black/5 text-muted"
                   }`}
                 >
@@ -190,7 +190,7 @@ export default function ServiceCategoryMenu({
                           type="button"
                           onClick={() => setActive(null)}
                           aria-label="Close"
-                          className="ml-auto flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-gold/40 hover:text-gold"
+                          className="ml-auto flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-line text-muted transition-colors hover:border-gold/40 hover:text-gold"
                         >
                           <svg
                             width="14"

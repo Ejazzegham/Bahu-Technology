@@ -32,9 +32,9 @@ const SWITCH_MS = 320;
 const SLIDE_DISTANCE = 40; // px the card travels during each half
 
 const fieldClass =
-  "w-full rounded-[8px] border border-line bg-bg py-2.5 pl-10 pr-3 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none";
+  "w-full rounded-md border border-line bg-bg py-2.5 pl-10 pr-3 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none";
 const fieldWithToggleClass =
-  "w-full rounded-[8px] border border-line bg-bg py-2.5 pl-10 pr-10 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none";
+  "w-full rounded-md border border-line bg-bg py-2.5 pl-10 pr-10 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none";
 
 function friendlyError(err: unknown, providerLabel?: string): string {
   const code = (err as { code?: string })?.code ?? "";
@@ -233,7 +233,7 @@ export default function AuthScreen() {
 
         {/* Horizontal rounded auth card — 8px radius, not the whole page */}
         <div
-          className="rgb-box grid w-full grid-cols-1 overflow-hidden rounded-[8px] shadow-2xl lg:grid-cols-2 lg:min-h-[600px]"
+          className="rgb-box grid w-full grid-cols-1 overflow-hidden rounded-md shadow-2xl lg:grid-cols-2 lg:min-h-[600px]"
           style={cardStyle}
         >
           {/* Visual panel — desktop only, same logo both modes, swaps sides */}
@@ -362,7 +362,7 @@ export default function AuthScreen() {
                         </div>
                         {mode === "signup" && password && (
                           <div className="mt-1.5 flex items-center gap-2">
-                            <div className="h-1 flex-1 overflow-hidden rounded-full bg-line">
+                            <div className="h-1 flex-1 overflow-hidden rounded-md bg-line">
                               <div className={`h-full ${strength.color} transition-all duration-300`} style={{ width: strength.width }} />
                             </div>
                             <span className="text-[10px] text-muted">{strength.label}</span>
@@ -438,7 +438,7 @@ export default function AuthScreen() {
                       {error && <p className="text-xs text-rose-400">{error}</p>}
                       {info && <p className="text-xs text-emerald-400">{info}</p>}
 
-                      <button type="submit" disabled={loading} className="btn-primary w-full justify-center rounded-[8px] disabled:opacity-60">
+                      <button type="submit" disabled={loading} className="btn-primary w-full justify-center rounded-md disabled:opacity-60">
                         {loading ? (
                           <Loader2 className="h-4 w-4 animate-spin" />
                         ) : mode === "signin" ? (
@@ -489,7 +489,7 @@ export default function AuthScreen() {
                       </div>
                       {error && <p className="text-xs text-rose-400">{error}</p>}
                       {info && <p className="text-xs text-emerald-400">{info}</p>}
-                      <button type="submit" disabled={loading} className="btn-primary w-full justify-center rounded-[8px] disabled:opacity-60">
+                      <button type="submit" disabled={loading} className="btn-primary w-full justify-center rounded-md disabled:opacity-60">
                         {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "SEND RESET LINK"}
                       </button>
                     </form>

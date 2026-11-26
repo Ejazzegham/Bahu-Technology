@@ -16,7 +16,7 @@ import {
 const SERVICE_IDS = Object.keys(EST_SERVICES) as EstService[];
 
 const chip = (on: boolean) =>
-  `rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+  `rounded-md border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
     on ? "border-gold bg-gold/10 text-gold" : "border-line text-muted hover:border-gold/50 hover:text-gold"
   }`;
 
@@ -82,7 +82,7 @@ export default function ProjectEstimator() {
           <div>
             <label htmlFor="est-units" className="mb-3 flex items-center justify-between text-xs font-semibold text-ink">
               <span>2. How many {cfg.unitLabel.toLowerCase()}?</span>
-              <span className="rounded-full bg-gold/10 px-3 py-0.5 text-gold">{units}</span>
+              <span className="rounded-md bg-gold/10 px-3 py-0.5 text-gold">{units}</span>
             </label>
             <input
               id="est-units"

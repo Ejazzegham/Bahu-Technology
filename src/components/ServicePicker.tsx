@@ -62,7 +62,7 @@ export default function ServicePicker() {
             role="tab"
             aria-selected={i === active}
             onClick={() => setActive(i)}
-            className={`rounded-full border px-5 py-2 text-sm font-semibold transition-all duration-300 ${
+            className={`rounded-md border px-5 py-2 text-sm font-semibold transition-all duration-300 ${
               i === active
                 ? "border-gold bg-gold text-white shadow-gold"
                 : "border-line bg-white text-ink/70 hover:border-gold/60 hover:text-gold"
