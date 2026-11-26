@@ -1,12 +1,69 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { BOOKING_CONFIG, BOOKING_TOPICS, generateSlots } from "@/lib/booking";
 
-const inputCls =
-  "w-full rounded-md border border-line bg-bg px-4 py-3 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/40";
-
 type Day = { key: string; date: Date; slots: string[] };
+
+/* ---------- tiny inline icons (no extra dependency) ---------- */
+const iconProps = {
+  width: 18,
+  height: 18,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.8,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true,
+};
+const UserIcon = () => (
+  <svg {...iconProps}>
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
+  </svg>
+);
+const MailIcon = () => (
+  <svg {...iconProps}>
+    <rect x="3" y="5" width="18" height="14" rx="2.5" />
+    <path d="m4 7 8 6 8-6" />
+  </svg>
+);
+const PhoneIcon = () => (
+  <svg {...iconProps}>
+    <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" />
+  </svg>
+);
+const CalendarIcon = () => (
+  <svg {...iconProps}>
+    <rect x="3" y="5" width="18" height="16" rx="3" />
+    <path d="M3 10h18M8 3v4M16 3v4" />
+  </svg>
+);
+const ClockIcon = () => (
+  <svg {...iconProps} width={15} height={15}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7v5l3 2" />
+  </svg>
+);
+const ChevronIcon = ({ dir }: { dir: "left" | "right" }) => (
+  <svg {...iconProps} width={16} height={16} strokeWidth={2.2}>
+    <path d={dir === "left" ? "m15 6-6 6 6 6" : "m9 6 6 6-6 6"} />
+  </svg>
+);
+
+/* ---------- shared field styles ---------- */
+const fieldCls =
+  "w-full rounded-xl border border-line bg-white py-3 pl-11 pr-4 text-sm text-ink shadow-[0_1px_2px_rgba(13,13,16,0.04)] transition placeholder:text-muted/70 hover:border-gold/40 focus:border-gold focus:outline-none focus:ring-4 focus:ring-gold/15";
+
+function Field({ icon, children, className = "" }: { icon: React.ReactNode; children: React.ReactNode; className?: string }) {
+  return (
+    <div className={`relative ${className}`}>
+      <span className="pointer-events-none absolute left-3.5 top-3.5 text-muted/70">{icon}</span>
+      {children}
+    </div>
+  );
+}
 
 export default function BookCall() {
   const [tz, setTz] = useState("");
@@ -25,6 +82,7 @@ export default function BookCall() {
   const [done, setDone] = useState<string | null>(null);
   // Slots are computed in the browser (depends on "now" + visitor's time zone), so render after mount.
   const [slots, setSlots] = useState<string[]>([]);
+  const stripRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setTz(Intl.DateTimeFormat().resolvedOptions().timeZone || "");
@@ -68,6 +126,9 @@ export default function BookCall() {
   const activeDay = days.find((d) => d.key === dayKey);
   const timeFmt = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" });
   const longFmt = new Intl.DateTimeFormat(undefined, { weekday: "long", day: "numeric", month: "long", hour: "numeric", minute: "2-digit" });
+  const dayFmt = new Intl.DateTimeFormat(undefined, { weekday: "long", day: "numeric", month: "long" });
+
+  const scrollDays = (dir: -1 | 1) => stripRef.current?.scrollBy({ left: dir * 260, behavior: "smooth" });
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -140,25 +201,61 @@ export default function BookCall() {
         </p>
       </div>
 
-      <div className="rgb-box mx-auto mt-10 max-w-4xl rounded-xl p-6 sm:p-8" style={{ ["--box-fill" as string]: "#ffffff" }}>
+      {/* Centered card — min-w-0 children stop the day strip from pushing the layout wider than the card */}
+      <div
+        className="rgb-box mx-auto mt-10 w-full max-w-5xl overflow-hidden rounded-2xl shadow-[0_30px_80px_-40px_rgba(20,119,245,0.35)]"
+        style={{ ["--box-fill" as string]: "#ffffff" }}
+      >
         {done ? (
-          <div className="py-6 text-center" role="status">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/15 text-2xl text-emerald-500">✓</div>
-            <h3 className="mt-4 font-display text-xl font-semibold text-ink">You&apos;re booked!</h3>
-            <p className="mt-2 text-sm text-muted">{longFmt.format(new Date(done))}</p>
-            <p className="mt-1 text-xs text-muted">We&apos;ll follow up on {email} to confirm and share the meeting details.</p>
-            <button type="button" onClick={downloadIcs} className="btn-outline mt-6">
+          <div className="px-6 py-14 text-center sm:py-16" role="status">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/15 text-3xl text-emerald-500">✓</div>
+            <h3 className="mt-5 font-display text-2xl font-semibold text-ink">You&apos;re booked!</h3>
+            <p className="mt-2 text-sm font-medium text-ink">{longFmt.format(new Date(done))}</p>
+            <p className="mx-auto mt-2 max-w-sm text-xs text-muted">
+              We&apos;ll follow up on {email} to confirm and share the meeting details.
+            </p>
+            <button type="button" onClick={downloadIcs} className="btn-outline mt-7">
               Add to calendar
             </button>
           </div>
         ) : (
-          <div className="grid gap-8 md:grid-cols-[1.1fr_1fr]">
-            <div>
-              <p className="mb-3 text-xs font-semibold text-ink">1. Choose a day</p>
+          <div className="grid lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
+            {/* ───────── LEFT: day + time ───────── */}
+            <div className="flex min-w-0 flex-col p-6 sm:p-9">
+              <div className="flex items-center justify-between">
+                <p className="flex items-center gap-2.5 text-sm font-semibold text-ink">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold/10 text-[11px] font-bold text-gold">1</span>
+                  Choose a day
+                </p>
+                <div className="flex gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => scrollDays(-1)}
+                    aria-label="Earlier days"
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-muted transition hover:border-gold hover:text-gold"
+                  >
+                    <ChevronIcon dir="left" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollDays(1)}
+                    aria-label="Later days"
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-muted transition hover:border-gold hover:text-gold"
+                  >
+                    <ChevronIcon dir="right" />
+                  </button>
+                </div>
+              </div>
+
               {slots.length === 0 && !loading ? (
-                <p className="text-sm text-muted">No times are available right now — please send us a message instead.</p>
+                <p className="mt-4 text-sm text-muted">No times are available right now — please send us a message instead.</p>
               ) : (
-                <div className="flex gap-2 overflow-x-auto pb-2" role="tablist" aria-label="Available days">
+                <div
+                  ref={stripRef}
+                  className="no-scrollbar -mx-1 mt-4 flex snap-x gap-2.5 overflow-x-auto px-1 py-1.5"
+                  role="tablist"
+                  aria-label="Available days"
+                >
                   {days.map((d) => {
                     const free = freeCount(d);
                     const on = d.key === dayKey;
@@ -173,24 +270,35 @@ export default function BookCall() {
                           setDayKey(d.key);
                           setSlot(null);
                         }}
-                        className={`flex w-16 shrink-0 flex-col items-center rounded-lg border px-2 py-2.5 transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${
-                          on ? "border-gold bg-gold/10 text-gold" : "border-line text-muted hover:border-gold/50"
+                        className={`flex w-[4.4rem] shrink-0 snap-start flex-col items-center rounded-xl border px-2 py-3 transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-40 ${
+                          on
+                            ? "border-transparent bg-gold-gradient text-white shadow-gold"
+                            : "border-line bg-white text-muted hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-md"
                         }`}
                       >
-                        <span className="text-[10px] font-semibold uppercase">{d.date.toLocaleDateString(undefined, { weekday: "short" })}</span>
-                        <span className="font-display text-lg font-semibold text-ink">{d.date.getDate()}</span>
-                        <span className="text-[10px]">{d.date.toLocaleDateString(undefined, { month: "short" })}</span>
+                        <span className={`text-[10px] font-semibold uppercase tracking-wide ${on ? "text-white/80" : ""}`}>
+                          {d.date.toLocaleDateString(undefined, { weekday: "short" })}
+                        </span>
+                        <span className={`font-display text-xl font-semibold leading-tight ${on ? "text-white" : "text-ink"}`}>{d.date.getDate()}</span>
+                        <span className={`text-[10px] ${on ? "text-white/80" : ""}`}>{d.date.toLocaleDateString(undefined, { month: "short" })}</span>
                       </button>
                     );
                   })}
                 </div>
               )}
 
-              <p className="mb-3 mt-6 text-xs font-semibold text-ink">2. Choose a time</p>
+              <div className="mt-7 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+                <p className="flex items-center gap-2.5 text-sm font-semibold text-ink">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold/10 text-[11px] font-bold text-gold">2</span>
+                  Choose a time
+                </p>
+                {activeDay && <span className="text-xs text-muted">{dayFmt.format(activeDay.date)}</span>}
+              </div>
+
               {loading && slots.length > 0 ? (
-                <p className="text-xs text-muted">Checking availability…</p>
+                <p className="mt-4 text-xs text-muted">Checking availability…</p>
               ) : (
-                <div className="grid grid-cols-3 gap-2 sm:grid-cols-4" role="group" aria-label="Available times">
+                <div className="mt-4 grid grid-cols-3 gap-2.5 sm:grid-cols-4" role="group" aria-label="Available times">
                   {activeDay?.slots.map((s) => {
                     const isTaken = taken.has(s);
                     const on = slot === s;
@@ -201,12 +309,12 @@ export default function BookCall() {
                         disabled={isTaken}
                         aria-pressed={on}
                         onClick={() => setSlot(s)}
-                        className={`rounded-md border px-2 py-2 text-xs font-semibold transition-colors ${
+                        className={`rounded-xl border px-2 py-2.5 text-xs font-semibold transition-all duration-200 ${
                           isTaken
-                            ? "cursor-not-allowed border-line text-muted/40 line-through"
+                            ? "cursor-not-allowed border-line bg-bg-soft text-muted/40 line-through"
                             : on
-                              ? "border-gold bg-gold text-white"
-                              : "border-line text-ink hover:border-gold/60 hover:text-gold"
+                              ? "border-transparent bg-gold-gradient text-white shadow-gold"
+                              : "border-line bg-white text-ink hover:-translate-y-0.5 hover:border-gold/60 hover:text-gold hover:shadow-md"
                         }`}
                       >
                         {timeFmt.format(new Date(s))}
@@ -215,40 +323,124 @@ export default function BookCall() {
                   })}
                 </div>
               )}
-              <p className="mt-4 text-[11px] text-muted">
+
+              <p className="mt-auto flex items-center gap-2 pt-7 text-[11px] text-muted">
+                <ClockIcon />
                 Our team works {BOOKING_CONFIG.startHour}:00–{BOOKING_CONFIG.endHour}:00 {BOOKING_CONFIG.tzLabel}, Monday to Saturday.
               </p>
             </div>
 
-            <form onSubmit={submit} className="space-y-3">
-              <p className="text-xs font-semibold text-ink">3. Your details</p>
-              {slot && (
-                <p className="rounded-md bg-gold/10 px-3 py-2 text-xs font-medium text-gold">{longFmt.format(new Date(slot))}</p>
-              )}
-              <input className={inputCls} required placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} />
-              <input className={inputCls} required type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
-              <input className={inputCls} type="tel" placeholder="Phone / WhatsApp (optional)" value={phone} onChange={(e) => setPhone(e.target.value)} />
-              <select className={inputCls} aria-label="What is the call about?" value={topic} onChange={(e) => setTopic(e.target.value)}>
-                {BOOKING_TOPICS.map((t) => (
-                  <option key={t}>{t}</option>
-                ))}
-              </select>
+            {/* ───────── RIGHT: details ───────── */}
+            <form
+              onSubmit={submit}
+              className="min-w-0 border-t border-line bg-bg-soft/70 p-6 sm:p-9 lg:border-l lg:border-t-0"
+            >
+              <p className="flex items-center gap-2.5 text-sm font-semibold text-ink">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold/10 text-[11px] font-bold text-gold">3</span>
+                Your details
+              </p>
+
+              {/* Selected-time summary */}
+              <div
+                className={`mt-4 flex items-center gap-3 rounded-xl border px-4 py-3 transition-colors ${
+                  slot ? "border-gold/30 bg-gold/10 text-gold" : "border-dashed border-line bg-white text-muted"
+                }`}
+                aria-live="polite"
+              >
+                <CalendarIcon />
+                <div className="min-w-0 text-xs">
+                  {slot ? (
+                    <>
+                      <p className="font-semibold text-ink">{longFmt.format(new Date(slot))}</p>
+                      <p className="mt-0.5 text-muted">{BOOKING_CONFIG.slotMinutes}-minute call · free, no obligation</p>
+                    </>
+                  ) : (
+                    <p>Pick a day and time to continue</p>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-5 space-y-3">
+                <Field icon={<UserIcon />}>
+                  <input
+                    className={fieldCls}
+                    required
+                    autoComplete="name"
+                    placeholder="Your name"
+                    aria-label="Your name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </Field>
+                <Field icon={<MailIcon />}>
+                  <input
+                    className={fieldCls}
+                    required
+                    type="email"
+                    autoComplete="email"
+                    placeholder="Your email"
+                    aria-label="Your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Field>
+                <Field icon={<PhoneIcon />}>
+                  <input
+                    className={fieldCls}
+                    type="tel"
+                    autoComplete="tel"
+                    placeholder="Phone / WhatsApp (optional)"
+                    aria-label="Phone or WhatsApp"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </Field>
+              </div>
+
+              <p className="mb-2 mt-5 text-xs font-semibold text-ink">What&apos;s the call about?</p>
+              <div className="flex flex-wrap gap-2" role="group" aria-label="What is the call about?">
+                {BOOKING_TOPICS.map((t) => {
+                  const on = topic === t;
+                  return (
+                    <button
+                      key={t}
+                      type="button"
+                      aria-pressed={on}
+                      onClick={() => setTopic(t)}
+                      className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors ${
+                        on ? "border-gold bg-gold/10 text-gold" : "border-line bg-white text-muted hover:border-gold/50 hover:text-ink"
+                      }`}
+                    >
+                      {t}
+                    </button>
+                  );
+                })}
+              </div>
+
               <textarea
-                className={inputCls}
+                className={`${fieldCls} no-scrollbar mt-4 resize-none !pl-4`}
                 rows={3}
                 maxLength={1000}
                 placeholder="Anything we should know beforehand? (optional)"
+                aria-label="Notes"
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
               />
+
               <input type="text" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" name="website" value={website} onChange={(e) => setWebsite(e.target.value)} />
+
               {error && (
-                <p className="text-xs text-rose-500" role="alert">
+                <p className="mt-3 rounded-lg bg-rose-500/10 px-3 py-2 text-xs text-rose-600" role="alert">
                   {error}
                 </p>
               )}
-              <button type="submit" disabled={sending || !slot} className="btn-primary w-full justify-center disabled:opacity-60">
-                {sending ? "Booking…" : slot ? "CONFIRM BOOKING" : "PICK A TIME"} <span aria-hidden>→</span>
+
+              <button
+                type="submit"
+                disabled={sending || !slot}
+                className="btn-primary mt-5 w-full justify-center whitespace-nowrap py-3.5 tracking-wide disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {sending ? "BOOKING…" : slot ? "CONFIRM BOOKING" : "PICK A TIME"} <span aria-hidden>→</span>
               </button>
             </form>
           </div>
