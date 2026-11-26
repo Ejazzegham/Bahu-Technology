@@ -104,6 +104,80 @@ function Countdown({ endsAt, now }: { endsAt: number; now: number }) {
   );
 }
 
+
+/** 28-point scalloped starburst outline for the badge. */
+const BURST = (() => {
+  const pts: string[] = [];
+  const n = 28;
+  for (let i = 0; i < n * 2; i++) {
+    const r = i % 2 === 0 ? 98 : 90;
+    const a = (Math.PI * i) / n - Math.PI / 2;
+    pts.push(`${(100 + r * Math.cos(a)).toFixed(2)},${(100 + r * Math.sin(a)).toFixed(2)}`);
+  }
+  return pts.join(" ");
+})();
+
+function Seal({ value }: { value: string }) {
+  return (
+    <div className="offer-seal" aria-hidden>
+      <span className="offer-seal-halo" />
+      <span className="offer-seal-ring" />
+      <span className="offer-seal-ring offer-seal-ring-2" />
+      <svg className="offer-seal-svg" viewBox="0 0 200 200">
+        <defs>
+          <linearGradient id="osGold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#fff3c4" />
+            <stop offset="35%" stopColor="#ffc94d" />
+            <stop offset="70%" stopColor="#ff7ac8" />
+            <stop offset="100%" stopColor="#8a5cff" />
+          </linearGradient>
+          <linearGradient id="osRim" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0%" stopColor="#ffd86b" />
+            <stop offset="50%" stopColor="#fff6d6" />
+            <stop offset="100%" stopColor="#ff9ad5" />
+          </linearGradient>
+          <radialGradient id="osCore" cx="35%" cy="25%" r="85%">
+            <stop offset="0%" stopColor="#5a2fd0" />
+            <stop offset="55%" stopColor="#24104f" />
+            <stop offset="100%" stopColor="#0b0724" />
+          </radialGradient>
+          <path id="osPath" d="M100,100 m-73,0 a73,73 0 1,1 146,0 a73,73 0 1,1 -146,0" />
+        </defs>
+
+        {/* scalloped outer burst — turns slowly */}
+        <g className="offer-seal-burst">
+          <polygon points={BURST} fill="url(#osGold)" />
+          <polygon points={BURST} fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1" />
+        </g>
+
+        {/* dark glass band carrying the orbiting text */}
+        <circle cx="100" cy="100" r="82" fill="#0d0828" />
+        <circle cx="100" cy="100" r="82" fill="none" stroke="url(#osRim)" strokeWidth="1.5" />
+        <g className="offer-seal-text">
+          <text fill="#ffe7a3" fontSize="9.5" fontWeight="600" letterSpacing="3">
+            <textPath href="#osPath" textLength="455" lengthAdjust="spacing">
+              SPECIAL OFFER • LIMITED TIME • SAVE BIG •
+            </textPath>
+          </text>
+        </g>
+
+        {/* jewel core */}
+        <circle cx="100" cy="100" r="61" fill="url(#osCore)" />
+        <circle cx="100" cy="100" r="61" fill="none" stroke="url(#osRim)" strokeWidth="2.5" />
+        <circle cx="100" cy="100" r="56" fill="none" stroke="rgba(255,255,255,0.14)" strokeWidth="1" strokeDasharray="2 5" />
+        <ellipse cx="78" cy="68" rx="30" ry="13" fill="rgba(255,255,255,0.16)" transform="rotate(-28 78 68)" />
+      </svg>
+
+      <div className="offer-seal-core">
+        <span className="offer-seal-small">SAVE</span>
+        <span className="offer-seal-num">{value}</span>
+        <span className="offer-seal-small offer-seal-off">OFF</span>
+      </div>
+      <span className="offer-seal-orbit" />
+    </div>
+  );
+}
+
 function CheckIcon() {
   return (
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -166,6 +240,10 @@ export default function SpecialOffer() {
   const priceValue = useCountUp(price ?? 0, seen, 1800);
 
   if (!offer) return null;
+
+  const words = offer.title.trim().split(/\s+/);
+  const titleLast = words.length > 1 ? words.pop() : "";
+  const titleHead = words.join(" ");
 
   const badgeNumber =
     offer.discountType === "percent" ? `${pctValue}%` : `${offer.currency}${pctValue}`;
@@ -245,7 +323,8 @@ export default function SpecialOffer() {
           </span>
 
           <h2 className="offer-rise offer-title" style={{ ["--i" as string]: 1 }}>
-            {offer.title}
+            {titleHead}
+            {titleLast && <em className="offer-title-em">{titleHead ? " " : ""}{titleLast}</em>}
           </h2>
 
           {offer.description && (
@@ -288,15 +367,7 @@ export default function SpecialOffer() {
           <div className="offer-card" onMouseMove={onMove}>
             <div className="offer-card-glow" aria-hidden />
             <div className="offer-card-inner">
-              <div className="offer-seal" aria-hidden>
-                <span className="offer-seal-ring" />
-                <span className="offer-seal-ring offer-seal-ring-2" />
-                <div className="offer-seal-core">
-                  <span className="offer-seal-small">SAVE</span>
-                  <span className="offer-seal-num">{badgeNumber}</span>
-                  <span className="offer-seal-small">TODAY</span>
-                </div>
-              </div>
+              <Seal value={badgeNumber} />
 
               {price != null && offer.originalPrice != null && (
                 <div className="mt-6 text-center">

@@ -29,6 +29,17 @@ const inter = localFont({
   display: "swap",
 });
 
+// Premium serif used only by the home-page Special Offer (title + price).
+const playfair = localFont({
+  src: [
+    { path: "./fonts/playfair-display-latin-800-normal.woff2", weight: "800", style: "normal" },
+    { path: "./fonts/playfair-display-latin-900-normal.woff2", weight: "900", style: "normal" },
+    { path: "./fonts/playfair-display-latin-800-italic.woff2", weight: "800", style: "italic" },
+  ],
+  variable: "--font-serif",
+  display: "swap",
+});
+
 export async function generateMetadata(): Promise<Metadata> {
   const { seo } = await getSettingsOnce();
   return {
@@ -86,7 +97,7 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
+    <html lang="en" className={`${poppins.variable} ${inter.variable} ${playfair.variable}`}>
       <head>
         <script
           type="application/ld+json"
