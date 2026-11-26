@@ -39,7 +39,7 @@ function AdminShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="admin-bg min-h-screen">
-      <Suspense fallback={<div className="fixed inset-y-0 left-0 z-40 hidden w-72 admin-sidebar lg:block" />}>
+      <Suspense fallback={<div className="fixed inset-y-0 left-0 z-40 hidden w-64 admin-sidebar lg:block" />}>
         <AdminSidebar
           messageBadge={messages.filter((m) => !m.read).length}
           orderBadge={orders.filter((o) => o.status === "New").length}
@@ -48,7 +48,7 @@ function AdminShell({ children }: { children: React.ReactNode }) {
         />
       </Suspense>
 
-      <div className="lg:ml-72">
+      <div className="lg:ml-64">
         <AdminTopbar
           title={title}
           email={user?.email}

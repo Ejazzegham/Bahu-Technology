@@ -67,7 +67,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
         onCloseMobile={() => setMobileSidebarOpen(false)}
       />
 
-      <div className="lg:ml-72">
+      <div className="lg:ml-64">
         <AdminTopbar
           title={title}
           email={user?.email}

@@ -131,15 +131,15 @@ const NAV: Item[] = [
 function NavIcon({ children, color, active }: { children: JSX.Element; color?: string; active?: boolean }) {
   return (
     <span
-      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors"
+      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md transition-colors"
       style={{
         backgroundColor: active ? "rgba(255,255,255,0.22)" : `${color ?? "#5b9dff"}26`,
         color: active ? "#fff" : color ?? "#5b9dff",
       }}
     >
     <svg
-      width="16"
-      height="16"
+      width="14"
+      height="14"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -175,16 +175,16 @@ export default function AdminSidebar({
 
   const sidebarBody = (
     <>
-      <div className="flex items-center gap-3 border-b border-white/10 px-6 py-5">
+      <div className="flex items-center gap-2.5 border-b border-white/10 px-5 py-4">
         <Image
           src="/logo/bahu_logo_512x512.png"
           alt="Bahu Technology"
-          width={36}
-          height={36}
-          className="h-9 w-9 object-contain"
+          width={32}
+          height={32}
+          className="h-8 w-8 object-contain"
         />
         <div>
-          <p className="font-display text-sm font-bold leading-tight text-white">
+          <p className="font-display text-xs font-bold leading-tight text-white">
             TECHNOLOGY
           </p>
           <p className="bg-gradient-to-r from-sky-300 via-violet-300 to-pink-300 bg-clip-text text-[10px] font-semibold tracking-[0.2em] text-transparent">ADMIN PANEL</p>
@@ -200,7 +200,7 @@ export default function AdminSidebar({
         </button>
       </div>
 
-      <nav className="no-scrollbar flex-1 space-y-1 overflow-y-auto px-3 py-4">
+      <nav className="no-scrollbar flex-1 space-y-0.5 overflow-y-auto px-2.5 py-3">
         <p className="px-3 pb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/35">Menu</p>
         {NAV.map((item) => {
           const isTopActive = pathname === item.href;
@@ -218,7 +218,7 @@ export default function AdminSidebar({
                 key={item.label}
                 href={item.href ?? "#"}
                 onClick={onCloseMobile}
-                className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
+                className={`flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-[13px] transition-colors ${
                   isTopActive
                     ? "bg-gradient-to-r from-blue-500 via-violet-500 to-fuchsia-500 font-semibold text-white shadow-lg shadow-violet-900/40"
                     : "text-white/70 hover:bg-white/10 hover:text-white"
@@ -239,7 +239,7 @@ export default function AdminSidebar({
             <div key={item.label}>
               <button
                 onClick={() => setOpenMenu(isOpen ? null : item.label)}
-                className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
+                className={`flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-[13px] transition-colors ${
                   isTopActive && !isOpen
                     ? "bg-gradient-to-r from-blue-500 via-violet-500 to-fuchsia-500 font-semibold text-white shadow-lg shadow-violet-900/40"
                     : "text-white/70 hover:bg-white/10 hover:text-white"
@@ -261,7 +261,7 @@ export default function AdminSidebar({
               </button>
 
               {isOpen && (
-                <div className="ml-7 mt-1 space-y-1 border-l border-white/15 pl-4">
+                <div className="ml-6 mt-0.5 space-y-0.5 border-l border-white/15 pl-4">
                   {item.children.map((sub, i) => {
                     const subActive =
                       isTopActive && (currentTab === sub.tabValue || (!currentTab && i === 0));
@@ -270,7 +270,7 @@ export default function AdminSidebar({
                         key={sub.label}
                         href={sub.href}
                         onClick={onCloseMobile}
-                        className={`block w-full rounded-md px-3 py-1.5 text-left text-xs ${
+                        className={`block w-full rounded-md px-2.5 py-1 text-left text-[11.5px] ${
                           subActive ? "font-semibold text-sky-300" : "text-white/55 hover:text-white"
                         }`}
                       >
@@ -285,10 +285,10 @@ export default function AdminSidebar({
         })}
       </nav>
 
-      <div className="border-t border-white/10 p-4">
+      <div className="border-t border-white/10 p-3">
         <a
           href="/"
-          className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-500 to-teal-400 px-4 py-2.5 text-xs font-bold text-white shadow-lg shadow-sky-900/40 transition hover:brightness-110"
+          className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-500 to-teal-400 px-3 py-2 text-[11px] font-bold text-white shadow-lg shadow-sky-900/40 transition hover:brightness-110"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
             <circle cx="12" cy="12" r="3" />
@@ -303,7 +303,7 @@ export default function AdminSidebar({
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-72 flex-col admin-sidebar lg:flex">
+      <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col admin-sidebar lg:flex">
         {sidebarBody}
       </aside>
 
@@ -315,7 +315,7 @@ export default function AdminSidebar({
             onClick={onCloseMobile}
             aria-hidden
           />
-          <aside className="absolute inset-y-0 left-0 flex w-72 flex-col admin-sidebar">
+          <aside className="absolute inset-y-0 left-0 flex w-64 flex-col admin-sidebar">
             {sidebarBody}
           </aside>
         </div>

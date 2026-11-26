@@ -141,7 +141,7 @@ export default function AdminDashboardPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
               {new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}
             </p>
-            <h2 className="mt-1 font-display text-2xl font-bold sm:text-3xl">Welcome back, Admin 👋</h2>
+            <h2 className="mt-1 font-display text-2xl font-bold sm:text-3xl">Welcome back, Admin</h2>
             <p className="mt-1 text-sm text-white/80">
               You have {messages.filter((m) => !m.read).length} unread message
               {messages.filter((m) => !m.read).length === 1 ? "" : "s"} and {projects.length} projects in your portfolio.
