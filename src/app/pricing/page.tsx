@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import PricingHero from "@/components/PricingHero";
+import FastDelivery from "@/components/FastDelivery";
 import PricingExplorer from "@/components/PricingExplorer";
 import PricingTrustBar from "@/components/PricingTrustBar";
 import HowWeWork from "@/components/HowWeWork";
@@ -22,6 +23,7 @@ export default function PricingPage() {
       <Navbar active="Pricing" />
       <main>
         <PricingHero />
+        <FastDelivery variant="pricing" />
         <PricingExplorer />
         <PricingTrustBar />
         <HowWeWork />

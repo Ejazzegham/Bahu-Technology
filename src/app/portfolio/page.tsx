@@ -7,6 +7,7 @@ import PortfolioProcess from "@/components/PortfolioProcess";
 import PortfolioFaq from "@/components/PortfolioFaq";
 import Testimonials from "@/components/Testimonials";
 import TechMarquee from "@/components/TechMarquee";
+import FastDelivery from "@/components/FastDelivery";
 import Footer from "@/components/Footer";
 import { getAllProjects } from "@/lib/projects";
 import type { Metadata } from "next";
@@ -26,6 +27,7 @@ export default async function PortfolioPage() {
       <Navbar active="Portfolio" />
       <main>
         <PortfolioHero />
+        <FastDelivery variant="portfolio" />
         <PortfolioFeatured projects={projects} />
         <PortfolioGrid projects={projects} />
         <PortfolioProcess />
