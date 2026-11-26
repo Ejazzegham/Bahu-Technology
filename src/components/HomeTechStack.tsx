@@ -58,8 +58,8 @@ const STACKS = [
     groups: [
       { title: "Adobe Creative Suite", items: ["Adobe Creative Cloud (Complete Suite)", "Photoshop", "Illustrator", "InDesign", "Premiere Pro", "After Effects", "Lightroom", "Adobe XD", "Acrobat"] },
       { title: "Other Design Software", items: ["CorelDRAW", "InPage (Urdu)", "Figma", "Canva"] },
-      { title: "Office & Presentations", items: ["Microsoft Office", "Word", "PowerPoint", "Excel"] },
-      { title: "Specialties", items: ["Branding", "Logo Design", "UI/UX Design", "Print Design", "Packaging", "Social Media Graphics"] },
+      { title: "Office & Presentations", items: ["Microsoft Office", "Word", "PowerPoint", "Excel", "Access"] },
+      { title: "Specialties", items: ["Branding", "Logo Design", "UI/UX Design", "Print Design", "Packaging", "Social Media Graphics", "T-Shirt","Pitch Deck"] },
     ],
   },
 ] as const;
