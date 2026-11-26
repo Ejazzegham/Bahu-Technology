@@ -37,6 +37,7 @@ const SKIP_PATHS = ["/admin", "/login"];
 export default function GlobalMotion() {
   const pathname = usePathname();
   const barRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
   const skip = SKIP_PATHS.some((p) => pathname?.startsWith(p));
 
   // Scroll progress bar
@@ -49,6 +50,13 @@ export default function GlobalMotion() {
       const max = doc.scrollHeight - window.innerHeight;
       const p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
       if (barRef.current) barRef.current.style.transform = `scaleX(${p})`;
+      // Hero artwork drifts slower than the page for a sense of depth.
+      if (window.scrollY < window.innerHeight * 1.2) {
+        document.documentElement.style.setProperty(
+          "--hero-py",
+          String(Math.round(window.scrollY * 0.18))
+        );
+      }
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -76,6 +84,69 @@ export default function GlobalMotion() {
     };
     document.addEventListener("mousemove", onMove, { passive: true });
     return () => document.removeEventListener("mousemove", onMove);
+  }, [skip]);
+
+  // Cursor glow (eased follow) + magnetic buttons
+  useEffect(() => {
+    if (skip) return;
+    if (window.matchMedia("(hover: none)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const glow = glowRef.current;
+    let tx = window.innerWidth / 2;
+    let ty = window.innerHeight / 2;
+    let cx = tx;
+    let cy = ty;
+    let raf = 0;
+
+    const loop = () => {
+      cx += (tx - cx) * 0.12;
+      cy += (ty - cy) * 0.12;
+      if (glow) glow.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+
+    const MAGNETIC = ".btn-primary, .nav-cta";
+    let magnet: HTMLElement | null = null;
+
+    const reset = (el: HTMLElement) => {
+      el.style.translate = "";
+    };
+
+    const onMove = (e: MouseEvent) => {
+      tx = e.clientX;
+      ty = e.clientY;
+      glow?.classList.add("is-on");
+
+      const el = (e.target as HTMLElement | null)?.closest?.(MAGNETIC) as HTMLElement | null;
+      if (magnet && magnet !== el) {
+        reset(magnet);
+        magnet = null;
+      }
+      if (!el) return;
+      magnet = el;
+      const r = el.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+      const dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+      el.style.translate = `${(dx * 8).toFixed(1)}px ${(dy * 6).toFixed(1)}px`;
+    };
+    const onLeave = () => {
+      glow?.classList.remove("is-on");
+      if (magnet) {
+        reset(magnet);
+        magnet = null;
+      }
+    };
+
+    document.addEventListener("mousemove", onMove, { passive: true });
+    document.documentElement.addEventListener("mouseleave", onLeave);
+    return () => {
+      cancelAnimationFrame(raf);
+      document.removeEventListener("mousemove", onMove);
+      document.documentElement.removeEventListener("mouseleave", onLeave);
+      if (magnet) reset(magnet);
+    };
   }, [skip]);
 
   // Scroll reveal
@@ -174,12 +245,15 @@ export default function GlobalMotion() {
   if (skip) return null;
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-[70] h-[3px]">
-      <div
-        ref={barRef}
-        className="h-full origin-left bg-gradient-to-r from-[#5b9dff] via-[#1477f5] to-[#c14dff]"
-        style={{ transform: "scaleX(0)" }}
-      />
-    </div>
+    <>
+      <div ref={glowRef} aria-hidden className="cursor-glow" />
+      <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-[70] h-[3px]">
+        <div
+          ref={barRef}
+          className="h-full origin-left bg-gradient-to-r from-[#5b9dff] via-[#1477f5] to-[#c14dff]"
+          style={{ transform: "scaleX(0)" }}
+        />
+      </div>
+    </>
   );
 }

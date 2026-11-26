@@ -3,11 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { createPortal } from "react-dom";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import LetsTalkButton from "./LetsTalkButton";
 import { DEFAULT_SETTINGS, subscribeSettings } from "@/lib/firestore/settings";
 import { useCustomerAuth } from "@/lib/use-customer-auth";
-import { usePopoverPosition } from "@/lib/use-popover-position";
 
 const HOME_LINK = {
   label: "Home",
@@ -119,112 +118,13 @@ function NavLinkIcon({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ServicesDesktopDropdown({ active }: { active: boolean }) {
-  const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const triggerRef = useRef<HTMLButtonElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const style = usePopoverPosition(triggerRef, open, { align: "left", width: 292, estimatedHeight: 290 });
 
-  useEffect(() => setMounted(true), []);
-
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      const target = e.target as Node;
-      if (
-        triggerRef.current && !triggerRef.current.contains(target) &&
-        menuRef.current && !menuRef.current.contains(target)
-      ) {
-        setOpen(false);
-      }
-    }
-    function handleKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setOpen(false);
-    }
-    document.addEventListener("mousedown", handleClick);
-    document.addEventListener("keydown", handleKey);
-    return () => {
-      document.removeEventListener("mousedown", handleClick);
-      document.removeEventListener("keydown", handleKey);
-    };
-  }, []);
-
-  return (
-    <div className="relative">
-      <button
-        ref={triggerRef}
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-haspopup="true"
-        aria-expanded={open}
-        className={`relative flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-gold ${
-          active ? "text-gold" : "text-muted"
-        }`}
-      >
-        Services
-        <svg
-          width="12"
-          height="12"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
-        >
-          <path d="M6 9l6 6 6-6" />
-        </svg>
-        {active && <span className="absolute -bottom-3 left-0 h-0.5 w-full bg-gold" />}
-      </button>
-
-      {open && mounted &&
-        createPortal(
-          <div
-            ref={menuRef}
-            style={style}
-            className="dd-panel dd-menu z-[70]"
-            role="menu"
-            aria-label="Services"
-          >
-            <p className="dd-eyebrow">Our Services</p>
-            {SERVICES.map((service) => (
-              <Link
-                key={service.label}
-                href={service.href}
-                role="menuitem"
-                onClick={() => setOpen(false)}
-                className="dd-link"
-              >
-                <span className="dd-tile">
-                  <NavLinkIcon>{service.icon}</NavLinkIcon>
-                </span>
-                <span className="min-w-0">
-                  <span className="block text-[13px] font-semibold leading-tight">{service.label}</span>
-                  <span className="mt-0.5 block text-[11px] leading-tight text-muted">{service.desc}</span>
-                </span>
-                <svg
-                  aria-hidden
-                  className="dd-arrow"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </Link>
-            ))}
-          </div>,
-          document.body
-        )}
-    </div>
-  );
-}
+/** Desktop order: Home, Services (mega menu), then the remaining links. */
+const DESKTOP_ITEMS: { label: string; href?: string }[] = [
+  { label: HOME_LINK.label, href: HOME_LINK.href },
+  { label: "Services" },
+  ...NAV_LINKS.map((l) => ({ label: l.label, href: l.href })),
+];
 
 export default function Navbar({ active = "Home" }: { active?: string }) {
   const [open, setOpen] = useState(false);
@@ -235,12 +135,105 @@ export default function Navbar({ active = "Home" }: { active?: string }) {
   const accountHref = user ? "/account" : "/login";
   const isServicesActive = active === "Services";
 
+  // Scroll-aware header: glass + compact once scrolled, tucks away when
+  // scrolling down and returns the moment the visitor scrolls up.
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastY = useRef(0);
+
+  // Services mega menu (hover-intent on desktop, click / keyboard friendly).
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const closeTimer = useRef<number | null>(null);
+  const openServices = useCallback(() => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    setServicesOpen(true);
+  }, []);
+  const closeServices = useCallback((delay = 140) => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = window.setTimeout(() => setServicesOpen(false), delay);
+  }, []);
+
+  // Sliding highlight that glides between links.
+  const navRef = useRef<HTMLElement>(null);
+  const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [hovered, setHovered] = useState<string | null>(null);
+  const [pill, setPill] = useState<{ left: number; width: number; show: boolean }>({
+    left: 0,
+    width: 0,
+    show: false,
+  });
+  const target = hovered ?? (DESKTOP_ITEMS.some((i) => i.label === active) ? active : null);
+
+  const measure = useCallback(() => {
+    const el = target ? itemRefs.current[target] : null;
+    if (!el) {
+      setPill((p) => (p.show ? { ...p, show: false } : p));
+      return;
+    }
+    setPill({ left: el.offsetLeft, width: el.offsetWidth, show: true });
+  }, [target]);
+
+  useLayoutEffect(() => {
+    measure();
+  }, [measure]);
+
+  useEffect(() => {
+    window.addEventListener("resize", measure);
+    // Fonts swapping in can change link widths after first paint.
+    document.fonts?.ready.then(measure).catch(() => {});
+    return () => window.removeEventListener("resize", measure);
+  }, [measure]);
+
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const unsub = subscribeSettings(setSettings);
     return () => unsub?.();
   }, []);
+
+  useEffect(() => {
+    lastY.current = window.scrollY;
+    setScrolled(window.scrollY > 12);
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const y = window.scrollY;
+        setScrolled(y > 12);
+        if (y > 260 && y > lastY.current + 6) setHidden(true);
+        else if (y < lastY.current - 6 || y <= 260) setHidden(false);
+        lastY.current = y;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  // Never leave the header hidden while a menu is open.
+  useEffect(() => {
+    if (servicesOpen || open) setHidden(false);
+  }, [servicesOpen, open]);
+
+  useEffect(() => {
+    if (!servicesOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setServicesOpen(false);
+    };
+    const onDown = (e: MouseEvent) => {
+      const el = itemRefs.current["Services"];
+      if (el && !el.contains(e.target as Node)) setServicesOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onDown);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onDown);
+    };
+  }, [servicesOpen]);
 
   // Lock page scroll behind the drawer while it's open, and let Escape
   // close it — small touches that make it feel like a real app menu.
@@ -258,84 +251,187 @@ export default function Navbar({ active = "Home" }: { active?: string }) {
     };
   }, [open]);
 
+  const linkClass = (label: string) =>
+    `nav-link ${label === active ? "is-active" : ""}`;
+
   return (
-    <header className="sticky top-0 z-50 border-b border-line/80 bg-bg/90 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-10">
-        <Link href="/" className="flex items-center gap-2">
-          <Image
-            src={settings.appearance.logoUrl}
-            alt="Bahu Technology"
-            width={40}
-            height={40}
-            className="h-10 w-10 object-contain"
-            priority
-          />
+    <header
+      className={`site-header sticky top-0 z-50 ${scrolled ? "is-scrolled" : ""} ${
+        hidden ? "is-hidden" : ""
+      }`}
+    >
+      <div className="site-header-inner mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
+        <Link href="/" className="nav-logo group flex items-center gap-2.5" aria-label="Bahu Technology — home">
+          <span className="nav-logo-mark">
+            <Image
+              src={settings.appearance.logoUrl}
+              alt="Bahu Technology"
+              width={40}
+              height={40}
+              className="nav-logo-img object-contain"
+              priority
+            />
+          </span>
           <span className="font-display text-sm font-semibold leading-tight tracking-wide text-ink">
             BAHU
-            <span className="block text-[10px] font-medium tracking-[0.3em] text-muted">
+            <span className="block text-[10px] font-medium tracking-[0.3em] text-muted transition-colors duration-300 group-hover:text-gold">
               TECHNOLOGY
             </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
-          <Link
-            href={HOME_LINK.href}
-            className={`relative text-sm font-medium transition-colors hover:text-gold ${
-              HOME_LINK.label === active ? "text-gold" : "text-muted"
-            }`}
-          >
-            {HOME_LINK.label}
-            {HOME_LINK.label === active && (
-              <span className="absolute -bottom-3 left-0 h-0.5 w-full bg-gold" />
-            )}
-          </Link>
+        <nav
+          ref={navRef}
+          className="nav-rail relative hidden items-center lg:flex"
+          onMouseLeave={() => setHovered(null)}
+          aria-label="Primary"
+        >
+          {/* gliding highlight */}
+          <span
+            aria-hidden
+            className="nav-pill"
+            style={{
+              width: pill.width,
+              transform: `translateX(${pill.left}px)`,
+              opacity: pill.show ? 1 : 0,
+            }}
+          />
 
-          <ServicesDesktopDropdown active={isServicesActive} />
+          {DESKTOP_ITEMS.map((item) =>
+            item.label === "Services" ? (
+              <div
+                key="Services"
+                ref={(el) => {
+                  itemRefs.current["Services"] = el;
+                }}
+                className="relative"
+                onMouseEnter={() => {
+                  setHovered("Services");
+                  openServices();
+                }}
+                onMouseLeave={() => closeServices()}
+                onFocus={() => {
+                  setHovered("Services");
+                  openServices();
+                }}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget as Node)) closeServices(60);
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setServicesOpen((v) => !v)}
+                  aria-haspopup="true"
+                  aria-expanded={servicesOpen}
+                  className={`${linkClass("Services")} ${isServicesActive ? "is-active" : ""}`}
+                >
+                  Services
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}
+                  >
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
 
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className={`relative text-sm font-medium transition-colors hover:text-gold ${
-                link.label === active ? "text-gold" : "text-muted"
-              }`}
-            >
-              {link.label}
-              {link.label === active && (
-                <span className="absolute -bottom-3 left-0 h-0.5 w-full bg-gold" />
-              )}
-            </Link>
-          ))}
+                {servicesOpen && (
+                  <div className="nav-mega-wrap" role="presentation">
+                    <div className="nav-mega" role="menu" aria-label="Services">
+                      <p className="nav-mega-eyebrow">What we build</p>
+                      <div className="grid grid-cols-2 gap-1.5">
+                        {SERVICES.map((service, i) => (
+                          <Link
+                            key={service.label}
+                            href={service.href}
+                            role="menuitem"
+                            onClick={() => setServicesOpen(false)}
+                            className="nav-mega-item"
+                            style={{ animationDelay: `${0.04 + i * 0.05}s` }}
+                          >
+                            <span className="nav-mega-tile">
+                              <NavLinkIcon>{service.icon}</NavLinkIcon>
+                            </span>
+                            <span className="min-w-0">
+                              <span className="block text-[13px] font-semibold leading-tight text-ink">
+                                {service.label}
+                              </span>
+                              <span className="mt-1 block text-[11px] leading-snug text-muted">
+                                {service.desc}
+                              </span>
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                      <Link
+                        href="/contact"
+                        onClick={() => setServicesOpen(false)}
+                        className="nav-mega-foot"
+                      >
+                        <span>Need something custom? Tell us about it</span>
+                        <span aria-hidden className="nav-mega-foot-arrow">→</span>
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div
+                key={item.label}
+                ref={(el) => {
+                  itemRefs.current[item.label] = el;
+                }}
+                onMouseEnter={() => {
+                  setHovered(item.label);
+                  closeServices(0);
+                }}
+                onFocus={() => setHovered(item.label)}
+                onBlur={() => setHovered(null)}
+              >
+                <Link
+                  href={item.href!}
+                  className={linkClass(item.label)}
+                  aria-current={item.label === active ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              </div>
+            )
+          )}
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
-          <Link
-            href={accountHref}
-            aria-label="My Account"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-gold hover:text-gold"
-          >
+        <div className="hidden items-center gap-3 lg:flex">
+          <Link href={accountHref} aria-label="My Account" className="nav-account">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <circle cx="12" cy="8" r="4" />
               <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" />
             </svg>
           </Link>
-          <LetsTalkButton
-            triggerClassName="inline-flex items-center gap-2 rounded-md border border-gold/50 px-5 py-2.5 text-xs font-semibold tracking-wide text-gold transition-colors hover:bg-gold hover:text-bg"
-          />
+          <LetsTalkButton triggerClassName="nav-cta" />
         </div>
 
         <button
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-gold/50 hover:text-gold lg:hidden"
+          className="nav-burger lg:hidden"
           onClick={() => setOpen(true)}
           aria-label="Open menu"
           aria-expanded={open}
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-            <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
-          </svg>
+          <span aria-hidden className="nav-burger-lines">
+            <i />
+            <i />
+            <i />
+          </span>
         </button>
       </div>
+
+      {/* hairline accent that fades in once the page is scrolled */}
+      <span aria-hidden className="site-header-line" />
 
       {/* Mobile drawer — rendered through a portal straight into
           document.body, so it's always the true top-most layer covering
