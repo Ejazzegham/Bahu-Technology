@@ -14,7 +14,7 @@ import AdminLatestMessages from "@/components/admin/AdminLatestMessages";
 import AdminClientsCard from "@/components/admin/AdminClientsCard";
 import AdminOrdersCard from "@/components/admin/AdminOrdersCard";
 
-const DONUT_COLORS = ["#f2b134", "#2fd0c9", "#7c4dff", "#ff4d6d", "#3a3a42", "#6b6b74"];
+const DONUT_COLORS = ["#1477f5", "#7c4dff", "#ff4d6d", "#f2b134", "#10b981", "#2fd0c9"];
 
 function pctChange(current: number, previous: number): { label: string; up: boolean } {
   if (previous === 0) {
@@ -133,6 +133,37 @@ export default function AdminDashboardPage() {
 
   return (
     <>
+      <div className="admin-fade-up relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 via-violet-600 to-fuchsia-600 p-6 text-white shadow-xl shadow-violet-500/25 sm:p-8">
+        <div className="pointer-events-none absolute -right-10 -top-16 h-52 w-52 rounded-full bg-white/10" />
+        <div className="pointer-events-none absolute bottom-[-60px] right-32 h-40 w-40 rounded-full bg-white/10" />
+        <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
+              {new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}
+            </p>
+            <h2 className="mt-1 font-display text-2xl font-bold sm:text-3xl">Welcome back, Admin 👋</h2>
+            <p className="mt-1 text-sm text-white/80">
+              You have {messages.filter((m) => !m.read).length} unread message
+              {messages.filter((m) => !m.read).length === 1 ? "" : "s"} and {projects.length} projects in your portfolio.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={() => router.push("/admin/portfolio?tab=add")}
+              className="rounded-lg bg-white px-4 py-2 text-xs font-bold text-violet-600 shadow transition hover:scale-105"
+            >
+              + New Project
+            </button>
+            <button
+              onClick={() => router.push("/admin/messages")}
+              className="rounded-lg bg-white/20 px-4 py-2 text-xs font-bold text-white backdrop-blur transition hover:bg-white/30"
+            >
+              View Messages
+            </button>
+          </div>
+        </div>
+      </div>
+
       <AdminStatsRow stats={stats} />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">

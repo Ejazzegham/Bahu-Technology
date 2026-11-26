@@ -8,6 +8,7 @@ import { useState } from "react";
 type SubItem = { label: string; href: string; tabValue: string };
 type Item = {
   label: string;
+  color?: string;
   icon: JSX.Element;
   href?: string;
   children?: SubItem[];
@@ -76,9 +77,10 @@ const ICONS = {
 };
 
 const NAV: Item[] = [
-  { label: "Dashboard", icon: ICONS.dashboard, href: "/admin" },
+  { label: "Dashboard", color: "#5b9dff", icon: ICONS.dashboard, href: "/admin" },
   {
     label: "Portfolio",
+    color: "#a78bfa",
     icon: ICONS.portfolio,
     href: "/admin/portfolio",
     children: [
@@ -87,18 +89,19 @@ const NAV: Item[] = [
       { label: "Technologies", href: "/admin/portfolio?tab=tech", tabValue: "tech" },
     ],
   },
-  { label: "Services", icon: ICONS.services, href: "/admin/services" },
-  { label: "Pricing Packages", icon: ICONS.pricing, href: "/admin/pricing" },
-  { label: "Special Offers", icon: ICONS.offers, href: "/admin/offers" },
-  { label: "Testimonials", icon: ICONS.testimonials, href: "/admin/testimonials" },
-  { label: "Reviews", icon: ICONS.reviews, href: "/admin/reviews" },
-  { label: "Team Members", icon: ICONS.team, href: "/admin/team" },
-  { label: "Clients", icon: ICONS.clients, href: "/admin/clients" },
-  { label: "Orders", icon: ICONS.orders, href: "/admin/orders" },
-  { label: "Messages", icon: ICONS.messages, href: "/admin/messages" },
-  { label: "Subscribers", icon: ICONS.subscribers, href: "/admin/subscribers" },
+  { label: "Services", color: "#2fd0c9", icon: ICONS.services, href: "/admin/services" },
+  { label: "Pricing Packages", color: "#f2b134", icon: ICONS.pricing, href: "/admin/pricing" },
+  { label: "Special Offers", color: "#ff4d6d", icon: ICONS.offers, href: "/admin/offers" },
+  { label: "Testimonials", color: "#34d399", icon: ICONS.testimonials, href: "/admin/testimonials" },
+  { label: "Reviews", color: "#fbbf24", icon: ICONS.reviews, href: "/admin/reviews" },
+  { label: "Team Members", color: "#60a5fa", icon: ICONS.team, href: "/admin/team" },
+  { label: "Clients", color: "#f472b6", icon: ICONS.clients, href: "/admin/clients" },
+  { label: "Orders", color: "#fb923c", icon: ICONS.orders, href: "/admin/orders" },
+  { label: "Messages", color: "#38bdf8", icon: ICONS.messages, href: "/admin/messages" },
+  { label: "Subscribers", color: "#c084fc", icon: ICONS.subscribers, href: "/admin/subscribers" },
   {
     label: "Pages",
+    color: "#2dd4bf",
     icon: ICONS.pages,
     href: "/admin/pages",
     children: [
@@ -108,6 +111,7 @@ const NAV: Item[] = [
   },
   {
     label: "Blog",
+    color: "#f87171",
     icon: ICONS.blog,
     href: "/admin/blog",
     children: [
@@ -116,29 +120,37 @@ const NAV: Item[] = [
       { label: "Comments", href: "/admin/blog?tab=comments", tabValue: "comments" },
     ],
   },
-  { label: "SEO Settings", icon: ICONS.seo, href: "/admin/seo" },
-  { label: "Appearance", icon: ICONS.appearance, href: "/admin/appearance" },
-  { label: "Users", icon: ICONS.users, href: "/admin/users" },
-  { label: "Roles & Permissions", icon: ICONS.roles, href: "/admin/roles" },
-  { label: "Settings", icon: ICONS.settings, href: "/admin/settings" },
-  { label: "Backup & Restore", icon: ICONS.backup, href: "/admin/backup" },
+  { label: "SEO Settings", color: "#a3e635", icon: ICONS.seo, href: "/admin/seo" },
+  { label: "Appearance", color: "#e879f9", icon: ICONS.appearance, href: "/admin/appearance" },
+  { label: "Users", color: "#818cf8", icon: ICONS.users, href: "/admin/users" },
+  { label: "Roles & Permissions", color: "#4ade80", icon: ICONS.roles, href: "/admin/roles" },
+  { label: "Settings", color: "#94a3b8", icon: ICONS.settings, href: "/admin/settings" },
+  { label: "Backup & Restore", color: "#fcd34d", icon: ICONS.backup, href: "/admin/backup" },
 ];
 
-function NavIcon({ children }: { children: JSX.Element }) {
+function NavIcon({ children, color, active }: { children: JSX.Element; color?: string; active?: boolean }) {
   return (
+    <span
+      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors"
+      style={{
+        backgroundColor: active ? "rgba(255,255,255,0.22)" : `${color ?? "#5b9dff"}26`,
+        color: active ? "#fff" : color ?? "#5b9dff",
+      }}
+    >
     <svg
-      width="18"
-      height="18"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.6"
+      strokeWidth="1.8"
       strokeLinecap="round"
       strokeLinejoin="round"
       className="shrink-0"
     >
       {children}
     </svg>
+    </span>
   );
 }
 
@@ -163,7 +175,7 @@ export default function AdminSidebar({
 
   const sidebarBody = (
     <>
-      <div className="flex items-center gap-2 border-b border-line px-6 py-5">
+      <div className="flex items-center gap-3 border-b border-white/10 px-6 py-5">
         <Image
           src="/logo/bahu_logo_512x512.png"
           alt="Bahu Technology"
@@ -172,15 +184,15 @@ export default function AdminSidebar({
           className="h-9 w-9 object-contain"
         />
         <div>
-          <p className="font-display text-sm font-semibold leading-tight text-ink">
+          <p className="font-display text-sm font-bold leading-tight text-white">
             TECHNOLOGY
           </p>
-          <p className="text-[10px] tracking-[0.2em] text-muted">ADMIN PANEL</p>
+          <p className="bg-gradient-to-r from-sky-300 via-violet-300 to-pink-300 bg-clip-text text-[10px] font-semibold tracking-[0.2em] text-transparent">ADMIN PANEL</p>
         </div>
         <button
           onClick={onCloseMobile}
           aria-label="Close menu"
-          className="ml-auto rounded-md p-1.5 text-muted hover:bg-ink/5 hover:text-ink lg:hidden"
+          className="ml-auto rounded-md p-1.5 text-white/60 hover:bg-white/10 hover:text-white lg:hidden"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
             <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
@@ -189,6 +201,7 @@ export default function AdminSidebar({
       </div>
 
       <nav className="no-scrollbar flex-1 space-y-1 overflow-y-auto px-3 py-4">
+        <p className="px-3 pb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/35">Menu</p>
         {NAV.map((item) => {
           const isTopActive = pathname === item.href;
           const isOpen = openMenu === item.label;
@@ -207,14 +220,14 @@ export default function AdminSidebar({
                 onClick={onCloseMobile}
                 className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
                   isTopActive
-                    ? "bg-gold-gradient font-semibold text-bg"
-                    : "text-muted hover:bg-ink/5 hover:text-ink"
+                    ? "bg-gradient-to-r from-blue-500 via-violet-500 to-fuchsia-500 font-semibold text-white shadow-lg shadow-violet-900/40"
+                    : "text-white/70 hover:bg-white/10 hover:text-white"
                 }`}
               >
-                <NavIcon>{item.icon}</NavIcon>
+                <NavIcon color={item.color} active={isTopActive}>{item.icon}</NavIcon>
                 <span className="flex-1 text-left">{item.label}</span>
                 {badge && (
-                  <span className="rounded-md bg-gold px-2 py-0.5 text-[10px] font-bold text-bg">
+                  <span className="rounded-full bg-gradient-to-r from-rose-500 to-orange-400 px-2 py-0.5 text-[10px] font-bold text-white shadow">
                     {badge}
                   </span>
                 )}
@@ -228,11 +241,11 @@ export default function AdminSidebar({
                 onClick={() => setOpenMenu(isOpen ? null : item.label)}
                 className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
                   isTopActive && !isOpen
-                    ? "bg-gold-gradient font-semibold text-bg"
-                    : "text-muted hover:bg-ink/5 hover:text-ink"
+                    ? "bg-gradient-to-r from-blue-500 via-violet-500 to-fuchsia-500 font-semibold text-white shadow-lg shadow-violet-900/40"
+                    : "text-white/70 hover:bg-white/10 hover:text-white"
                 }`}
               >
-                <NavIcon>{item.icon}</NavIcon>
+                <NavIcon color={item.color} active={isTopActive}>{item.icon}</NavIcon>
                 <span className="flex-1 text-left">{item.label}</span>
                 <svg
                   width="14"
@@ -248,7 +261,7 @@ export default function AdminSidebar({
               </button>
 
               {isOpen && (
-                <div className="mt-1 space-y-1 border-l border-line pl-8">
+                <div className="ml-7 mt-1 space-y-1 border-l border-white/15 pl-4">
                   {item.children.map((sub, i) => {
                     const subActive =
                       isTopActive && (currentTab === sub.tabValue || (!currentTab && i === 0));
@@ -258,7 +271,7 @@ export default function AdminSidebar({
                         href={sub.href}
                         onClick={onCloseMobile}
                         className={`block w-full rounded-md px-3 py-1.5 text-left text-xs ${
-                          subActive ? "text-gold" : "text-muted hover:text-ink"
+                          subActive ? "font-semibold text-sky-300" : "text-white/55 hover:text-white"
                         }`}
                       >
                         {sub.label}
@@ -272,10 +285,10 @@ export default function AdminSidebar({
         })}
       </nav>
 
-      <div className="border-t border-line p-4">
+      <div className="border-t border-white/10 p-4">
         <a
           href="/"
-          className="flex items-center justify-center gap-2 rounded-lg border border-gold/50 px-4 py-2.5 text-xs font-semibold text-gold hover:bg-gold hover:text-bg"
+          className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-500 to-teal-400 px-4 py-2.5 text-xs font-bold text-white shadow-lg shadow-sky-900/40 transition hover:brightness-110"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
             <circle cx="12" cy="12" r="3" />
@@ -290,7 +303,7 @@ export default function AdminSidebar({
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-72 flex-col border-r border-line bg-bg-soft lg:flex">
+      <aside className="fixed inset-y-0 left-0 z-40 hidden w-72 flex-col admin-sidebar lg:flex">
         {sidebarBody}
       </aside>
 
@@ -302,7 +315,7 @@ export default function AdminSidebar({
             onClick={onCloseMobile}
             aria-hidden
           />
-          <aside className="absolute inset-y-0 left-0 flex w-72 flex-col border-r border-line bg-bg-soft">
+          <aside className="absolute inset-y-0 left-0 flex w-72 flex-col admin-sidebar">
             {sidebarBody}
           </aside>
         </div>

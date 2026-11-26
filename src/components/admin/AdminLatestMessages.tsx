@@ -24,14 +24,14 @@ export default function AdminLatestMessages({
   onDelete: (id: string) => void;
 }) {
   return (
-    <div className="card !p-6" id="manage-messages">
+    <div className="admin-card admin-card-accent p-6" id="manage-messages">
       <div className="flex items-center justify-between">
-        <h3 className="font-display text-base font-semibold text-ink">Latest Messages</h3>
+        <h3 className="font-display text-base font-bold text-ink">Latest Messages</h3>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-muted">
+          <span className="rounded-full bg-rose-50 px-3 py-1 text-[11px] font-semibold text-rose-500">
             {messages.filter((m) => !m.read).length} unread
           </span>
-          <Link href="/admin/messages" className="text-xs font-semibold text-gold hover:underline">
+          <Link href="/admin/messages" className="text-xs font-semibold text-violet-600 hover:underline">
             View all
           </Link>
         </div>
@@ -46,26 +46,26 @@ export default function AdminLatestMessages({
           {messages.slice(0, 5).map((m) => (
             <li
               key={m.id}
-              className={`rounded-lg border px-4 py-3 ${
-                m.read ? "border-line" : "border-gold/40 bg-gold/5"
+              className={`rounded-xl border px-4 py-3 ${
+                m.read ? "border-slate-100 bg-white" : "border-l-4 border-slate-100 border-l-rose-400 bg-gradient-to-r from-rose-50 to-white"
               }`}
             >
               <div className="flex items-center justify-between gap-2">
                 <p className="text-sm font-semibold text-ink">{m.name}</p>
                 <span className="text-[10px] text-muted">{timeAgo(m.createdAt)}</span>
               </div>
-              <p className="mt-0.5 text-xs font-medium text-gold">
+              <p className="mt-0.5 text-xs font-medium text-blue-600">
                 {m.subject || "(no subject)"}
-                {m.service && <span className="ml-2 rounded-md border border-gold/30 px-2 py-0.5 text-[10px] font-medium">{m.service}</span>}
+                {m.service && <span className="ml-2 rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-semibold text-violet-600">{m.service}</span>}
               </p>
               <p className="mt-1 line-clamp-2 text-xs text-muted">{m.message}</p>
               <div className="mt-2 flex items-center gap-3 text-[11px]">
                 {!m.read && (
-                  <button onClick={() => onMarkRead(m.id)} className="font-semibold text-gold hover:underline">
+                  <button onClick={() => onMarkRead(m.id)} className="font-semibold text-emerald-600 hover:underline">
                     Mark as read
                   </button>
                 )}
-                <a href={`mailto:${m.email}`} className="text-muted hover:text-gold">
+                <a href={`mailto:${m.email}`} className="text-muted hover:text-blue-500">
                   Reply
                 </a>
                 <button onClick={() => onDelete(m.id)} className="text-muted hover:text-rose-400">

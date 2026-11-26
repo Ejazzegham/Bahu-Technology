@@ -19,7 +19,7 @@ function timeAgo(ms: number): string {
 
 function Stars({ count }: { count: number }) {
   return (
-    <div className="flex gap-0.5 text-gold" aria-hidden>
+    <div className="flex gap-0.5 text-amber-400" aria-hidden>
       {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}
@@ -68,14 +68,14 @@ export default function AdminRecentReviews({
   }
 
   return (
-    <div className="card !p-6" id="manage-reviews">
+    <div className="admin-card admin-card-accent p-6" id="manage-reviews">
       <div className="flex items-center justify-between">
-        <h3 className="font-display text-base font-semibold text-ink">Recent Reviews</h3>
+        <h3 className="font-display text-base font-bold text-ink">Recent Reviews</h3>
         <div className="flex items-center gap-4">
-          <Link href="/admin/reviews" className="text-xs font-semibold text-muted hover:text-gold hover:underline">
+          <Link href="/admin/reviews" className="text-xs font-semibold text-muted hover:text-violet-600 hover:underline">
             View all
           </Link>
-          <button onClick={() => setShowForm((v) => !v)} className="text-xs font-semibold text-gold hover:underline">
+          <button onClick={() => setShowForm((v) => !v)} className="rounded-full bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-600 hover:bg-violet-100">
             {showForm ? "Cancel" : "+ Add Review"}
           </button>
         </div>
@@ -121,8 +121,8 @@ export default function AdminRecentReviews({
       ) : (
         <ul className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
           {reviews.slice(0, 4).map((r) => (
-            <li key={r.id} className="flex gap-3">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold-gradient text-xs font-bold text-bg">
+            <li key={r.id} className="flex gap-3 rounded-xl border border-slate-100 bg-gradient-to-br from-white to-amber-50/40 p-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white shadow" style={{ background: ["linear-gradient(135deg,#1477f5,#4facfe)","linear-gradient(135deg,#7c4dff,#b388ff)","linear-gradient(135deg,#ff4d6d,#ff8a65)","linear-gradient(135deg,#10b981,#2fd0c9)"][(r.name.charCodeAt(0) || 0) % 4] }}>
                 {r.name.charAt(0)}
               </span>
               <div className="flex-1">

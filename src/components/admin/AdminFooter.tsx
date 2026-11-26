@@ -10,11 +10,11 @@ export default function AdminFooter() {
             href="https://console.firebase.google.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-gold"
+            className="hover:text-violet-600"
           >
             Firebase Console
           </a>
-          <Link href="/" className="hover:text-gold">
+          <Link href="/" className="hover:text-violet-600">
             View Live Site
           </Link>
         </div>

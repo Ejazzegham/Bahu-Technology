@@ -6,8 +6,8 @@ export type CategorySlice = { label: string; value: number; pct: string; color: 
 
 export default function AdminCategoriesDonut({ slices, total }: { slices: CategorySlice[]; total: number }) {
   return (
-    <div className="card !p-6">
-      <h3 className="font-display text-base font-semibold text-ink">Project Categories</h3>
+    <div className="admin-card admin-card-accent p-6">
+      <h3 className="font-display text-base font-bold text-ink">Project Categories</h3>
 
       {total === 0 ? (
         <p className="mt-8 text-center text-xs text-muted">No projects yet.</p>
@@ -39,10 +39,10 @@ export default function AdminCategoriesDonut({ slices, total }: { slices: Catego
 
         <ul className="min-w-0 flex-1 space-y-2.5">
           {slices.map((c) => (
-            <li key={c.label} className="flex items-center justify-between gap-3 text-xs">
+            <li key={c.label} className="flex items-center justify-between gap-3 rounded-lg px-2 py-1.5 text-xs transition hover:bg-slate-50">
               <span className="flex min-w-0 items-center gap-2 text-muted">
                 <span
-                  className="h-2.5 w-2.5 shrink-0 rounded-full"
+                  className="h-2.5 w-2.5 shrink-0 rounded-full ring-2 ring-white shadow"
                   style={{ backgroundColor: c.color }}
                 />
                 <span className="truncate">{c.label}</span>

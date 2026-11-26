@@ -30,39 +30,45 @@ export type Stat = {
   icon: keyof typeof ICONS;
 };
 
+const THEMES = [
+  { grad: "linear-gradient(135deg,#1477f5,#4facfe)", shadow: "rgba(20,119,245,0.55)" },
+  { grad: "linear-gradient(135deg,#7c4dff,#b388ff)", shadow: "rgba(124,77,255,0.55)" },
+  { grad: "linear-gradient(135deg,#f59e0b,#fbbf24)", shadow: "rgba(245,158,11,0.55)" },
+  { grad: "linear-gradient(135deg,#ff4d6d,#ff8a65)", shadow: "rgba(255,77,109,0.55)" },
+  { grad: "linear-gradient(135deg,#10b981,#2fd0c9)", shadow: "rgba(16,185,129,0.55)" },
+];
+
 export default function AdminStatsRow({ stats }: { stats: Stat[] }) {
   return (
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-      {stats.map((stat) => (
-        <div key={stat.label} className="card !p-5">
-          <div className="flex items-start justify-between">
-            <div>
-              <p className="text-xs text-muted">{stat.label}</p>
-              <p className="mt-2 font-display text-2xl font-bold text-ink">{stat.value}</p>
+      {stats.map((stat, i) => {
+        const t = THEMES[i % THEMES.length];
+        return (
+          <div
+            key={stat.label}
+            className="admin-stat admin-fade-up p-5"
+            style={{ background: t.grad, ["--shadow" as string]: t.shadow, animationDelay: `${i * 70}ms` }}
+          >
+            <div className="relative z-10 flex items-start justify-between">
+              <div>
+                <p className="text-xs font-medium text-white/85">{stat.label}</p>
+                <p className="mt-2 font-display text-3xl font-bold text-white">{stat.value}</p>
+              </div>
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/25 text-white backdrop-blur">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  {ICONS[stat.icon]}
+                </svg>
+              </span>
             </div>
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-gold/40 text-gold">
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                {ICONS[stat.icon]}
+            <p className="relative z-10 mt-4 inline-flex items-center gap-1 rounded-full bg-white/20 px-2 py-1 text-[10.5px] font-semibold text-white">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8">
+                {stat.up ? <path d="M12 19V5M5 12l7-7 7 7" /> : <path d="M12 5v14M5 12l7 7 7-7" />}
               </svg>
-            </span>
+              {stat.change}
+            </p>
           </div>
-          <p className={`mt-3 flex items-center gap-1 text-[11px] font-medium ${stat.up ? "text-emerald-400" : "text-rose-400"}`}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              {stat.up ? <path d="M12 19V5M5 12l7-7 7 7" /> : <path d="M12 5v14M5 12l7 7 7-7" />}
-            </svg>
-            {stat.change} from last month
-          </p>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

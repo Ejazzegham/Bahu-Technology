@@ -33,10 +33,10 @@ export default function AdminClientsCard({ clients }: { clients: Client[] }) {
   }
 
   return (
-    <div className="card !p-6" id="manage-clients">
+    <div className="admin-card admin-card-accent p-6" id="manage-clients">
       <div className="flex items-center justify-between">
-        <h3 className="font-display text-base font-semibold text-ink">Clients</h3>
-        <span className="text-xs text-muted">{clients.length} total</span>
+        <h3 className="font-display text-base font-bold text-ink">Clients</h3>
+        <span className="rounded-full bg-pink-50 px-3 py-1 text-[11px] font-semibold text-pink-600">{clients.length} total</span>
       </div>
 
       <form onSubmit={handleAdd} className="mt-4 space-y-2">
@@ -80,7 +80,7 @@ export default function AdminClientsCard({ clients }: { clients: Client[] }) {
           {clients.map((c) => (
             <li
               key={c.id}
-              className="flex items-center justify-between gap-2 rounded-md border border-line px-3 py-2 text-xs text-ink"
+              className="flex items-center justify-between gap-2 rounded-xl border border-slate-100 bg-gradient-to-r from-white to-pink-50/50 px-3 py-2 text-xs text-ink transition hover:border-pink-200"
             >
               <span className="flex min-w-0 items-center gap-2">
                 {c.logoUrl && (

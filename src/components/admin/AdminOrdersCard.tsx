@@ -15,13 +15,13 @@ const STATUSES: OrderStatus[] = ["New", "In Progress", "Completed", "Cancelled"]
 function statusColor(status: OrderStatus) {
   switch (status) {
     case "Completed":
-      return "text-emerald-400 bg-emerald-500/10 border-emerald-500/30";
+      return "text-emerald-600 bg-emerald-50 border-emerald-200";
     case "In Progress":
-      return "text-sky-400 bg-sky-500/10 border-sky-500/30";
+      return "text-sky-600 bg-sky-50 border-sky-200";
     case "Cancelled":
-      return "text-rose-400 bg-rose-500/10 border-rose-500/30";
+      return "text-rose-600 bg-rose-50 border-rose-200";
     default:
-      return "text-amber-400 bg-amber-500/10 border-amber-500/30";
+      return "text-amber-600 bg-amber-50 border-amber-200";
   }
 }
 
@@ -43,9 +43,9 @@ export default function AdminOrdersCard() {
   }
 
   return (
-    <div className="card !p-6 sm:!p-8" id="manage-orders">
+    <div className="admin-card admin-card-accent p-6 sm:p-8" id="manage-orders">
       <h2 className="text-center font-display text-xl font-semibold text-ink sm:text-2xl">
-        Customer <span className="text-gold">Orders</span>
+        Customer <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">Orders</span>
       </h2>
       <p className="mt-1 text-center text-xs text-muted">
         Orders placed from the Pricing page — customers must sign in before they can order.
@@ -56,13 +56,13 @@ export default function AdminOrdersCard() {
       ) : (
         <ul className="mt-6 space-y-3">
           {orders.map((o) => (
-            <li key={o.id} className="rounded-lg border border-line p-4">
+            <li key={o.id} className="rounded-xl border border-slate-100 bg-gradient-to-r from-white to-orange-50/40 p-4">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <p className="text-sm font-semibold text-ink">
                     {o.tierName} <span className="font-normal text-muted">· {o.categoryLabel}</span>
                   </p>
-                  <p className="mt-0.5 text-xs text-gold">{o.price}</p>
+                  <p className="mt-0.5 text-xs font-semibold text-emerald-600">{o.price}</p>
                   <p className="mt-2 text-xs text-muted">
                     {o.customerName} · {o.customerEmail}
                   </p>

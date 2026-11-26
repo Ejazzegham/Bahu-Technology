@@ -38,8 +38,8 @@ function AdminShell({ children }: { children: React.ReactNode }) {
   const title = TITLES[pathname] ?? "Dashboard";
 
   return (
-    <div className="min-h-screen bg-bg">
-      <Suspense fallback={<div className="fixed inset-y-0 left-0 z-40 hidden w-72 border-r border-line bg-bg-soft lg:block" />}>
+    <div className="admin-bg min-h-screen">
+      <Suspense fallback={<div className="fixed inset-y-0 left-0 z-40 hidden w-72 admin-sidebar lg:block" />}>
         <AdminSidebar
           messageBadge={messages.filter((m) => !m.read).length}
           orderBadge={orders.filter((o) => o.status === "New").length}
