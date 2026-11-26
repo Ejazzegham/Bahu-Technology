@@ -2015,3 +2015,8 @@ main h2 { position: relative; }
   .odfd-ribbon-track { flex-wrap: wrap; width: auto; justify-content: center; }
   .odfd-title-flow { background-position: 0 center; }
 }
+
+/* Breathing room above and below the banner (separates it from the dark
+   hero above and the dark Special Offer section below on the home page). */
+.odfd-wrap { background: #ffffff; padding: 28px 0; }
+@media (min-width: 1024px) { .odfd-wrap { padding: 44px 0; } }
