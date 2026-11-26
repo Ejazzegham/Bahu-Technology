@@ -1701,8 +1701,8 @@ main h2 { position: relative; }
 
 /* ---------- Diagonal red "Special Offer" sticker badge ---------- */
 @keyframes offer-badge-bob {
-  0%, 100% { transform: rotate(-7deg) translateY(0) scale(1); }
-  50% { transform: rotate(-5deg) translateY(-5px) scale(1.025); }
+  0%, 100% { transform: rotate(-4deg) translateY(0) scale(1); }
+  50% { transform: rotate(-3deg) translateY(-3px) scale(1.02); }
 }
 @keyframes offer-badge-shine { 0%, 55% { left: -60%; } 100% { left: 140%; } }
 @keyframes offer-cf-float {
@@ -1714,11 +1714,9 @@ main h2 { position: relative; }
 
 .offer-badge-wrap {
   position: relative;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 26px 40px 30px 26px;
-  transform-origin: 20% 60%;
+  display: inline-block;
+  padding: 12px 20px 20px 14px;
+  max-width: 100%;
 }
 .offer-confetti { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 .offer-confetti .cf { transform-box: fill-box; transform-origin: center; animation: offer-cf-float 4s ease-in-out infinite; }
@@ -1738,16 +1736,16 @@ main h2 { position: relative; }
   z-index: 1;
   overflow: hidden;
   display: inline-block;
-  padding: 12px 38px 14px;
+  padding: 7px 30px 9px;
   border-radius: 9999px;
   background: linear-gradient(180deg, #ff5a4d 0%, #e5171f 55%, #c4101a 100%);
-  border: 3px solid #151015;
+  border: 2.5px solid #151015;
   box-shadow:
-    0 6px 0 #151015,
-    0 14px 30px -6px rgba(255, 40, 60, 0.65),
-    inset 0 3px 0 rgba(255, 255, 255, 0.35),
-    inset 0 -5px 0 rgba(120, 5, 15, 0.35);
-  transform: rotate(-7deg);
+    0 4px 0 #151015,
+    0 10px 22px -6px rgba(255, 40, 60, 0.65),
+    inset 0 2px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -4px 0 rgba(120, 5, 15, 0.35);
+  transform: rotate(-4deg);
   animation: offer-badge-bob 4.6s ease-in-out infinite;
 }
 .offer-badge-shine {
@@ -1762,51 +1760,49 @@ main h2 { position: relative; }
 }
 .offer-badge-text {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: block;
+  white-space: nowrap;
   font-family: var(--font-script), "Brush Script MT", cursive;
+  font-size: clamp(22px, 3vw, 32px);
   color: #fff;
-  line-height: 0.92;
+  line-height: 1.05;
   transform: skewX(-4deg);
   text-shadow:
-    2px 2px 0 #7a0a12,
-    3px 3px 0 #7a0a12,
-    4px 4px 0 #4a060c,
-    5px 5px 0 #151015,
-    0 8px 16px rgba(60, 0, 8, 0.45);
-  -webkit-text-stroke: 1.2px #151015;
+    1.5px 1.5px 0 #7a0a12,
+    2.5px 2.5px 0 #7a0a12,
+    3.5px 3.5px 0 #151015,
+    0 6px 12px rgba(60, 0, 8, 0.45);
+  -webkit-text-stroke: 1px #151015;
   paint-order: stroke fill;
 }
-.offer-badge-l1 { font-size: clamp(30px, 4.4vw, 46px); }
-.offer-badge-l2 { margin-left: 22px; font-size: clamp(36px, 5.4vw, 56px); }
 /* big first letter, small rest — for every word */
 .ob-word { display: inline-flex; align-items: baseline; margin-right: 0.18em; }
 .ob-word:last-child { margin-right: 0; }
-.ob-cap { font-size: 1.62em; line-height: 0.8; margin-right: 0.02em; }
+.ob-cap { font-size: 1.5em; line-height: 0.8; margin-right: 0.02em; }
 .ob-rest { font-size: 0.82em; letter-spacing: 0.01em; }
 .offer-badge-tag {
-  position: relative;
+  position: absolute;
   z-index: 2;
-  margin: -6px 0 0 70px;
-  padding: 5px 16px;
+  right: 8px;
+  bottom: 4px;
+  padding: 3px 12px;
   border-radius: 9999px;
   border: 2px solid #151015;
-  font-size: 11px;
+  font-size: 9.5px;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #2a1400;
   background: linear-gradient(180deg, #ffe066, #ffb800);
-  box-shadow: 0 3px 0 #151015;
-  transform: rotate(-7deg);
+  box-shadow: 0 2px 0 #151015;
+  transform: rotate(-4deg);
   white-space: nowrap;
 }
 
 @media (max-width: 420px) {
-  .offer-badge-wrap { padding: 22px 26px 26px 18px; }
-  .offer-badge { padding: 10px 26px 12px; }
+  .offer-badge { padding: 6px 22px 8px; }
+  .offer-badge-text { font-size: 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .offer-badge { transform: rotate(-7deg); }
+  .offer-badge { transform: rotate(-4deg); }
 }

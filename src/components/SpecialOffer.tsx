@@ -119,41 +119,31 @@ function CapWords({ text }: { text: string }) {
   );
 }
 
-/** Diagonal red "sticker" badge with confetti, in the style of a sale tag. */
+/** Compact diagonal red "sticker" pill with confetti and a corner tag. */
 function OfferBadge({ text, save }: { text: string; save: string }) {
-  const words = text.trim().split(/\s+/).filter(Boolean);
-  const last = words.length > 1 ? words.pop()! : "";
-  const first = words.join(" ");
   return (
     <div className="offer-badge-wrap" aria-label={text}>
       {/* confetti */}
-      <svg aria-hidden className="offer-confetti" viewBox="0 0 330 150">
-        <path className="cf cf-1" d="M12 40 L34 22 L38 52 Z" fill="#ffc21a" />
-        <path className="cf cf-2" d="M292 18 L318 30 L298 50 Z" fill="#ffc21a" />
-        <path className="cf cf-3" d="M300 108 L324 118 L302 132 Z" fill="#ff3b3b" />
-        <path className="cf cf-4" d="M22 112 L44 120 L26 136 Z" fill="#ff3b3b" />
-        <path className="cf cf-5" d="M262 6 L276 14 L264 24 Z" fill="#ff5ec4" />
-        <circle className="cf cf-6" cx="58" cy="10" r="4.5" fill="none" stroke="#ff6a6a" strokeWidth="2" />
-        <circle className="cf cf-7" cx="318" cy="70" r="4" fill="none" stroke="#ffc21a" strokeWidth="2" />
-        <circle className="cf cf-8" cx="8" cy="80" r="3.5" fill="#ffc21a" />
-        <circle className="cf cf-9" cx="236" cy="142" r="4" fill="#ff6a6a" />
-        <path className="cf cf-10" d="M96 142 v10 M91 147 h10" stroke="#ffc21a" strokeWidth="2.4" strokeLinecap="round" />
-        <path className="cf cf-11" d="M180 4 v10 M175 9 h10" stroke="#ff6a6a" strokeWidth="2.4" strokeLinecap="round" />
-        <path className="cf-dash" d="M20 96 C 6 60 24 20 70 16" fill="none" stroke="#ff7a7a" strokeWidth="1.6" strokeDasharray="4 6" strokeLinecap="round" />
-        <path className="cf-dash" d="M312 52 C 326 84 310 118 270 134" fill="none" stroke="#ff7a7a" strokeWidth="1.6" strokeDasharray="4 6" strokeLinecap="round" />
+      <svg aria-hidden className="offer-confetti" viewBox="0 0 340 96">
+        <path className="cf cf-1" d="M6 30 L22 16 L26 38 Z" fill="#ffc21a" />
+        <path className="cf cf-2" d="M312 8 L332 16 L316 30 Z" fill="#ffc21a" />
+        <path className="cf cf-3" d="M318 62 L336 70 L320 82 Z" fill="#ff3b3b" />
+        <path className="cf cf-4" d="M10 70 L26 76 L12 88 Z" fill="#ff3b3b" />
+        <path className="cf cf-5" d="M268 2 L280 8 L270 16 Z" fill="#ff5ec4" />
+        <circle className="cf cf-6" cx="50" cy="6" r="4" fill="none" stroke="#ff6a6a" strokeWidth="2" />
+        <circle className="cf cf-7" cx="334" cy="46" r="3.5" fill="none" stroke="#ffc21a" strokeWidth="2" />
+        <circle className="cf cf-8" cx="4" cy="52" r="3" fill="#ffc21a" />
+        <circle className="cf cf-9" cx="240" cy="90" r="3.5" fill="#ff6a6a" />
+        <path className="cf cf-10" d="M104 86 v8 M100 90 h8" stroke="#ffc21a" strokeWidth="2.2" strokeLinecap="round" />
+        <path className="cf cf-11" d="M180 3 v8 M176 7 h8" stroke="#ff6a6a" strokeWidth="2.2" strokeLinecap="round" />
+        <path className="cf-dash" d="M14 66 C 2 44 14 14 56 8" fill="none" stroke="#ff7a7a" strokeWidth="1.5" strokeDasharray="4 6" strokeLinecap="round" />
+        <path className="cf-dash" d="M330 30 C 340 56 326 80 290 88" fill="none" stroke="#ff7a7a" strokeWidth="1.5" strokeDasharray="4 6" strokeLinecap="round" />
       </svg>
 
       <div className="offer-badge">
         <span className="offer-badge-shine" aria-hidden />
         <span className="offer-badge-text">
-          {first && (
-            <span className="offer-badge-l1">
-              <CapWords text={first} />
-            </span>
-          )}
-          <span className="offer-badge-l2">
-            <CapWords text={last || (first ? "" : "Offer")} />
-          </span>
+          <CapWords text={text} />
         </span>
       </div>
       <span className="offer-badge-tag">{save}</span>
